@@ -1,1 +1,1 @@
-### Client for Browser-Agnostic Internet Browsing Launchpad
+### Client for Browser-Agnostic Internet Manager + Homepage
