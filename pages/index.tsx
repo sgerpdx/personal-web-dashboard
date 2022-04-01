@@ -22,7 +22,7 @@ const Home: NextPage = () => {
 
   useEffect(() => {
     setLoading(false);
-  });
+  }, []);
 
   if (loading)
     return (
