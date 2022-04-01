@@ -6,6 +6,7 @@ import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
   const [loading, setLoading] = useState(true);
+  const [isWeekend, setIsWeekend] = useState<boolean>(false);
 
   interface DailyData {
     message: string;
@@ -50,6 +51,13 @@ const Home: NextPage = () => {
           width="96"
           height="96"
         />
+        <div>
+          {isWeekend ? (
+            <span>YES it is the weekend</span>
+          ) : (
+            <span>NO it is not the weekend</span>
+          )}
+        </div>
       </main>
 
       <footer className={styles.footer}>
