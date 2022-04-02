@@ -4,6 +4,9 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 
+// Interface imports
+import NewsItem from "../data/interfaces";
+
 // Component imports
 import Clock from "../components/Clock";
 import ImageOfDay from "../components/ImageOfDay";
@@ -28,6 +31,19 @@ const Home: NextPage = () => {
     message: "Good morning user!",
     numberOfTheDay: 7,
     letterOfTheDay: "A",
+  });
+
+  // interface NewsItem {
+  //   headline: string;
+  //   articleText: string;
+  //   thumbnailURL: string;
+  // }
+
+  const [currentNewsItem, setCurrentNewsItem] = useState<NewsItem>({
+    headline: "Super Cat Holds Place",
+    articleText:
+      "This weekend in Cleveland Ohio a cat held place in the parking lot of a local Dairy Queen.",
+    thumbnailURL: "https://placekitten.com/200/300",
   });
 
   // Basic change handling demo
@@ -70,7 +86,7 @@ const Home: NextPage = () => {
         <button onClick={handleWeekendToggle}>Toggle Weekend</button>
         <Clock />
         <ImageOfDay imgURL={dailyImageURL} />
-        <ContentList />
+        <ContentList currentNewsItem={currentNewsItem} />
       </main>
 
       <footer className={styles.footer}>
