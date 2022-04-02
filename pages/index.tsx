@@ -12,6 +12,11 @@ import ContentList from "../components/content/ContentList";
 const Home: NextPage = () => {
   const [loading, setLoading] = useState(true);
   const [isWeekend, setIsWeekend] = useState<boolean>(false);
+  // Additional desired state items:
+  // dailyImage, lastNote, dailyNewsItem...some can be in the DailyData interface...just need to update and/or pull them out selectively
+  const [dailyImageURL, setDailyImageURL] = useState<string>(
+    "https://placekitten.com/200/300"
+  );
 
   interface DailyData {
     message: string;
@@ -24,6 +29,11 @@ const Home: NextPage = () => {
     numberOfTheDay: 7,
     letterOfTheDay: "A",
   });
+
+  // Basic change handling demo
+  const handleWeekendToggle = () => {
+    setIsWeekend(!isWeekend);
+  };
 
   useEffect(() => {
     setLoading(false);
@@ -57,8 +67,9 @@ const Home: NextPage = () => {
             <span>NO it is not the weekend</span>
           )}
         </div>
+        <button onClick={handleWeekendToggle}>Toggle Weekend</button>
         <Clock />
-        <ImageOfDay />
+        <ImageOfDay imgURL={dailyImageURL} />
         <ContentList />
       </main>
 
