@@ -4,6 +4,11 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 
+// Component imports
+import Clock from "../components/Clock";
+import ImageOfDay from "../components/ImageOfDay";
+import ContentList from "../components/content/ContentList";
+
 const Home: NextPage = () => {
   const [loading, setLoading] = useState(true);
   const [isWeekend, setIsWeekend] = useState<boolean>(false);
@@ -45,12 +50,6 @@ const Home: NextPage = () => {
           <li>The number of the day is: {currentDailyData.numberOfTheDay}</li>
           <li>The letter of the day is: {currentDailyData.letterOfTheDay}</li>
         </ul>
-        <Image
-          src="/../public/square-art.png"
-          alt="doodle art"
-          width="96"
-          height="96"
-        />
         <div>
           {isWeekend ? (
             <span>YES it is the weekend</span>
@@ -58,6 +57,9 @@ const Home: NextPage = () => {
             <span>NO it is not the weekend</span>
           )}
         </div>
+        <Clock />
+        <ImageOfDay />
+        <ContentList />
       </main>
 
       <footer className={styles.footer}>
