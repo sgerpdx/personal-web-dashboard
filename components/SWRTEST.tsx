@@ -8,7 +8,7 @@ const fetcher = (url: string) => fetch(url).then((r) => r.json());
 
 export default function SWRTEST() {
   const { data, error } = useSWR(
-    "http://localhost:3100/api/v1/bookmarks",
+    "https://agile-refuge-37723.herokuapp.com/api/v1/bookmarks",
     fetcher
   );
 

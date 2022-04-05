@@ -1,7 +1,7 @@
 import fetch from "node-fetch";
 
 const databaseURL: string =
-  "http://localhost:3100/api/v1/bookmarks";
+  "https://agile-refuge-37723.herokuapp.com/api/v1/bookmarks";
 
 export const getImage = async () => {
   const response = await fetch(`${databaseURL}`);
