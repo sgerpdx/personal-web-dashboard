@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 
 // Interface imports
-import NewsItem from "../../data/interfaces";
+import { NewsItem } from "../../data/interfaces";
 
 export default function ContentItem({
   currentNewsItem,

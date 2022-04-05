@@ -4,41 +4,37 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 
+// Utils function imports
+import {getImage} from '../utils/externalAPI';
+
 // Interface imports
-import NewsItem from "../data/interfaces";
+import { NewsItem, DailyData } from "../data/interfaces";
 
 // Component imports
 import Clock from "../components/Clock";
 import ImageOfDay from "../components/ImageOfDay";
 import ContentList from "../components/content/ContentList";
+import SWRTEST from "../components/SWRTEST";
 
 const Home: NextPage = () => {
   const [loading, setLoading] = useState(true);
   const [isWeekend, setIsWeekend] = useState<boolean>(false);
   // Additional desired state items:
   // dailyImage, lastNote, dailyNewsItem...some can be in the DailyData interface...just need to update and/or pull them out selectively
-  const [dailyImageURL, setDailyImageURL] = useState<string>(
-    "https://placekitten.com/200/300"
-  );
 
-  interface DailyData {
-    message: string;
-    numberOfTheDay: number;
-    letterOfTheDay: string;
-  }
-
+  // Local-native state object for index/home:
   const [currentDailyData, setCurrentDailyData] = useState<DailyData>({
     message: "Good morning user!",
     numberOfTheDay: 7,
     letterOfTheDay: "A",
   });
 
-  // interface NewsItem {
-  //   headline: string;
-  //   articleText: string;
-  //   thumbnailURL: string;
-  // }
+  // State variable for the API image of the day:
+  const [dailyImageURL, setDailyImageURL] = useState<string>(
+    "https://placekitten.com/200/300"
+  );
 
+  // Here is the object-type format for the News API data:
   const [currentNewsItem, setCurrentNewsItem] = useState<NewsItem>({
     headline: "Super Cat Holds Place",
     articleText:
@@ -47,12 +43,20 @@ const Home: NextPage = () => {
   });
 
   // Basic change handling demo
-  const handleWeekendToggle = () => {
+  const handleWeekendToggle = async () => {
     setIsWeekend(!isWeekend);
   };
 
+  const handleBookmarkSave = () => {
+    console.log('Bookmark saved!');
+  }
+
+
+
+
   useEffect(() => {
     setLoading(false);
+    // getImage();
   }, []);
 
   if (loading)
@@ -72,6 +76,7 @@ const Home: NextPage = () => {
 
       <main className={styles.main}>
         <h2>{currentDailyData.message}</h2>
+        <SWRTEST />
         <ul>
           <li>The number of the day is: {currentDailyData.numberOfTheDay}</li>
           <li>The letter of the day is: {currentDailyData.letterOfTheDay}</li>
@@ -86,7 +91,7 @@ const Home: NextPage = () => {
         <button onClick={handleWeekendToggle}>Toggle Weekend</button>
         <Clock />
         <ImageOfDay imgURL={dailyImageURL} />
-        <ContentList currentNewsItem={currentNewsItem} />
+        <ContentList currentNewsItem={currentNewsItem} onClick={handleBookmarkSave} />
       </main>
 
       <footer className={styles.footer}>
