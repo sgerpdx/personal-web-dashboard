@@ -7,7 +7,7 @@ const unsplashURL: string =
 //   nom: "string";
 // }
 
-export const getImage = async () => {
+export const getRandomImage = async () => {
   const response = await fetch(
     `${unsplashURL}${process.env.UNSPLASH_ACCESS_KEY}`
   );

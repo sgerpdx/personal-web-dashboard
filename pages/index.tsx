@@ -5,7 +5,7 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 
 // Utils function imports
-import {getImage} from '../utils/externalAPI';
+import { getImage } from "../utils/databaseAPI";
 
 // Interface imports
 import { NewsItem, DailyData } from "../data/interfaces";
@@ -47,16 +47,16 @@ const Home: NextPage = () => {
     setIsWeekend(!isWeekend);
   };
 
+  const handleBookmarksFetch = async () => {
+    console.log("Fetch doggo!");
+  };
+
   const handleBookmarkSave = () => {
-    console.log('Bookmark saved!');
-  }
-
-
-
+    console.log("Bookmark saved!");
+  };
 
   useEffect(() => {
     setLoading(false);
-    // getImage();
   }, []);
 
   if (loading)
@@ -89,9 +89,13 @@ const Home: NextPage = () => {
           )}
         </div>
         <button onClick={handleWeekendToggle}>Toggle Weekend</button>
+        <button onClick={handleBookmarksFetch}>Get Bookmark</button>
         <Clock />
         <ImageOfDay imgURL={dailyImageURL} />
-        <ContentList currentNewsItem={currentNewsItem} onClick={handleBookmarkSave} />
+        <ContentList
+          currentNewsItem={currentNewsItem}
+          onClick={handleBookmarkSave}
+        />
       </main>
 
       <footer className={styles.footer}>
