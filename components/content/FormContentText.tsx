@@ -1,14 +1,16 @@
+///// NOTE: This file was for demo purposes and s/b deleted before production
 import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import { Person } from "../../data/interfaces";
 
 export default function FormContentText() {
-  //
+  // Regular state variable that is fed by the Formik form submission
   const [newPerson, setNewPerson] = useState<Person>({
     name: "Biff",
     age: 28,
   });
-  //
+
+  // This hook allows management of the Formik form setup and submission
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -23,6 +25,7 @@ export default function FormContentText() {
     },
   });
 
+  // Verify that the state variable is being set via Formik
   useEffect(() => {
     console.log("New New Person:", newPerson);
   }, [newPerson]);
@@ -31,18 +34,6 @@ export default function FormContentText() {
 
   return (
     <>
-      {/* <div className="bg-green-300 p-4">
-        <h2>HTML Test Form:</h2>
-        <form>
-          <label htmlFor="name">Name</label>
-          <input type="text" id="name" name="name" />
-
-          <label htmlFor="age">Age</label>
-          <input type="number" id="age" name="age" />
-
-          <button className="bg-blue-100">Submit</button>
-        </form>
-      </div> */}
       <div className="bg-blue-300 p-4">
         <h2>Formik Test Form:</h2>
         <form onSubmit={formik.handleSubmit}>

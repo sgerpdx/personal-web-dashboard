@@ -1,24 +1,10 @@
-import React, { MouseEventHandler } from "react";
+import React, { useState, useEffect, MouseEventHandler } from "react";
 // Interface imports
-import { NewsItem } from "../../data/interfaces";
+import { NewsItem, BookmarkItem } from "../../data/interfaces";
 // Component imports
 import ContentItem from "./ContentItem";
 // Formik
-import {
-  useFormik,
-  Formik,
-  FormikHelpers,
-  FormikProps,
-  Form,
-  Field,
-  FieldProps,
-} from "formik";
-
-interface MyFormValues {
-  bookmarkTitle: string;
-  bookmarkURL: string;
-  dateCreated: string;
-}
+import { useFormik } from "formik";
 
 export default function ContentList({
   currentNewsItem,
@@ -27,20 +13,31 @@ export default function ContentList({
   currentNewsItem: NewsItem;
   onClick: MouseEventHandler<HTMLButtonElement>;
 }) {
-  //
-  const myInitialValues: MyFormValues = {
+  const [currentBookmark, setCurrentBookmark] = useState<BookmarkItem>({
     bookmarkTitle: "",
     bookmarkURL: "",
-    dateCreated: "",
-  };
+  });
 
-  // Need to figure out why this code is only logging final character of input and not showing updated input in text field maybe via a good Formik tutorial:
+  // This hook allows management of the Formik form setup and submission
   const formik = useFormik({
-    initialValues: myInitialValues,
+    initialValues: {
+      title: "",
+      url: "",
+    },
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      console.log("SuperV:", values);
+      setCurrentBookmark({
+        bookmarkTitle: formik.values.title,
+        bookmarkURL: formik.values.url,
+      });
     },
   });
+
+  useEffect(() => {
+    console.log("//////Boooookmaaaark:", currentBookmark);
+  }, [currentBookmark]);
+
+  console.log("Form Values:", formik.values);
 
   return (
     <>
@@ -57,53 +54,32 @@ export default function ContentList({
             <button onClick={onClick}>Save</button>
           </div> */}
         </div>
-        <div className="bg-gray-300">
+        <div className="bg-blue-300 p-4">
+          <h2>Bookmark Formik Submission Form:</h2>
           <form onSubmit={formik.handleSubmit}>
-            <label htmlFor="title">Bookmark Title</label>
+            <label htmlFor="title">Title</label>
             <input
+              type="text"
               id="title"
               name="title"
-              type="text"
               onChange={formik.handleChange}
-              value={formik.values.bookmarkTitle}
+              value={formik.values.title}
             />
 
-            <button type="submit">Submit</button>
+            <label htmlFor="url">URL</label>
+            <input
+              type="text"
+              id="url"
+              name="url"
+              onChange={formik.handleChange}
+              value={formik.values.url}
+            />
+
+            <button type="submit" className="bg-green-100">
+              Submit
+            </button>
           </form>
         </div>
-        {/* <div className="bg-gray-300 text-blue-700">
-          <h1>Formik Bookmark Example</h1>
-          <Formik
-            initialValues={initialValues}
-            onSubmit={(values, actions) => {
-              console.log({ values, actions });
-              alert(JSON.stringify(values, null, 2));
-              actions.setSubmitting(false);
-            }}
-          >
-            <Form>
-              <label htmlFor="bookmarkTitle">Bookmark Title</label>
-              <Field
-                id="bookmarkTitle"
-                name="bookmarkTitle"
-                placeholder="Bookmark Title"
-              />
-              <label htmlFor="bookmarkURL">Bookmark URL</label>
-              <Field
-                id="bookmarkURL"
-                name="bookmarkURL"
-                placeholder="Bookmark URL"
-              />
-              <label htmlFor="dateCreated">Date Created</label>
-              <Field
-                id="dateCreated"
-                name="dateCreated"
-                placeholder="Date Created"
-              />
-              <button type="submit">Submit</button>
-            </Form>
-          </Formik>
-        </div> */}
       </section>
     </>
   );

@@ -10,12 +10,12 @@ export interface NewsItem {
 }
 
 export interface BookmarkItem {
-  title: string;
-  savedURL: string;
+  bookmarkTitle: string;
+  bookmarkURL: string;
 }
 
 export interface NoteItem {
-  title: string;
+  noteTitle: string;
   noteText: string;
 }
 

@@ -99,7 +99,6 @@ const Home: NextPage = () => {
           currentNewsItem={currentNewsItem}
           onClick={handleAddBookmark}
         />
-        <FormContentText />
       </main>
 
       <footer className={styles.footer}>
