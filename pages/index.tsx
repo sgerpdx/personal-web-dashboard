@@ -14,7 +14,8 @@ import { NewsItem, DailyData } from "../data/interfaces";
 import Clock from "../components/Clock";
 import ImageOfDay from "../components/ImageOfDay";
 import ContentList from "../components/content/ContentList";
-import UnsplashAPI from "../utils/swrHooks/unsplashAPI";
+//import UnsplashAPI from "../utils/swrHooks/unsplashAPI";
+import FormContentText from "../components/content/FormContentText";
 
 const Home: NextPage = () => {
   const [loading, setLoading] = useState(true);
@@ -98,6 +99,7 @@ const Home: NextPage = () => {
           currentNewsItem={currentNewsItem}
           onClick={handleAddBookmark}
         />
+        <FormContentText />
       </main>
 
       <footer className={styles.footer}>
