@@ -5,7 +5,7 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 
 // Utils function imports
-import { getImage } from "../utils/databaseAPI";
+import { getFetchBookmarks, addFetchBookmarks } from "../utils/databaseAPI";
 
 // Interface imports
 import { NewsItem, DailyData } from "../data/interfaces";
@@ -14,7 +14,7 @@ import { NewsItem, DailyData } from "../data/interfaces";
 import Clock from "../components/Clock";
 import ImageOfDay from "../components/ImageOfDay";
 import ContentList from "../components/content/ContentList";
-import SWRTEST from "../components/SWRTEST";
+import UnsplashAPI from "../utils/swrHooks/unsplashAPI";
 
 const Home: NextPage = () => {
   const [loading, setLoading] = useState(true);
@@ -47,12 +47,14 @@ const Home: NextPage = () => {
     setIsWeekend(!isWeekend);
   };
 
-  const handleBookmarksFetch = async () => {
-    console.log("Fetch doggo!");
+  const handleFetchBookmarks = async () => {
+    const fetchBookmarkData = await getFetchBookmarks();
+    console.log("FETTTTTCH:", fetchBookmarkData);
   };
 
-  const handleBookmarkSave = () => {
-    console.log("Bookmark saved!");
+  const handleAddBookmark = async () => {
+    const fetchBookmarkData = await addFetchBookmarks();
+    console.log("Added Fetch BM:", fetchBookmarkData);
   };
 
   useEffect(() => {
@@ -76,7 +78,7 @@ const Home: NextPage = () => {
 
       <main className={styles.main}>
         <h2>{currentDailyData.message}</h2>
-        <SWRTEST />
+        {/* <UnsplashAPI /> */}
         <ul>
           <li>The number of the day is: {currentDailyData.numberOfTheDay}</li>
           <li>The letter of the day is: {currentDailyData.letterOfTheDay}</li>
@@ -89,12 +91,12 @@ const Home: NextPage = () => {
           )}
         </div>
         <button onClick={handleWeekendToggle}>Toggle Weekend</button>
-        <button onClick={handleBookmarksFetch}>Get Bookmark</button>
+        <button onClick={handleFetchBookmarks}>Fetch Bookmark</button>
         <Clock />
         <ImageOfDay imgURL={dailyImageURL} />
         <ContentList
           currentNewsItem={currentNewsItem}
-          onClick={handleBookmarkSave}
+          onClick={handleAddBookmark}
         />
       </main>
 

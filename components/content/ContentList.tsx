@@ -3,6 +3,19 @@ import React, { MouseEventHandler } from "react";
 import { NewsItem } from "../../data/interfaces";
 // Component imports
 import ContentItem from "./ContentItem";
+// Formik
+import {
+  Formik,
+  FormikHelpers,
+  FormikProps,
+  Form,
+  Field,
+  FieldProps,
+} from "formik";
+
+interface MyFormValues {
+  firstName: string;
+}
 
 export default function ContentList({
   currentNewsItem,
@@ -11,6 +24,9 @@ export default function ContentList({
   currentNewsItem: NewsItem;
   onClick: MouseEventHandler<HTMLButtonElement>;
 }) {
+  //
+  const initialValues: MyFormValues = { firstName: "" };
+
   return (
     <>
       <section>
@@ -25,6 +41,23 @@ export default function ContentList({
             </form>
             <button onClick={onClick}>Save</button>
           </div>
+        </div>
+        <div>
+          <h1>My Example</h1>
+          <Formik
+            initialValues={initialValues}
+            onSubmit={(values, actions) => {
+              console.log({ values, actions });
+              alert(JSON.stringify(values, null, 2));
+              actions.setSubmitting(false);
+            }}
+          >
+            <Form>
+              <label htmlFor="firstName">First Name</label>
+              <Field id="firstName" name="firstName" placeholder="First Name" />
+              <button type="submit">Submit</button>
+            </Form>
+          </Formik>
         </div>
       </section>
     </>
