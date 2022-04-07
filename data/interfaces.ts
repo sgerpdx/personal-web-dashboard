@@ -1,4 +1,5 @@
 export interface DailyData {
+  userName: string;
   message: string;
   numberOfTheDay: number;
   letterOfTheDay: string;

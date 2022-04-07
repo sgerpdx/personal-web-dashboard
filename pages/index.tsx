@@ -12,10 +12,10 @@ import { NewsItem, DailyData } from "../data/interfaces";
 
 // Component imports
 import Clock from "../components/Clock";
-import ImageOfDay from "../components/ImageOfDay";
+//import ImageOfDay from "../components/ImageOfDay";
 import ContentList from "../components/content/ContentList";
 //import UnsplashAPI from "../utils/swrHooks/unsplashAPI";
-import FormContentText from "../components/content/FormContentText";
+//import FormContentText from "../components/content/FormContentText";
 
 const Home: NextPage = () => {
   const [loading, setLoading] = useState(true);
@@ -25,15 +25,16 @@ const Home: NextPage = () => {
 
   // Local-native state object for index/home:
   const [currentDailyData, setCurrentDailyData] = useState<DailyData>({
-    message: "Good morning user!",
+    userName: "User",
+    message: "Good day",
     numberOfTheDay: 7,
     letterOfTheDay: "A",
   });
 
   // State variable for the API image of the day:
-  const [dailyImageURL, setDailyImageURL] = useState<string>(
-    "https://placekitten.com/200/300"
-  );
+  // const [dailyImageURL, setDailyImageURL] = useState<string>(
+  //   "https://placekitten.com/200/300"
+  // );
 
   // Here is the object-type format for the News API data:
   const [currentNewsItem, setCurrentNewsItem] = useState<NewsItem>({
@@ -58,6 +59,7 @@ const Home: NextPage = () => {
     console.log("Added Fetch BM:", fetchBookmarkData);
   };
 
+  // Basic app-mounting logic:
   useEffect(() => {
     setLoading(false);
   }, []);
@@ -78,23 +80,15 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <h2>{currentDailyData.message}</h2>
-        {/* <UnsplashAPI /> */}
-        <ul>
+        <h2 className="text-orange-700">
+          {currentDailyData.message} {currentDailyData.userName}
+        </h2>
+        <ul className="bg-blue-500 text-white">
           <li>The number of the day is: {currentDailyData.numberOfTheDay}</li>
           <li>The letter of the day is: {currentDailyData.letterOfTheDay}</li>
         </ul>
-        <div>
-          {isWeekend ? (
-            <span>YES it is the weekend</span>
-          ) : (
-            <span>NO it is not the weekend</span>
-          )}
-        </div>
-        <button onClick={handleWeekendToggle}>Toggle Weekend</button>
         <button onClick={handleFetchBookmarks}>Fetch Bookmark</button>
         <Clock />
-        <ImageOfDay imgURL={dailyImageURL} />
         <ContentList
           currentNewsItem={currentNewsItem}
           onClick={handleAddBookmark}

@@ -1,6 +1,8 @@
 import React from "react";
 import Image from "next/image";
 
+// This component is a STRETCH goal -- load a random image from the Unsplash API *if* there is time to incorporate the feature (the matter of attribution per the use agreement may take time to address)
+
 export default function ImageOfDay({ imgURL }: { imgURL: string }) {
   return (
     <>
