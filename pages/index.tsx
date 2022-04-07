@@ -17,6 +17,7 @@ import ContentList from "../components/content/ContentList";
 import NewsTestFormat from "../components/NewsTestFormat";
 //import UnsplashAPI from "../utils/swrHooks/unsplashAPI";
 //import FormContentText from "../components/content/FormContentText";
+import MediastackAPI from "../utils/swrHooks/MediastackAPI";
 
 const Home: NextPage = () => {
   const [loading, setLoading] = useState(true);

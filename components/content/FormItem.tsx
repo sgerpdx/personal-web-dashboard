@@ -1,15 +1,10 @@
 import React from "react";
 import { useFormik } from "formik";
-import { BookmarkItem, NoteItem } from "../../data/interfaces";
-import { Interface } from "readline";
-
-// May need to define the setVariable as such:
-//// setVariable: React.Dispatch<React.SetStateAction<{ propOne: string; propTwo: string }>>
 
 export default function FormItem({
   formLabel,
   setVariable,
-  divStyle
+  divStyle,
 }: {
   formLabel: string;
   setVariable: React.Dispatch<
@@ -17,12 +12,6 @@ export default function FormItem({
   >;
   divStyle: string;
 }) {
-  // Define the two properties on the state variable object
-  // This is unnecessary if the bookmark/note interfaces have the same keys
-  //   const variableObjectArr = Object.values(variableObject);
-  //   const statePropOne = variableObjectArr[0];
-  //   const statePropTwo = variableObjectArr[1];
-
   // Define formik with specific values per the props from ContentList
   const formik = useFormik({
     initialValues: {
@@ -37,8 +26,6 @@ export default function FormItem({
       });
     },
   });
-
-  console.log("Form Values:", formik.values);
 
   return (
     <div className={divStyle}>

@@ -2,10 +2,13 @@ import React, { useState, useEffect, MouseEventHandler } from "react";
 // Interface imports (BookmarkItem & NoteItem can be same interface)
 import { NewsItem, BookmarkItem, NoteItem } from "../../data/interfaces";
 // Component imports
+// Use for news API display:
 import ContentItem from "./ContentItem";
+// Use for bookmarks/notes input forms:
 import FormItem from "./FormItem";
-// Formik
-import { useFormik } from "formik";
+
+// Data import for rendering test:
+import { NewsData } from "../../data/newsData";
 
 export default function ContentList({
   currentNewsItem,
@@ -37,6 +40,15 @@ export default function ContentList({
           <h2>Content Items:</h2>
           <ContentItem currentNewsItem={currentNewsItem} />
         </div> */}
+        <ContentItem newsData={NewsData} currentNewsItem={currentNewsItem} />
+        <div className="bg-orange-300">
+          <p>
+            Bookmark: {currentBookmark.title} + {currentBookmark.text}
+          </p>
+          <p>
+            Note: {currentNote.title} + {currentNote.text}
+          </p>
+        </div>
         <FormItem
           formLabel="New Bookmark"
           setVariable={setCurrentBookmark}

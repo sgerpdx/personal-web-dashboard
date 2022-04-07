@@ -24,3 +24,13 @@ export interface Person {
   name: string;
   age: number;
 }
+
+export interface NewsResponse {
+  author: string;
+  title: string;
+  source: string;
+  description: string;
+  url: string;
+  image: string;
+  published: string;
+}
