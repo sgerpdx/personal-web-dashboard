@@ -11,13 +11,13 @@ export interface NewsItem {
 }
 
 export interface BookmarkItem {
-  bookmarkTitle: string;
-  bookmarkURL: string;
+  title: string;
+  text: string;
 }
 
 export interface NoteItem {
-  noteTitle: string;
-  noteText: string;
+  title: string;
+  text: string;
 }
 
 export interface Person {

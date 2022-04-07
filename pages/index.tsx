@@ -14,6 +14,7 @@ import { NewsItem, DailyData } from "../data/interfaces";
 import Clock from "../components/Clock";
 //import ImageOfDay from "../components/ImageOfDay";
 import ContentList from "../components/content/ContentList";
+import NewsTestFormat from "../components/NewsTestFormat";
 //import UnsplashAPI from "../utils/swrHooks/unsplashAPI";
 //import FormContentText from "../components/content/FormContentText";
 
@@ -89,6 +90,7 @@ const Home: NextPage = () => {
         </ul>
         <button onClick={handleFetchBookmarks}>Fetch Bookmark</button>
         <Clock />
+        <NewsTestFormat />
         <ContentList
           currentNewsItem={currentNewsItem}
           onClick={handleAddBookmark}

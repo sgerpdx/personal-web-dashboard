@@ -3,6 +3,7 @@ import React, { useState, useEffect, MouseEventHandler } from "react";
 import { NewsItem, BookmarkItem } from "../../data/interfaces";
 // Component imports
 import ContentItem from "./ContentItem";
+import FormItem from "./FormItem";
 // Formik
 import { useFormik } from "formik";
 
@@ -13,9 +14,10 @@ export default function ContentList({
   currentNewsItem: NewsItem;
   onClick: MouseEventHandler<HTMLButtonElement>;
 }) {
+  // Object variable for a bookmark to save to db:
   const [currentBookmark, setCurrentBookmark] = useState<BookmarkItem>({
-    bookmarkTitle: "",
-    bookmarkURL: "",
+    title: "",
+    text: "",
   });
 
   // This hook allows management of the Formik form setup and submission
@@ -27,8 +29,8 @@ export default function ContentList({
     onSubmit: (values) => {
       console.log("SuperV:", values);
       setCurrentBookmark({
-        bookmarkTitle: formik.values.title,
-        bookmarkURL: formik.values.url,
+        title: formik.values.title,
+        text: formik.values.url,
       });
     },
   });
@@ -42,18 +44,11 @@ export default function ContentList({
   return (
     <>
       <section>
-        <div className="bg-purple-300 text-blue-700 h-240 w-80">
+        {/* <div className="bg-purple-300 text-blue-700 h-240 w-80">
           <h2>Content Items:</h2>
           <ContentItem currentNewsItem={currentNewsItem} />
-          {/* <div>
-            <form>
-              <label>Bookmark a URL:</label>
-              <input type="text" placeholder="title" />
-              <input type="text" placeholder="URL" />
-            </form>
-            <button onClick={onClick}>Save</button>
-          </div> */}
-        </div>
+        </div> */}
+        <FormItem formLabel="New Bookmark" idOne="title" idTwo="url" variableObject={currentBookmark} setVariable={setCurrentBookmark}/>
         <div className="bg-blue-300 p-4">
           <h2>Bookmark Formik Submission Form:</h2>
           <form onSubmit={formik.handleSubmit}>
