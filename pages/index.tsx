@@ -4,9 +4,22 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 
+// Interface imports
+import NewsItem from "../data/interfaces";
+
+// Component imports
+import Clock from "../components/Clock";
+import ImageOfDay from "../components/ImageOfDay";
+import ContentList from "../components/content/ContentList";
+
 const Home: NextPage = () => {
   const [loading, setLoading] = useState(true);
   const [isWeekend, setIsWeekend] = useState<boolean>(false);
+  // Additional desired state items:
+  // dailyImage, lastNote, dailyNewsItem...some can be in the DailyData interface...just need to update and/or pull them out selectively
+  const [dailyImageURL, setDailyImageURL] = useState<string>(
+    "https://placekitten.com/200/300"
+  );
 
   interface DailyData {
     message: string;
@@ -19,6 +32,24 @@ const Home: NextPage = () => {
     numberOfTheDay: 7,
     letterOfTheDay: "A",
   });
+
+  // interface NewsItem {
+  //   headline: string;
+  //   articleText: string;
+  //   thumbnailURL: string;
+  // }
+
+  const [currentNewsItem, setCurrentNewsItem] = useState<NewsItem>({
+    headline: "Super Cat Holds Place",
+    articleText:
+      "This weekend in Cleveland Ohio a cat held place in the parking lot of a local Dairy Queen.",
+    thumbnailURL: "https://placekitten.com/200/300",
+  });
+
+  // Basic change handling demo
+  const handleWeekendToggle = () => {
+    setIsWeekend(!isWeekend);
+  };
 
   useEffect(() => {
     setLoading(false);
@@ -45,12 +76,6 @@ const Home: NextPage = () => {
           <li>The number of the day is: {currentDailyData.numberOfTheDay}</li>
           <li>The letter of the day is: {currentDailyData.letterOfTheDay}</li>
         </ul>
-        <Image
-          src="/../public/square-art.png"
-          alt="doodle art"
-          width="96"
-          height="96"
-        />
         <div>
           {isWeekend ? (
             <span>YES it is the weekend</span>
@@ -58,6 +83,10 @@ const Home: NextPage = () => {
             <span>NO it is not the weekend</span>
           )}
         </div>
+        <button onClick={handleWeekendToggle}>Toggle Weekend</button>
+        <Clock />
+        <ImageOfDay imgURL={dailyImageURL} />
+        <ContentList currentNewsItem={currentNewsItem} />
       </main>
 
       <footer className={styles.footer}>
