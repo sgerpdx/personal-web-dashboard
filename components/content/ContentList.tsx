@@ -1,6 +1,6 @@
 import React, { useState, useEffect, MouseEventHandler } from "react";
-// Interface imports
-import { NewsItem, BookmarkItem } from "../../data/interfaces";
+// Interface imports (BookmarkItem & NoteItem can be same interface)
+import { NewsItem, BookmarkItem, NoteItem } from "../../data/interfaces";
 // Component imports
 import ContentItem from "./ContentItem";
 import FormItem from "./FormItem";
@@ -20,26 +20,15 @@ export default function ContentList({
     text: "",
   });
 
-  // This hook allows management of the Formik form setup and submission
-  const formik = useFormik({
-    initialValues: {
-      title: "",
-      url: "",
-    },
-    onSubmit: (values) => {
-      console.log("SuperV:", values);
-      setCurrentBookmark({
-        title: formik.values.title,
-        text: formik.values.url,
-      });
-    },
+  const [currentNote, setCurrentNote] = useState<NoteItem>({
+    title: "",
+    text: "",
   });
 
   useEffect(() => {
-    console.log("//////Boooookmaaaark:", currentBookmark);
-  }, [currentBookmark]);
-
-  console.log("Form Values:", formik.values);
+    console.log("//////Current Bookmark:", currentBookmark);
+    console.log("[][][]Current Note:", currentNote);
+  }, [currentBookmark, currentNote]);
 
   return (
     <>
@@ -48,33 +37,16 @@ export default function ContentList({
           <h2>Content Items:</h2>
           <ContentItem currentNewsItem={currentNewsItem} />
         </div> */}
-        <FormItem formLabel="New Bookmark" idOne="title" idTwo="url" variableObject={currentBookmark} setVariable={setCurrentBookmark}/>
-        <div className="bg-blue-300 p-4">
-          <h2>Bookmark Formik Submission Form:</h2>
-          <form onSubmit={formik.handleSubmit}>
-            <label htmlFor="title">Title</label>
-            <input
-              type="text"
-              id="title"
-              name="title"
-              onChange={formik.handleChange}
-              value={formik.values.title}
-            />
-
-            <label htmlFor="url">URL</label>
-            <input
-              type="text"
-              id="url"
-              name="url"
-              onChange={formik.handleChange}
-              value={formik.values.url}
-            />
-
-            <button type="submit" className="bg-green-100">
-              Submit
-            </button>
-          </form>
-        </div>
+        <FormItem
+          formLabel="New Bookmark"
+          setVariable={setCurrentBookmark}
+          divStyle="bg-blue-300 p-4"
+        />
+        <FormItem
+          formLabel="New Note"
+          setVariable={setCurrentNote}
+          divStyle="bg-purple-300 p-4"
+        />
       </section>
     </>
   );

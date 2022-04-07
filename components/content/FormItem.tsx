@@ -8,18 +8,14 @@ import { Interface } from "readline";
 
 export default function FormItem({
   formLabel,
-  idOne,
-  idTwo,
-  variableObject,
   setVariable,
+  divStyle
 }: {
   formLabel: string;
-  idOne: string;
-  idTwo: string;
-  variableObject: { title: string; text: string };
   setVariable: React.Dispatch<
     React.SetStateAction<{ title: string; text: string }>
   >;
+  divStyle: string;
 }) {
   // Define the two properties on the state variable object
   // This is unnecessary if the bookmark/note interfaces have the same keys
@@ -30,38 +26,40 @@ export default function FormItem({
   // Define formik with specific values per the props from ContentList
   const formik = useFormik({
     initialValues: {
-      idOne: "",
-      idTwo: "",
+      title: "",
+      text: "",
     },
     onSubmit: (values) => {
       console.log("Current active values:", values);
       setVariable({
-        title: formik.values.idOne,
-        text: formik.values.idTwo,
+        title: formik.values.title,
+        text: formik.values.text,
       });
     },
   });
 
+  console.log("Form Values:", formik.values);
+
   return (
-    <div className="bg-blue-300 p-4">
+    <div className={divStyle}>
       <h2>{formLabel}:</h2>
       <form onSubmit={formik.handleSubmit}>
-        <label htmlFor={idOne}>{idOne}</label>
+        <label htmlFor="title">Title</label>
         <input
           type="text"
-          id={idOne}
-          name={idOne}
+          id="title"
+          name="title"
           onChange={formik.handleChange}
-          value={formik.values.idOne}
+          value={formik.values.title}
         />
 
-        <label htmlFor={idTwo}>{idTwo}</label>
+        <label htmlFor="text">Text</label>
         <input
           type="text"
-          id={idTwo}
-          name={idTwo}
+          id="text"
+          name="text"
           onChange={formik.handleChange}
-          value={formik.values.idTwo}
+          value={formik.values.text}
         />
 
         <button type="submit" className="bg-green-100">
