@@ -1,3 +1,4 @@
+///// NOTE: This file was for demo purposes and s/b deleted before production
 import React from "react";
 import useSWR from "swr";
 

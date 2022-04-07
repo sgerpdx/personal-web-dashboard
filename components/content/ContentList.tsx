@@ -1,24 +1,14 @@
-import React, { MouseEventHandler } from "react";
-// Interface imports
-import { NewsItem } from "../../data/interfaces";
+import React, { useState, useEffect, MouseEventHandler } from "react";
+// Interface imports (BookmarkItem & NoteItem can be same interface)
+import { NewsItem, BookmarkItem, NoteItem } from "../../data/interfaces";
 // Component imports
+// Use for news API display:
 import ContentItem from "./ContentItem";
-// Formik
-import {
-  useFormik,
-  Formik,
-  FormikHelpers,
-  FormikProps,
-  Form,
-  Field,
-  FieldProps,
-} from "formik";
+// Use for bookmarks/notes input forms:
+import FormItem from "./FormItem";
 
-interface MyFormValues {
-  bookmarkTitle: string;
-  bookmarkURL: string;
-  dateCreated: string;
-}
+// Data import for rendering test:
+import { NewsData } from "../../data/newsData";
 
 export default function ContentList({
   currentNewsItem,
@@ -27,83 +17,48 @@ export default function ContentList({
   currentNewsItem: NewsItem;
   onClick: MouseEventHandler<HTMLButtonElement>;
 }) {
-  //
-  const myInitialValues: MyFormValues = {
-    bookmarkTitle: "",
-    bookmarkURL: "",
-    dateCreated: "",
-  };
-
-  // Need to figure out why this code is only logging final character of input and not showing updated input in text field maybe via a good Formik tutorial:
-  const formik = useFormik({
-    initialValues: myInitialValues,
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
-    },
+  // Object variable for a bookmark to save to db:
+  const [currentBookmark, setCurrentBookmark] = useState<BookmarkItem>({
+    title: "",
+    text: "",
   });
+
+  const [currentNote, setCurrentNote] = useState<NoteItem>({
+    title: "",
+    text: "",
+  });
+
+  useEffect(() => {
+    console.log("//////Current Bookmark:", currentBookmark);
+    console.log("[][][]Current Note:", currentNote);
+  }, [currentBookmark, currentNote]);
 
   return (
     <>
       <section>
-        <div className="bg-purple-300 text-blue-700 h-240 w-80">
+        {/* <div className="bg-purple-300 text-blue-700 h-240 w-80">
           <h2>Content Items:</h2>
           <ContentItem currentNewsItem={currentNewsItem} />
-          {/* <div>
-            <form>
-              <label>Bookmark a URL:</label>
-              <input type="text" placeholder="title" />
-              <input type="text" placeholder="URL" />
-            </form>
-            <button onClick={onClick}>Save</button>
-          </div> */}
-        </div>
-        <div className="bg-gray-300">
-          <form onSubmit={formik.handleSubmit}>
-            <label htmlFor="title">Bookmark Title</label>
-            <input
-              id="title"
-              name="title"
-              type="text"
-              onChange={formik.handleChange}
-              value={formik.values.bookmarkTitle}
-            />
-
-            <button type="submit">Submit</button>
-          </form>
-        </div>
-        {/* <div className="bg-gray-300 text-blue-700">
-          <h1>Formik Bookmark Example</h1>
-          <Formik
-            initialValues={initialValues}
-            onSubmit={(values, actions) => {
-              console.log({ values, actions });
-              alert(JSON.stringify(values, null, 2));
-              actions.setSubmitting(false);
-            }}
-          >
-            <Form>
-              <label htmlFor="bookmarkTitle">Bookmark Title</label>
-              <Field
-                id="bookmarkTitle"
-                name="bookmarkTitle"
-                placeholder="Bookmark Title"
-              />
-              <label htmlFor="bookmarkURL">Bookmark URL</label>
-              <Field
-                id="bookmarkURL"
-                name="bookmarkURL"
-                placeholder="Bookmark URL"
-              />
-              <label htmlFor="dateCreated">Date Created</label>
-              <Field
-                id="dateCreated"
-                name="dateCreated"
-                placeholder="Date Created"
-              />
-              <button type="submit">Submit</button>
-            </Form>
-          </Formik>
         </div> */}
+        <ContentItem newsData={NewsData} currentNewsItem={currentNewsItem} />
+        <div className="bg-orange-300">
+          <p>
+            Bookmark: {currentBookmark.title} + {currentBookmark.text}
+          </p>
+          <p>
+            Note: {currentNote.title} + {currentNote.text}
+          </p>
+        </div>
+        <FormItem
+          formLabel="New Bookmark"
+          setVariable={setCurrentBookmark}
+          divStyle="bg-blue-300 p-4"
+        />
+        <FormItem
+          formLabel="New Note"
+          setVariable={setCurrentNote}
+          divStyle="bg-purple-300 p-4"
+        />
       </section>
     </>
   );

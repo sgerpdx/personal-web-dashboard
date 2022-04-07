@@ -1,16 +1,16 @@
 import React from "react";
 import useSWR from "swr";
 
-const unsplashURL = "https://api.unsplash.com/photos/random/?client_id=";
+const mediastackURL = "http://api.mediastack.com/v1/news?access_key=";
 
 const fetcher = (url: string) => fetch(url).then((r) => r.json());
 
 // This fetch will work as written *if* the env variable is prepended with "NEXT_PUBLIC_" to expose it to the browser; better to send the access key as part of the req header if possible (todo)
 // *** move this fetch to the server ***
 
-export default function UnsplashAPI() {
+export default function MediastackAPI() {
   const { data, error } = useSWR(
-    `${unsplashURL}${process.env.UNSPLASH_ACCESS_KEY}`,
+    `${mediastackURL}${process.env.MEDIASTACK_ACCESS_KEY}`,
     fetcher
   );
 
@@ -18,5 +18,5 @@ export default function UnsplashAPI() {
   if (!data) return <div>loading...</div>;
 
   // render data
-  return <div>hello bookmark {data.color}!</div>;
+  return <div>hello bookmark {data.pagination.limit}!</div>;
 }
