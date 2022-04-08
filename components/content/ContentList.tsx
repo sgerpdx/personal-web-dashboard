@@ -1,10 +1,15 @@
 import React, { useState, useEffect, MouseEventHandler } from "react";
-// Interface imports (BookmarkItem & NoteItem can be same interface)
-import { NewsItem, BookmarkItem, NoteItem } from "../../data/interfaces";
-// Component imports
-// Use for news API display:
+
+// Fetching
+import { getFetchBookmarks } from "../../utils/databaseAPI";
+import { getNews } from "../../utils/externalAPI";
+
+// Interfaces
+import { NewsItem, BookmarkItem } from "../../data/interfaces";
+
+// Components
 import ContentItem from "./ContentItem";
-// Use for bookmarks/notes input forms:
+import DataDisplay from "./DataDisplay";
 import FormItem from "./FormItem";
 
 // Data import for rendering test:
@@ -19,19 +24,27 @@ export default function ContentList({
 }) {
   // Object variable for a bookmark to save to db:
   const [currentBookmark, setCurrentBookmark] = useState<BookmarkItem>({
-    title: "",
-    text: "",
+    bookmarkTitle: "",
+    bookmarkURL: "",
   });
+  const [bookmarkData, setBookmarkData] = useState<Array<BookmarkItem>>([]);
 
-  const [currentNote, setCurrentNote] = useState<NoteItem>({
-    title: "",
-    text: "",
-  });
+  useEffect(() => {
+    // Fetch bookmarks
+    async function loadBookmarks() {
+      const savedBookmarks = await getFetchBookmarks();
+      setBookmarkData(savedBookmarks);
+    }
+    loadBookmarks();
+  }, []);
 
   useEffect(() => {
     console.log("//////Current Bookmark:", currentBookmark);
-    console.log("[][][]Current Note:", currentNote);
-  }, [currentBookmark, currentNote]);
+  }, [currentBookmark]);
+
+  useEffect(() => {
+    console.log("bookmarkData:", bookmarkData);
+  }, [bookmarkData]);
 
   return (
     <>
@@ -43,10 +56,8 @@ export default function ContentList({
         <ContentItem newsData={NewsData} currentNewsItem={currentNewsItem} />
         <div className="bg-orange-300">
           <p>
-            Bookmark: {currentBookmark.title} + {currentBookmark.text}
-          </p>
-          <p>
-            Note: {currentNote.title} + {currentNote.text}
+            Bookmark: {currentBookmark.bookmarkTitle} +{" "}
+            {currentBookmark.bookmarkURL}
           </p>
         </div>
         <FormItem
@@ -54,10 +65,10 @@ export default function ContentList({
           setVariable={setCurrentBookmark}
           divStyle="bg-blue-300 p-4"
         />
-        <FormItem
-          formLabel="New Note"
-          setVariable={setCurrentNote}
-          divStyle="bg-purple-300 p-4"
+        <DataDisplay
+          dataLabel="Saved Bookmarks:"
+          dataContents={bookmarkData}
+          divStyle="bg-blue-100 p-4"
         />
       </section>
     </>

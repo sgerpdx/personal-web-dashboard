@@ -8,7 +8,7 @@ export default function FormItem({
 }: {
   formLabel: string;
   setVariable: React.Dispatch<
-    React.SetStateAction<{ title: string; text: string }>
+    React.SetStateAction<{ bookmarkTitle: string; bookmarkURL: string }>
   >;
   divStyle: string;
 }) {
@@ -21,9 +21,10 @@ export default function FormItem({
     onSubmit: (values) => {
       console.log("Current active values:", values);
       setVariable({
-        title: formik.values.title,
-        text: formik.values.text,
+        bookmarkTitle: formik.values.title,
+        bookmarkURL: formik.values.text,
       });
+      
     },
   });
 
