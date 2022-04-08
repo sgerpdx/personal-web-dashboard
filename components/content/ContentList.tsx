@@ -5,7 +5,7 @@ import { getFetchBookmarks } from "../../utils/databaseAPI";
 import { getNews } from "../../utils/externalAPI";
 
 // Interfaces
-import { NewsItem, BookmarkItem } from "../../data/interfaces";
+import { NewsItem, BookmarkItem, NewsResponse } from "../../data/interfaces";
 
 // Components
 import ContentItem from "./ContentItem";
@@ -28,6 +28,7 @@ export default function ContentList({
     bookmarkURL: "",
   });
   const [bookmarkData, setBookmarkData] = useState<Array<BookmarkItem>>([]);
+  const [newsData, setNewsData] = useState<Array<NewsResponse>>([]);
 
   useEffect(() => {
     // Fetch bookmarks
@@ -35,7 +36,13 @@ export default function ContentList({
       const savedBookmarks = await getFetchBookmarks();
       setBookmarkData(savedBookmarks);
     }
+    // Fetch news
+    async function loadNews() {
+      const response = await getNews();
+      setNewsData(response);
+    }
     loadBookmarks();
+    loadNews();
   }, []);
 
   useEffect(() => {
@@ -44,7 +51,8 @@ export default function ContentList({
 
   useEffect(() => {
     console.log("bookmarkData:", bookmarkData);
-  }, [bookmarkData]);
+    console.log("newsData:", newsData);
+  }, [bookmarkData, newsData]);
 
   return (
     <>
@@ -53,7 +61,7 @@ export default function ContentList({
           <h2>Content Items:</h2>
           <ContentItem currentNewsItem={currentNewsItem} />
         </div> */}
-        <ContentItem newsData={NewsData} currentNewsItem={currentNewsItem} />
+        <ContentItem newsData={newsData} currentNewsItem={currentNewsItem} />
         <div className="bg-orange-300">
           <p>
             Bookmark: {currentBookmark.bookmarkTitle} +{" "}
