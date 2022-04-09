@@ -5,7 +5,13 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 
 // Utils function imports
-import { getFetchBookmarks, addFetchBookmarks } from "../utils/databaseAPI";
+import {
+  getFetchBookmarks,
+  getSingleBookmark,
+  addFetchBookmarks,
+  updateBookmark,
+  deleteBookmark,
+} from "../utils/databaseAPI";
 
 // Interface imports
 import { NewsItem, DailyData } from "../data/interfaces";
@@ -56,9 +62,24 @@ const Home: NextPage = () => {
     console.log("FETTTTTCH:", fetchBookmarkData);
   };
 
+  const handleGetSingleBookmark = async () => {
+    const fetchBookmarkData = await getSingleBookmark();
+    console.log("FETTTTTCH:", fetchBookmarkData);
+  };
+
   const handleAddBookmark = async () => {
     const fetchBookmarkData = await addFetchBookmarks();
     console.log("Added Fetch BM:", fetchBookmarkData);
+  };
+
+  const handleUpdateBookmark = async () => {
+    const data = await updateBookmark();
+    console.log("///Updated Fetch BM:", data);
+  };
+
+  const handleDeleteBookmark = async () => {
+    const data = await deleteBookmark();
+    console.log("---Deleted Fetch BM:", data);
   };
 
   // Basic app-mounting logic:
@@ -89,9 +110,13 @@ const Home: NextPage = () => {
           <li>The number of the day is: {currentDailyData.numberOfTheDay}</li>
           <li>The letter of the day is: {currentDailyData.letterOfTheDay}</li>
         </ul>
-        <button onClick={handleFetchBookmarks}>Fetch Bookmark</button>
+        <button onClick={handleFetchBookmarks}>Fetch All Bookmarks</button>
+        <button onClick={handleGetSingleBookmark}>Fetch One Bookmark</button>
+        <button onClick={handleAddBookmark}>Add Bookmark</button>
+        <button onClick={handleUpdateBookmark}>Update Bookmark</button>
+        <button onClick={handleDeleteBookmark}>Delete Bookmark</button>
         <Clock />
-        <NewsTestFormat />
+        {/* <NewsTestFormat /> */}
         <ContentList
           currentNewsItem={currentNewsItem}
           onClick={handleAddBookmark}
