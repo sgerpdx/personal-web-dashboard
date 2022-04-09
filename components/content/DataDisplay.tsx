@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import Link from "next/link";
 import { BookmarkItem, NewsResponse } from "../../data/interfaces";
 
 export default function DataDisplay({
@@ -10,11 +11,9 @@ export default function DataDisplay({
   dataContents: Array<BookmarkItem>;
   divStyle: string;
 }) {
-  
-  // Prepare the Data for Rendering:
-  
-  
-    console.log(dataContents);
+  console.log(dataContents);
+
+  if (!dataContents) return <div>Loading Bookmarks...</div>;
 
   return (
     <>
@@ -25,7 +24,9 @@ export default function DataDisplay({
             <div key={Math.random()}>
               {" "}
               <p>Title: {bookmark.bookmarkTitle}</p>
-              <p>URL: {bookmark.bookmarkURL}</p>
+              <Link href={bookmark.bookmarkURL}>
+                <p>URL: {bookmark.bookmarkURL}</p>
+              </Link>
             </div>
           );
         })}

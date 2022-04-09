@@ -30,6 +30,10 @@ export default function ContentList({
   const [bookmarkData, setBookmarkData] = useState<Array<BookmarkItem>>([]);
   const [newsData, setNewsData] = useState<Array<NewsResponse>>([]);
 
+  // Grab the current page URL and title to auto-fill the 'save bookmark' form:
+  const pageURL: string = window.location.href;
+  const pageTitle: string = document.title;
+
   useEffect(() => {
     // Fetch bookmarks
     async function loadBookmarks() {
@@ -57,17 +61,23 @@ export default function ContentList({
   return (
     <>
       <section>
+        News
         {/* <div className="bg-purple-300 text-blue-700 h-240 w-80">
           <h2>Content Items:</h2>
           <ContentItem currentNewsItem={currentNewsItem} />
         </div> */}
         <ContentItem newsData={newsData} currentNewsItem={currentNewsItem} />
-        <div className="bg-orange-300">
+        {/* <div className="bg-orange-300">
           <p>
             Bookmark: {currentBookmark.bookmarkTitle} +{" "}
             {currentBookmark.bookmarkURL}
           </p>
-        </div>
+          <p>{pageURL}</p>
+          <p>{pageTitle}</p>
+        </div> */}
+      </section>
+      <section>
+        Bookmarks
         <FormItem
           formLabel="New Bookmark"
           setVariable={setCurrentBookmark}
