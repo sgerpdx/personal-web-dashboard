@@ -11,8 +11,8 @@ export interface NewsItem {
 }
 
 export interface BookmarkItem {
-  title: string;
-  text: string;
+  bookmarkTitle: string;
+  bookmarkURL: string;
 }
 
 export interface NoteItem {
@@ -26,11 +26,11 @@ export interface Person {
 }
 
 export interface NewsResponse {
-  author: string;
+  author?: string;
   title: string;
   source: string;
   description: string;
   url: string;
-  image: string;
+  image?: string;
   published: string;
 }

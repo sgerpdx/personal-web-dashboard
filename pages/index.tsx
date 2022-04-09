@@ -13,23 +13,17 @@ import {
   deleteBookmark,
 } from "../utils/databaseAPI";
 
-// Interface imports
+// Interfaces
 import { NewsItem, DailyData } from "../data/interfaces";
 
-// Component imports
+// Components
 import Clock from "../components/Clock";
-//import ImageOfDay from "../components/ImageOfDay";
 import ContentList from "../components/content/ContentList";
 import NewsTestFormat from "../components/NewsTestFormat";
-//import UnsplashAPI from "../utils/swrHooks/unsplashAPI";
-//import FormContentText from "../components/content/FormContentText";
-import MediastackAPI from "../utils/swrHooks/MediastackAPI";
 
 const Home: NextPage = () => {
   const [loading, setLoading] = useState(true);
   const [isWeekend, setIsWeekend] = useState<boolean>(false);
-  // Additional desired state items:
-  // dailyImage, lastNote, dailyNewsItem...some can be in the DailyData interface...just need to update and/or pull them out selectively
 
   // Local-native state object for index/home:
   const [currentDailyData, setCurrentDailyData] = useState<DailyData>({
