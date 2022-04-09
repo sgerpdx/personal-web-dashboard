@@ -3,6 +3,7 @@
 const serverURL: string = "https://agile-refuge-37723.herokuapp.com/api/v1";
 //const databaseURL: string = "http://localhost:3100/api/v1/";
 
+// Mediastack API random news fetch:
 export async function getNews(url = `${serverURL}/news`) {
   try {
     const response = await fetch(url, {

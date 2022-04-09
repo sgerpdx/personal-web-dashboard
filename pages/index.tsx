@@ -33,11 +33,6 @@ const Home: NextPage = () => {
     letterOfTheDay: "A",
   });
 
-  // State variable for the API image of the day:
-  // const [dailyImageURL, setDailyImageURL] = useState<string>(
-  //   "https://placekitten.com/200/300"
-  // );
-
   // Here is the object-type format for the News API data:
   const [currentNewsItem, setCurrentNewsItem] = useState<NewsItem>({
     headline: "Super Cat Holds Place",
@@ -96,29 +91,41 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <h2 className="text-orange-700">
-          {currentDailyData.message} {currentDailyData.userName}
-        </h2>
-        <ul className="bg-blue-500 text-white">
-          <li>The number of the day is: {currentDailyData.numberOfTheDay}</li>
-          <li>The letter of the day is: {currentDailyData.letterOfTheDay}</li>
-        </ul>
-        <button onClick={handleFetchBookmarks}>Fetch All Bookmarks</button>
-        <button onClick={handleGetSingleBookmark}>Fetch One Bookmark</button>
-        <button onClick={handleAddBookmark}>Add Bookmark</button>
-        <button onClick={handleUpdateBookmark}>Update Bookmark</button>
-        <button onClick={handleDeleteBookmark}>Delete Bookmark</button>
-        <Clock />
-        {/* <NewsTestFormat /> */}
-        <ContentList
-          currentNewsItem={currentNewsItem}
-          onClick={handleAddBookmark}
-        />
+      <header className="bg-orange-700 text-white flex flex-row justify-between px-20">
+        <figure>☆</figure>
+        <h1 className=" text-2xl">App Title or Greeting</h1>
+        <figure>☆</figure>
+      </header>
+
+      <main className="container mx-auto">
+        {/* <section className="container w-640 min-w-360 sm:w-full flex-nowrap justify-center  bg-gray-100">
+          {" "}
+          <h2 className="text-orange-700">
+            {currentDailyData.message} {currentDailyData.userName}
+          </h2>
+          <ul className="bg-blue-500 text-white">
+            <li>The number of the day is: {currentDailyData.numberOfTheDay}</li>
+            <li>The letter of the day is: {currentDailyData.letterOfTheDay}</li>
+          </ul>
+          <button onClick={handleFetchBookmarks}>Fetch All Bookmarks</button>
+          <button onClick={handleGetSingleBookmark}>Fetch One Bookmark</button>
+          <button onClick={handleAddBookmark}>Add Bookmark</button>
+          <button onClick={handleUpdateBookmark}>Update Bookmark</button>
+          <button onClick={handleDeleteBookmark}>Delete Bookmark</button>
+        </section> */}
+        <section className="container w-640 min-w-360 sm:w-full flex justify-center  bg-gray-300">
+          <Clock />
+        </section>
+        <section className="container w-640 min-w-360 sm:w-full flex justify-center  bg-gray-500">
+          <ContentList
+            currentNewsItem={currentNewsItem}
+            onClick={handleAddBookmark}
+          />
+        </section>
       </main>
 
-      <footer className={styles.footer}>
-        <h4>This is the footer.</h4>
+      <footer className="bg-orange-700 text-white flex flex-row justify-end px-10">
+        <p>github link</p>
       </footer>
     </div>
   );

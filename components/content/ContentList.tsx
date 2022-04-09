@@ -36,13 +36,13 @@ export default function ContentList({
       const savedBookmarks = await getFetchBookmarks();
       setBookmarkData(savedBookmarks);
     }
-    // Fetch news
-    async function loadNews() {
-      const response = await getNews();
-      setNewsData(response);
-    }
+    // Fetch news -- keep inactive during dev b/c request limits
+    // async function loadNews() {
+    //   const response = await getNews();
+    //   setNewsData(response);
+    // }
     loadBookmarks();
-    loadNews();
+    // loadNews();
   }, []);
 
   useEffect(() => {
