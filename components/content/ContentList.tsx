@@ -22,7 +22,6 @@ export default function ContentList({
   currentNewsItem: NewsItem;
   onClick: MouseEventHandler<HTMLButtonElement>;
 }) {
-  const [bookmarkSaveCount, setBookmarkSaveCount] = useState<number>(0);
   // Object variable for a bookmark to save to db:
   const [currentBookmark, setCurrentBookmark] = useState<BookmarkItem>({
     bookmarkTitle: "",
@@ -41,13 +40,13 @@ export default function ContentList({
       const savedBookmarks = await getFetchBookmarks();
       setBookmarkData(savedBookmarks);
     }
-    // Fetch news -- keep inactive during dev b/c request limits
+    //Fetch news -- keep inactive during dev b/c request limits
     // async function loadNews() {
     //   const response = await getNews();
     //   setNewsData(response);
     // }
     loadBookmarks();
-    // loadNews();
+    //loadNews();
   }, []);
 
   useEffect(() => {
@@ -77,19 +76,18 @@ export default function ContentList({
           <p>{pageTitle}</p>
         </div> */}
       </div>
-      <div>
+      <div >
         Bookmarks
         <FormItem
           formLabel="New Bookmark"
           setVariable={setCurrentBookmark}
           divStyle="bg-blue-300 p-4"
-          currentBookmark={currentBookmark}
-          setCounter={setBookmarkSaveCount}
         />
+        <h3 className="bg-blue-100">Saved Bookmarks:</h3>
         <DataDisplay
           dataLabel="Saved Bookmarks:"
           dataContents={bookmarkData}
-          divStyle="bg-blue-100 p-4"
+          divStyle="overflow-auto h-40 bg-blue-100 p-4"
         />
       </div>
     </section>

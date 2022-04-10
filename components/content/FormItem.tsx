@@ -7,19 +7,14 @@ export default function FormItem({
   formLabel,
   setVariable,
   divStyle,
-  currentBookmark,
-  setCounter,
 }: {
   formLabel: string;
   setVariable: React.Dispatch<
     React.SetStateAction<{ bookmarkTitle: string; bookmarkURL: string }>
   >;
   divStyle: string;
-  currentBookmark: BookmarkItem;
-  setCounter: React.Dispatch<React.SetStateAction<number>>;
 }) {
   const date: string = "2022-04-09";
-  const bookmark = currentBookmark;
   // Define formik with specific values per the props from ContentList
   const formik = useFormik({
     initialValues: {
@@ -39,15 +34,11 @@ export default function FormItem({
     },
   });
 
-  // useEffect(() => {
-  //   saveBookmark(bookmark, date);
-  // }, [currentBookmark]);
-
   return (
     <div className={divStyle}>
-      <h2>{formLabel}:</h2>
+      <h2>{formLabel}</h2>
       <form onSubmit={formik.handleSubmit}>
-        <label htmlFor="title">Title</label>
+        <label className="px-4" htmlFor="title">Title:</label>
         <input
           type="text"
           id="title"
@@ -56,7 +47,7 @@ export default function FormItem({
           value={formik.values.title}
         />
 
-        <label htmlFor="text">Text</label>
+        <label className="px-4" htmlFor="text">URL:</label>
         <input
           type="text"
           id="text"
@@ -65,7 +56,7 @@ export default function FormItem({
           value={formik.values.text}
         />
 
-        <button type="submit" className="bg-green-100">
+        <button type="submit" className="btn">
           Submit
         </button>
       </form>

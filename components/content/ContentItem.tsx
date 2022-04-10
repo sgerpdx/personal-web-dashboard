@@ -12,7 +12,7 @@ export default function ContentItem({
   newsData: Array<NewsResponse>;
 }) {
   return (
-    <section className="overflow-auto h-60">
+    <section className="overflow-auto h-40">
       <div className="bg-orange-300 ">
         {newsData.map((article) => {
           return (
@@ -29,7 +29,9 @@ export default function ContentItem({
               </figcaption>
             </figure> */}
               <div>
-                <h3>{article.title}</h3>
+                <h3 className="underline underline-offset-1">
+                  {article.title}
+                </h3>
                 <h4>
                   by {article.author} at {article.source}
                 </h4>
@@ -41,37 +43,37 @@ export default function ContentItem({
         })}
       </div>
       <div className="bg-orange-300">
-        <h3>Souther Comfort Comforts Southerner</h3>
-        <h4>by Brian Van Lloyd at REMville Gazette</h4>
+        <h3 className="itemHeading">Souther Comfort Comforts Southerner</h3>
+        <h4 className="captionText">by Brian Van Lloyd at REMville Gazette</h4>
         <p>
           Twelve years ago seven octopi occupied a diner above a dive shop on
           the island of Danish Reef. Thirteen bears bore the weight of great
           thirst for beers that the would have liked to drink from the Danish
           sink.
         </p>
-        <p>published: 2004-05-06</p>
+        <p className="captionText">published: 2004-05-06</p>
       </div>
       <div className="bg-orange-400">
-        <h3>Souther Comfort Comforts Southerner</h3>
-        <h4>by Brian Van Lloyd at REMville Gazette</h4>
+        <h3 className="itemHeading">Souther Comfort Comforts Southerner</h3>
+        <h4 className="captionText">by Brian Van Lloyd at REMville Gazette</h4>
         <p>
           Twelve years ago seven octopi occupied a diner above a dive shop on
           the island of Danish Reef. Thirteen bears bore the weight of great
           thirst for beers that the would have liked to drink from the Danish
           sink.
         </p>
-        <p>published: 2004-05-06</p>
+        <p className="captionText">published: 2004-05-06</p>
       </div>
       <div className="bg-orange-500">
-        <h3>Souther Comfort Comforts Southerner</h3>
-        <h4>by Brian Van Lloyd at REMville Gazette</h4>
+        <h3 className="itemHeading">Souther Comfort Comforts Southerner</h3>
+        <h4 className="captionText">by Brian Van Lloyd at REMville Gazette</h4>
         <p>
           Twelve years ago seven octopi occupied a diner above a dive shop on
           the island of Danish Reef. Thirteen bears bore the weight of great
           thirst for beers that the would have liked to drink from the Danish
           sink.
         </p>
-        <p>published: 2004-05-06</p>
+        <p className="captionText">published: 2004-05-06</p>
       </div>
     </section>
   );
