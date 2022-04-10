@@ -12,8 +12,8 @@ export default function ContentItem({
   newsData: Array<NewsResponse>;
 }) {
   return (
-    <>
-      <div className="bg-orange-300">
+    <section className="overflow-auto h-60">
+      <div className="bg-orange-300 ">
         {newsData.map((article) => {
           return (
             <>
@@ -45,10 +45,34 @@ export default function ContentItem({
         <h4>by Brian Van Lloyd at REMville Gazette</h4>
         <p>
           Twelve years ago seven octopi occupied a diner above a dive shop on
-          the island of Danish Reef.
+          the island of Danish Reef. Thirteen bears bore the weight of great
+          thirst for beers that the would have liked to drink from the Danish
+          sink.
         </p>
         <p>published: 2004-05-06</p>
       </div>
-    </>
+      <div className="bg-orange-400">
+        <h3>Souther Comfort Comforts Southerner</h3>
+        <h4>by Brian Van Lloyd at REMville Gazette</h4>
+        <p>
+          Twelve years ago seven octopi occupied a diner above a dive shop on
+          the island of Danish Reef. Thirteen bears bore the weight of great
+          thirst for beers that the would have liked to drink from the Danish
+          sink.
+        </p>
+        <p>published: 2004-05-06</p>
+      </div>
+      <div className="bg-orange-500">
+        <h3>Souther Comfort Comforts Southerner</h3>
+        <h4>by Brian Van Lloyd at REMville Gazette</h4>
+        <p>
+          Twelve years ago seven octopi occupied a diner above a dive shop on
+          the island of Danish Reef. Thirteen bears bore the weight of great
+          thirst for beers that the would have liked to drink from the Danish
+          sink.
+        </p>
+        <p>published: 2004-05-06</p>
+      </div>
+    </section>
   );
 }

@@ -22,6 +22,7 @@ export default function ContentList({
   currentNewsItem: NewsItem;
   onClick: MouseEventHandler<HTMLButtonElement>;
 }) {
+  const [bookmarkSaveCount, setBookmarkSaveCount] = useState<number>(0);
   // Object variable for a bookmark to save to db:
   const [currentBookmark, setCurrentBookmark] = useState<BookmarkItem>({
     bookmarkTitle: "",
@@ -59,8 +60,8 @@ export default function ContentList({
   }, [bookmarkData, newsData]);
 
   return (
-    <>
-      <section>
+    <section className="flex flex-col">
+      <div>
         News
         {/* <div className="bg-purple-300 text-blue-700 h-240 w-80">
           <h2>Content Items:</h2>
@@ -75,20 +76,22 @@ export default function ContentList({
           <p>{pageURL}</p>
           <p>{pageTitle}</p>
         </div> */}
-      </section>
-      <section>
+      </div>
+      <div>
         Bookmarks
         <FormItem
           formLabel="New Bookmark"
           setVariable={setCurrentBookmark}
           divStyle="bg-blue-300 p-4"
+          currentBookmark={currentBookmark}
+          setCounter={setBookmarkSaveCount}
         />
         <DataDisplay
           dataLabel="Saved Bookmarks:"
           dataContents={bookmarkData}
           divStyle="bg-blue-100 p-4"
         />
-      </section>
-    </>
+      </div>
+    </section>
   );
 }

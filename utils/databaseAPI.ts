@@ -1,4 +1,5 @@
 // This file contains CRUD-route access to the Dashboard Server for the purpose of interfacing with the app-native postgresSQL database
+import { BookmarkItem } from "../data/interfaces";
 
 const databaseURL: string = "https://agile-refuge-37723.herokuapp.com/api/v1";
 //const databaseURL: string = "http://localhost:3100/api/v1/";
@@ -36,6 +37,24 @@ export async function addFetchBookmarks(
   }
 ) {
   const response = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      //'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    body: JSON.stringify(data),
+  });
+  console.log("Fetch Test Res:", response.json);
+  return response.json();
+}
+
+export async function saveBookmark(bookmark: BookmarkItem, date: string) {
+  const data = {
+    bookmarkTitle: bookmark.bookmarkTitle,
+    bookmarkURL: bookmark.bookmarkURL,
+    dateCreated: date,
+  };
+  const response = await fetch(`${databaseURL}/bookmarks`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

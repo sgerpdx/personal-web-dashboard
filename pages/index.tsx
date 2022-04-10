@@ -117,7 +117,7 @@ const Home: NextPage = () => {
           <Clock />
         </section>
         <section className="container w-640 min-w-360 sm:w-full flex justify-center  bg-gray-500">
-          <ContentList
+          <ContentList 
             currentNewsItem={currentNewsItem}
             onClick={handleAddBookmark}
           />

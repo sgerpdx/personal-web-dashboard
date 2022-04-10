@@ -1,17 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useFormik } from "formik";
+import { saveBookmark } from "../../utils/databaseAPI";
+import { BookmarkItem } from "../../data/interfaces";
 
 export default function FormItem({
   formLabel,
   setVariable,
   divStyle,
+  currentBookmark,
+  setCounter,
 }: {
   formLabel: string;
   setVariable: React.Dispatch<
     React.SetStateAction<{ bookmarkTitle: string; bookmarkURL: string }>
   >;
   divStyle: string;
+  currentBookmark: BookmarkItem;
+  setCounter: React.Dispatch<React.SetStateAction<number>>;
 }) {
+  const date: string = "2022-04-09";
+  const bookmark = currentBookmark;
   // Define formik with specific values per the props from ContentList
   const formik = useFormik({
     initialValues: {
@@ -24,9 +32,12 @@ export default function FormItem({
         bookmarkTitle: formik.values.title,
         bookmarkURL: formik.values.text,
       });
-      
     },
   });
+
+  useEffect(() => {
+    saveBookmark(bookmark, date);
+  }, [currentBookmark]);
 
   return (
     <div className={divStyle}>
