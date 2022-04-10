@@ -32,12 +32,16 @@ export default function FormItem({
         bookmarkTitle: formik.values.title,
         bookmarkURL: formik.values.text,
       });
+      saveBookmark(
+        { bookmarkTitle: formik.values.title, bookmarkURL: formik.values.text },
+        date
+      );
     },
   });
 
-  useEffect(() => {
-    saveBookmark(bookmark, date);
-  }, [currentBookmark]);
+  // useEffect(() => {
+  //   saveBookmark(bookmark, date);
+  // }, [currentBookmark]);
 
   return (
     <div className={divStyle}>
