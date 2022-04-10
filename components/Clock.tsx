@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { formatTwelveHour } from "../utils/mungeUtils";
 
 export default function Clock() {
   // Variable stores a string containing date and time
@@ -14,12 +15,17 @@ export default function Clock() {
     const newDateTime: Date = new Date();
     // console.log("Date:", newDateTime);
     const newHour = newDateTime.getHours();
+    const twelveHour = formatTwelveHour(newHour);
     const newMinute = newDateTime.getMinutes();
     const newSecond = newDateTime.getSeconds();
     //
     const dateTimeString: string = newDateTime.toString();
     setCurrentDateTime(dateTimeString);
-    setClockDisplayObj({ hour: newHour, minute: newMinute, second: newSecond });
+    setClockDisplayObj({
+      hour: twelveHour,
+      minute: newMinute,
+      second: newSecond,
+    });
   }
 
   // Update the time every second and then cancel the updating when component unmounted

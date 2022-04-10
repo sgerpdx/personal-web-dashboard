@@ -15,3 +15,8 @@ export const formatDate = (date: Date) => {
   // Return date in format for database entry:
   return `${dateYear}-${dateMonth}-${dateDay}`;
 };
+
+export const formatTwelveHour = (hour: number) => {
+  if (hour > 12) hour -= 12;
+  return hour;
+};
