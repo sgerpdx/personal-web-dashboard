@@ -1,5 +1,5 @@
 import React, { useState, useEffect, MouseEventHandler } from "react";
-import 'tw-elements';
+import "tw-elements";
 
 // React Icons
 import {
@@ -81,9 +81,33 @@ export default function ContentList({
         <nav className="flex flex-row">
           <RiNewspaperFill />
           <h3>
-            <button className="accordion-button" type="button" data-bs-toggle="collapse">News</button>
+            <button
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseOne"
+              aria-expanded="true"
+              aria-controls="collapseOne"
+            >
+              News
+            </button>
           </h3>
         </nav>
+        <div
+          id="collapseOne"
+          className="collapse transition-all duration-700"
+          aria-labelledby="headingOne"
+        >
+          <div>
+            {" "}
+            This is the first item's accordion body.It is shown by default,
+            until the collapse plugin adds the appropriate classes that we use
+            to style each element. These classes control the overall appearance,
+            as well as the showing and hiding via CSS transitions. You can
+            modify any of this with custom CSS or overriding our default
+            variables. It's also worth noting that just about any HTML can go
+            within the though the transition does limit overflow.
+          </div>
+        </div>
 
         <ContentItem newsData={newsData} currentNewsItem={currentNewsItem} />
       </div>
@@ -95,9 +119,7 @@ export default function ContentList({
           <h3>Bookmarks</h3>
         </nav>
         <nav className="bg-blue-400 flex flex-row justify-end px-6 text-black">
-          <BiRefresh />
-            {" "}
-            <IoMdCreate />
+          <BiRefresh /> <IoMdCreate />
         </nav>
         <FormItem
           formLabel="New Bookmark"
