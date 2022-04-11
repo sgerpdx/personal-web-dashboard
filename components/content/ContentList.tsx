@@ -1,5 +1,26 @@
 import React, { useState, useEffect, MouseEventHandler } from "react";
 
+// React Icons
+import {
+  BiMenu,
+  BiRightArrow,
+  BiLeftArrow,
+  BiUpArrow,
+  BiDownArrow,
+  BiGlobe,
+  BiMoon,
+  BiRefresh,
+} from "react-icons/bi";
+import {
+  RiBookmarkFill,
+  RiBookmarkLine,
+  RiNewspaperFill,
+  RiNewspaperLine,
+  RiMap2Line,
+} from "react-icons/ri";
+import { VscSettingsGear } from "react-icons/vsc";
+import { BsFillSunFill, BsGithub } from "react-icons/bs";
+
 // Fetching
 import { getFetchBookmarks } from "../../utils/databaseAPI";
 import { getNews } from "../../utils/externalAPI";
@@ -54,7 +75,10 @@ export default function ContentList({
   return (
     <section className="flex flex-col">
       <div>
+        <RiNewspaperFill color="white" />
         News
+        <BiRightArrow color="white" />
+        <BiLeftArrow color="white" />
         {/* <div className="bg-purple-300 text-blue-700 h-240 w-80">
           <h2>Content Items:</h2>
           <ContentItem currentNewsItem={currentNewsItem} />
@@ -69,7 +93,8 @@ export default function ContentList({
           <p>{pageTitle}</p>
         </div> */}
       </div>
-      <div >
+      <div>
+        <RiBookmarkFill color="White" />
         Bookmarks
         <FormItem
           formLabel="New Bookmark"

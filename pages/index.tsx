@@ -4,6 +4,10 @@ import Head from "next/head";
 import Image from "next/image";
 //import styles from "../styles/Home.module.css";
 
+// React Icons
+import { BsFillSunFill, BsGithub } from "react-icons/bs";
+import { BiMenu, BiGlobe, BiMoon } from "react-icons/bi";
+
 // Utils function imports
 import {
   getFetchBookmarks,
@@ -94,7 +98,9 @@ const Home: NextPage = () => {
       <header className="bg-orange-700 text-white flex flex-row justify-between px-20">
         <figure>☆</figure>
         <h1 className="font-autobus text-2xl">App Title or Greeting</h1>
-        <figure>☆</figure>
+        <figure>
+          <BiMenu />
+        </figure>
       </header>
 
       <main className="container mx-auto">
@@ -117,7 +123,7 @@ const Home: NextPage = () => {
           <Clock />
         </section>
         <section className="container w-640 min-w-360 sm:w-full flex justify-center  bg-gray-500">
-          <ContentList 
+          <ContentList
             currentNewsItem={currentNewsItem}
             onClick={handleAddBookmark}
           />
@@ -126,6 +132,7 @@ const Home: NextPage = () => {
 
       <footer className="bg-orange-700 text-white flex flex-row justify-end px-10">
         <p>github link</p>
+        {/* <BsGithub /> */}
       </footer>
     </div>
   );
