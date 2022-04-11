@@ -1,4 +1,5 @@
 import React, { useState, useEffect, MouseEventHandler } from "react";
+import 'tw-elements';
 
 // React Icons
 import {
@@ -20,6 +21,7 @@ import {
 } from "react-icons/ri";
 import { VscSettingsGear } from "react-icons/vsc";
 import { BsFillSunFill, BsGithub } from "react-icons/bs";
+import { IoMdCreate } from "react-icons/io";
 
 // Fetching
 import { getFetchBookmarks } from "../../utils/databaseAPI";
@@ -74,34 +76,35 @@ export default function ContentList({
 
   return (
     <section className="flex flex-col">
-      <div>
-        <RiNewspaperFill color="white" />
-        News
-        <BiRightArrow color="white" />
-        <BiLeftArrow color="white" />
-        {/* <div className="bg-purple-300 text-blue-700 h-240 w-80">
-          <h2>Content Items:</h2>
-          <ContentItem currentNewsItem={currentNewsItem} />
-        </div> */}
+      {/* news section */}
+      <div className="bg-pink-500 flex flex-col text-white">
+        <nav className="flex flex-row">
+          <RiNewspaperFill />
+          <h3>
+            <button className="accordion-button" type="button" data-bs-toggle="collapse">News</button>
+          </h3>
+        </nav>
+
         <ContentItem newsData={newsData} currentNewsItem={currentNewsItem} />
-        {/* <div className="bg-orange-300">
-          <p>
-            Bookmark: {currentBookmark.bookmarkTitle} +{" "}
-            {currentBookmark.bookmarkURL}
-          </p>
-          <p>{pageURL}</p>
-          <p>{pageTitle}</p>
-        </div> */}
       </div>
-      <div>
-        <RiBookmarkFill color="White" />
-        Bookmarks
+
+      {/* bookmarks section */}
+      <div className="bg-blue-500 flex flex-col text-white">
+        <nav className="flex flex-row">
+          <RiBookmarkFill color="White" />
+          <h3>Bookmarks</h3>
+        </nav>
+        <nav className="bg-blue-400 flex flex-row justify-end px-6 text-black">
+          <BiRefresh />
+            {" "}
+            <IoMdCreate />
+        </nav>
         <FormItem
           formLabel="New Bookmark"
           setVariable={setCurrentBookmark}
-          divStyle="bg-blue-300 p-4"
+          divStyle="formDiv"
         />
-        <h3 className="bg-blue-100">Saved Bookmarks:</h3>
+        <h3 className="bg-blue-200 text-black">Saved Bookmarks:</h3>
         <DataDisplay
           dataLabel="Saved Bookmarks:"
           dataContents={bookmarkData}

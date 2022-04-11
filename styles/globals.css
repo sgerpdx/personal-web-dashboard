@@ -36,6 +36,10 @@
   @apply text-blue-700 cursor-pointer;
 }
 
+.formDiv {
+  @apply bg-blue-300 p-4 h-24
+}
+
 html,
 body {
   padding: 0;

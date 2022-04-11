@@ -12,5 +12,7 @@ module.exports = {
       autobus: ["Autobus", "sans"],
     },
   },
-  plugins: [],
+  plugins: [
+    require('tw-elements/dist/plugin')
+  ]
 };

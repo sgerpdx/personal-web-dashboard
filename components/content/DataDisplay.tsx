@@ -2,6 +2,10 @@ import React from "react";
 import Link from "next/link";
 import { BookmarkItem } from "../../data/interfaces";
 
+// React Icons
+import { BiRefresh } from "react-icons/bi";
+import { IoMdCreate } from "react-icons/io";
+
 export default function DataDisplay({
   dataLabel,
   dataContents,
@@ -16,7 +20,7 @@ export default function DataDisplay({
   if (!dataContents) return <div>Loading Bookmarks...</div>;
 
   return (
-    <>
+    <section className="text-black">
       <div className={divStyle}>
         {dataContents.map((bookmark) => {
           return (
@@ -34,6 +38,6 @@ export default function DataDisplay({
           );
         })}
       </div>
-    </>
+    </section>
   );
 }
