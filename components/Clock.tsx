@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import { formatTimeDisplay } from "../utils/mungeUtils";
 import { TimeItem } from "../data/interfaces";
+import AndorianImg from "../public/shran.png";
 
 export default function Clock() {
   // Variable stores a string containing date and time
@@ -38,15 +40,16 @@ export default function Clock() {
 
   return (
     <section>
-      <div className="bg-black text-white h-240 w-80">
-        <p>Current Time + Date:</p>
-        <p>{currentDateTime}</p>
-      </div>
-      <div>
-        <p>
-          Time: {clockDisplayObj.hour}:{clockDisplayObj.minute}:
-          {clockDisplayObj.second}
-        </p>
+      <div className="flex">
+        <figure className="border-2 mx-10 h-60 w-60 rounded-full flex justify-center align-middle">
+          <Image src={AndorianImg} alt="andorian" />
+        </figure>
+        <figure className="border-2 mx-10 h-60 w-60 rounded-full flex justify-center align-middle">
+          <p>
+            Time: {clockDisplayObj.hour}:{clockDisplayObj.minute}:
+            {clockDisplayObj.second}
+          </p>
+        </figure>
       </div>
     </section>
   );
