@@ -2,8 +2,6 @@
 //   return num.toString().length;
 // }
 
-import { TimeItem } from "../data/interfaces";
-
 export const formatDate = (date: Date) => {
   // Isolate the date constituents:
   let dateDay = date.getDay().toString();

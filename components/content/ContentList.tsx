@@ -12,9 +12,6 @@ import ContentItem from "./ContentItem";
 import DataDisplay from "./DataDisplay";
 import FormItem from "./FormItem";
 
-// Data import for rendering test:
-import { NewsData } from "../../data/newsData";
-
 export default function ContentList({
   currentNewsItem,
   onClick,
@@ -31,8 +28,8 @@ export default function ContentList({
   const [newsData, setNewsData] = useState<Array<NewsResponse>>([]);
 
   // Grab the current page URL and title to auto-fill the 'save bookmark' form:
-  const pageURL: string = window.location.href;
-  const pageTitle: string = document.title;
+  // const pageURL: string = window.location.href;
+  // const pageTitle: string = document.title;
 
   useEffect(() => {
     // Fetch bookmarks
@@ -48,10 +45,6 @@ export default function ContentList({
     loadBookmarks();
     //loadNews();
   }, []);
-
-  useEffect(() => {
-    console.log("//////Current Bookmark:", currentBookmark);
-  }, [currentBookmark]);
 
   useEffect(() => {
     console.log("bookmarkData:", bookmarkData);

@@ -42,7 +42,7 @@ export default function ContentItem({
           );
         })}
       </div>
-      <div className="bg-orange-300">
+      <div className="bg-pink-300">
         <h3 className="itemHeading">Souther Comfort Comforts Southerner</h3>
         <h4 className="captionText">by Brian Van Lloyd at REMville Gazette</h4>
         <p>

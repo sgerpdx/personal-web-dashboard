@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { formatTwelveHour, formatTimeDisplay } from "../utils/mungeUtils";
+import { formatTimeDisplay } from "../utils/mungeUtils";
 import { TimeItem } from "../data/interfaces";
 
 export default function Clock() {
@@ -14,13 +14,13 @@ export default function Clock() {
   // Function to retrieve and format JS date object
   function setClock() {
     const newDateTime: Date = new Date();
-    //
-    const formattedTime: TimeItem = formatTimeDisplay(newDateTime);
-    //
+
+    // General date and time info (remove before production)
     const dateTimeString: string = newDateTime.toString();
-    //
     setCurrentDateTime(dateTimeString);
-    //
+
+    // This handles hours > 12 and single-digit numbers returning formatted strings for hour/min/sec:
+    const formattedTime: TimeItem = formatTimeDisplay(newDateTime);
     setClockDisplayObj({
       hour: formattedTime.hour,
       minute: formattedTime.minute,

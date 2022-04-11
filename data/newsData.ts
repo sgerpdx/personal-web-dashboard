@@ -1,3 +1,4 @@
+// This is hardcoded data for dev use only:
 import { NewsResponse } from "./interfaces";
 
 export const NewsData: NewsResponse = {
