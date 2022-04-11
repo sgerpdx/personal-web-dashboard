@@ -2,6 +2,8 @@
 //   return num.toString().length;
 // }
 
+import { TimeItem } from "../data/interfaces";
+
 export const formatDate = (date: Date) => {
   // Isolate the date constituents:
   let dateDay = date.getDay().toString();
@@ -19,4 +21,29 @@ export const formatDate = (date: Date) => {
 export const formatTwelveHour = (hour: number) => {
   if (hour > 12) hour -= 12;
   return hour;
+};
+
+export const padWithZero = (num: number) => {
+  if (num < 10) return num.toString().padStart(2, "0");
+  return num.toString();
+};
+
+// All of this could have been solved alternatively with regex and string splitting on the Date object -- look into later:
+export const formatTimeDisplay = (date: Date) => {
+  // Format hour to twelve-hour clock and add zero to single digit:
+  const newHour = date.getHours();
+  const twelveHour = formatTwelveHour(newHour);
+  const padZeroHour = padWithZero(twelveHour);
+  // Add zero to single digit min:
+  const newMin = date.getMinutes();
+  const padZeroMin = padWithZero(newMin);
+  // Add zero to single digit sec:
+  const newSec = date.getSeconds();
+  const padZeroSec = padWithZero(newSec);
+  // Return an object with string values:
+  return {
+    hour: padZeroHour,
+    minute: padZeroMin,
+    second: padZeroSec,
+  };
 };

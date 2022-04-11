@@ -10,7 +10,7 @@ import "@testing-library/jest-dom";
 // Page and component imports
 import Home from "../pages/index";
 import Clock from "../components/Clock";
-import ImageOfDay from "../components/ImageOfDay";
+import ImageOfDay from "../components/inactive/ImageOfDay";
 import ContentList from "../components/content/ContentList";
 
 jest.mock(

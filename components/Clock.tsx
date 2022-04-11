@@ -1,30 +1,30 @@
 import React, { useState, useEffect } from "react";
-import { formatTwelveHour } from "../utils/mungeUtils";
+import { formatTwelveHour, formatTimeDisplay } from "../utils/mungeUtils";
+import { TimeItem } from "../data/interfaces";
 
 export default function Clock() {
   // Variable stores a string containing date and time
   const [currentDateTime, setCurrentDateTime] = useState<string>();
   const [clockDisplayObj, setClockDisplayObj] = useState({
-    hour: 0,
-    minute: 0,
-    second: 0,
+    hour: "",
+    minute: "",
+    second: "",
   });
 
   // Function to retrieve and format JS date object
   function setClock() {
     const newDateTime: Date = new Date();
-    // console.log("Date:", newDateTime);
-    const newHour = newDateTime.getHours();
-    const twelveHour = formatTwelveHour(newHour);
-    const newMinute = newDateTime.getMinutes();
-    const newSecond = newDateTime.getSeconds();
+    //
+    const formattedTime: TimeItem = formatTimeDisplay(newDateTime);
     //
     const dateTimeString: string = newDateTime.toString();
+    //
     setCurrentDateTime(dateTimeString);
+    //
     setClockDisplayObj({
-      hour: twelveHour,
-      minute: newMinute,
-      second: newSecond,
+      hour: formattedTime.hour,
+      minute: formattedTime.minute,
+      second: formattedTime.second,
     });
   }
 

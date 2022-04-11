@@ -19,7 +19,7 @@ import { NewsItem, DailyData } from "../data/interfaces";
 // Components
 import Clock from "../components/Clock";
 import ContentList from "../components/content/ContentList";
-import NewsTestFormat from "../components/NewsTestFormat";
+import NewsTestFormat from "../components/inactive/NewsTestFormat";
 
 const Home: NextPage = () => {
   const [loading, setLoading] = useState(true);

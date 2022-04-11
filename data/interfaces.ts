@@ -34,3 +34,9 @@ export interface NewsResponse {
   image?: string;
   published: string;
 }
+
+export interface TimeItem {
+  hour: string;
+  minute: string;
+  second: string;
+}
