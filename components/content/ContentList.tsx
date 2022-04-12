@@ -1,6 +1,6 @@
 import React, { useState, useEffect, MouseEventHandler } from "react";
 // Tailwind Elements -- for accordion and modal
-import "tw-elements";
+//import "tw-elements";
 
 // React Icons
 import {
@@ -67,12 +67,12 @@ export default function ContentList({
       setBookmarkData(savedBookmarks);
     }
     //// Fetch news -- keep inactive during dev b/c request limits
-    // async function loadNews() {
-    //   const response = await getNews();
-    //   setNewsData(response);
-    // }
+    async function loadNews() {
+      const response = await getNews();
+      setNewsData(response);
+    }
     loadBookmarks();
-    //loadNews();
+    loadNews();
   }, []);
 
   useEffect(() => {
@@ -158,10 +158,7 @@ export default function ContentList({
                       <h5 id="exampleModalScrollableLabel">
                         Enter New Bookmark:
                       </h5>
-                      <button
-                        type="button"
-                        data-bs-dismiss="modal"
-                      ></button>
+                      <button type="button" data-bs-dismiss="modal"></button>
                     </div>
                     <div className="relative">
                       <FormItem
@@ -170,11 +167,6 @@ export default function ContentList({
                         divStyle="formDiv"
                         dataBsDismiss="modal"
                       />
-                    </div>
-                    <div>
-                      <button className="bg-green-500 text-white" type="button" data-bs-dismiss="modal">
-                        Save
-                      </button>
                     </div>
                   </div>
                 </div>

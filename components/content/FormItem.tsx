@@ -63,7 +63,7 @@ export default function FormItem({
         />
 
         <button type="submit" className="btn" data-bs-dismiss={dataBsDismiss}>
-          Submit
+          Save
         </button>
       </form>
     </div>
