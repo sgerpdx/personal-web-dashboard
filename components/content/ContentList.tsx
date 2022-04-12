@@ -130,7 +130,7 @@ export default function ContentList({
               <BiRefresh />
             </button>
 
-            {/* create icon to launch FormItem modal */}
+            {/* pencil-create icon to launch FormItem modal */}
             <div>
               <div className="">
                 <button
@@ -160,7 +160,6 @@ export default function ContentList({
                       </h5>
                       <button
                         type="button"
-                        className="btn-close"
                         data-bs-dismiss="modal"
                       ></button>
                     </div>
@@ -169,10 +168,11 @@ export default function ContentList({
                         formLabel="New Bookmark"
                         setVariable={setCurrentBookmark}
                         divStyle="formDiv"
+                        dataBsDismiss="modal"
                       />
                     </div>
                     <div>
-                      <button className="bg-green-500 text-white" type="button">
+                      <button className="bg-green-500 text-white" type="button" data-bs-dismiss="modal">
                         Save
                       </button>
                     </div>
