@@ -120,13 +120,69 @@ export default function ContentList({
         >
           {" "}
           <nav className="bg-blue-400 flex flex-row justify-end px-6 text-black">
-            <BiRefresh /> <IoMdCreate />
+            <BiRefresh />
+            {/* <button
+              type="button"
+              data-bs-toggle="modal"
+              data-bs-target="formItemModal"
+              title="create new bookmark"
+            >
+              <IoMdCreate />
+            </button> */}
+            {/* test */}
+            <div>
+              <div className="">
+                <button
+                  type="button"
+                  data-bs-toggle="modal"
+                  data-bs-target="#formItemModal"
+                  title="create new bookmark"
+                >
+                  <IoMdCreate />
+                </button>
+              </div>
+              <div
+                className="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+                id="formItemModal"
+                tabIndex={-1}
+                aria-labelledby="formItemModalTitle"
+                aria-modal="true"
+                role="form"
+              >
+                <div className="modal-dialog modal-dialog-centered relative w-auto">
+                  <div className="modal-content shadow-lg relative  w-full pointer-events-auto bg-white  text-current">
+                    <div className="modal-header flex flex-shrink-0">
+                      <h5 id="exampleModalScrollableLabel">
+                        Enter New Bookmark:
+                      </h5>
+                      <button
+                        type="button"
+                        className="btn-close"
+                        data-bs-dismiss="modal"
+                      ></button>
+                    </div>
+                    <div className="relative">
+                      <FormItem
+                        formLabel="New Bookmark"
+                        setVariable={setCurrentBookmark}
+                        divStyle="formDiv"
+                      />
+                    </div>
+                    <div>
+                      <button className="bg-green-500 text-white" type="button">
+                        Save
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </nav>
-          <FormItem
+          {/* <FormItem
             formLabel="New Bookmark"
             setVariable={setCurrentBookmark}
             divStyle="formDiv"
-          />
+          /> */}
           <h3 className="bg-blue-200 text-black">Saved Bookmarks:</h3>
           <DataDisplay
             dataLabel="Saved Bookmarks:"
