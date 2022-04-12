@@ -1,4 +1,5 @@
 import React, { useState, useEffect, MouseEventHandler } from "react";
+// Tailwind Elements -- for accordion and modal
 import "tw-elements";
 
 // React Icons
@@ -50,7 +51,7 @@ export default function ContentList({
   const [bookmarkData, setBookmarkData] = useState<Array<BookmarkItem>>([]);
   const [newsData, setNewsData] = useState<Array<NewsResponse>>([]);
 
-  // Grab the current page URL and title to auto-fill the 'save bookmark' form:
+  // Grab the current page URL and title if needed:
   // const pageURL: string = window.location.href;
   // const pageTitle: string = document.title;
 
@@ -60,7 +61,7 @@ export default function ContentList({
       const savedBookmarks = await getFetchBookmarks();
       setBookmarkData(savedBookmarks);
     }
-    //Fetch news -- keep inactive during dev b/c request limits
+    //// Fetch news -- keep inactive during dev b/c request limits
     // async function loadNews() {
     //   const response = await getNews();
     //   setNewsData(response);
@@ -118,18 +119,11 @@ export default function ContentList({
           id="collapseTwo"
           className="relative overflow-hidden collapse transition-all duration-700"
         >
-          {" "}
           <nav className="bg-blue-400 flex flex-row justify-end px-6 text-black">
+            {/* refresh icon for eventual re-loading of bookmarks list */}
             <BiRefresh />
-            {/* <button
-              type="button"
-              data-bs-toggle="modal"
-              data-bs-target="formItemModal"
-              title="create new bookmark"
-            >
-              <IoMdCreate />
-            </button> */}
-            {/* test */}
+
+            {/* create icon to launch FormItem modal */}
             <div>
               <div className="">
                 <button
@@ -141,6 +135,8 @@ export default function ContentList({
                   <IoMdCreate />
                 </button>
               </div>
+
+              {/* FormItem modal */}
               <div
                 className="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
                 id="formItemModal"
@@ -178,12 +174,9 @@ export default function ContentList({
               </div>
             </div>
           </nav>
-          {/* <FormItem
-            formLabel="New Bookmark"
-            setVariable={setCurrentBookmark}
-            divStyle="formDiv"
-          /> */}
           <h3 className="bg-blue-200 text-black">Saved Bookmarks:</h3>
+
+          {/* display of the list of saved bookmarks */}
           <DataDisplay
             dataLabel="Saved Bookmarks:"
             dataContents={bookmarkData}

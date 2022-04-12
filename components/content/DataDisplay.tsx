@@ -15,8 +15,6 @@ export default function DataDisplay({
   dataContents: Array<BookmarkItem>;
   divStyle: string;
 }) {
-  console.log("DC:", dataContents);
-
   if (!dataContents) return <div>Loading Bookmarks...</div>;
 
   return (

@@ -44,6 +44,9 @@ export default function ContentItem({
     },
   ];
 
+  // This component currently has a good deal of hard-coded data for dev testing
+  // Ultimately it will be populated simply via a res from the Mediastack news API
+
   return (
     <section className="text-black">
       <nav className="bg-pink-400 flex flex-row justify-end px-6">
