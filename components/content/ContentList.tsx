@@ -55,6 +55,11 @@ export default function ContentList({
   // const pageURL: string = window.location.href;
   // const pageTitle: string = document.title;
 
+  const handleBookmarksRefresh = async () => {
+    const savedBookmarks = await getFetchBookmarks();
+    setBookmarkData(savedBookmarks);
+  };
+
   useEffect(() => {
     // Fetch bookmarks
     async function loadBookmarks() {
@@ -121,7 +126,9 @@ export default function ContentList({
         >
           <nav className="bg-blue-400 flex flex-row justify-end px-6 text-black">
             {/* refresh icon for eventual re-loading of bookmarks list */}
-            <BiRefresh />
+            <button onClick={handleBookmarksRefresh}>
+              <BiRefresh />
+            </button>
 
             {/* create icon to launch FormItem modal */}
             <div>
