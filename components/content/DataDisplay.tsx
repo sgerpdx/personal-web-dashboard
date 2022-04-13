@@ -1,5 +1,10 @@
 import React from "react";
-import { BookmarkItem, NewsResponse } from "../../data/interfaces";
+import Link from "next/link";
+import { BookmarkItem } from "../../data/interfaces";
+
+// React Icons
+import { BiRefresh } from "react-icons/bi";
+import { IoMdCreate } from "react-icons/io";
 
 export default function DataDisplay({
   dataLabel,
@@ -10,26 +15,27 @@ export default function DataDisplay({
   dataContents: Array<BookmarkItem>;
   divStyle: string;
 }) {
-  
-  // Prepare the Data for Rendering:
-  
-  
-    console.log(dataContents);
+  if (!dataContents) return <div>Loading Bookmarks...</div>;
 
   return (
-    <>
+    <section className="text-black">
       <div className={divStyle}>
-        <h3>{dataLabel}</h3>
         {dataContents.map((bookmark) => {
           return (
             <div key={Math.random()}>
-              {" "}
-              <p>Title: {bookmark.bookmarkTitle}</p>
-              <p>URL: {bookmark.bookmarkURL}</p>
+              <p>
+                {/* {bookmark.dateCreated}{" "} */}
+                <span className="itemHeading">{bookmark.bookmarkTitle}</span>
+              </p>
+              <a href={bookmark.bookmarkURL} target="_blank">
+                <p>
+                  ☆ <span className="externalLink">{bookmark.bookmarkURL}</span>
+                </p>
+              </a>
             </div>
           );
         })}
       </div>
-    </>
+    </section>
   );
 }

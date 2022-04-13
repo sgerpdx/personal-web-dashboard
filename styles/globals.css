@@ -2,12 +2,51 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Autobus";
+  src: url("../public/AutobusOmnibus-K7127.ttf");
+}
+
+@font-face {
+  font-family: "LiberationSans";
+  src: url("../public/LiberationSans-Regular.ttf");
+}
+
+.btn {
+  @apply font-bold p-2 mx-4 rounded bg-green-200;
+}
+
+.btn:hover {
+  @apply text-white bg-green-700;
+}
+
+.btn:active {
+  @apply border-solid border-2 border-white;
+}
+
+.itemHeading {
+  @apply font-bold text-lg;
+}
+
+.captionText {
+  @apply italic;
+}
+
+.externalLink {
+  @apply text-blue-700 cursor-pointer;
+}
+
+.formDiv {
+  @apply bg-blue-300 p-4 h-24
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: "LiberationSans";
+  /* font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
 }
 
 a {

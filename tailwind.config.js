@@ -5,6 +5,12 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    container: {
+      center: true,
+    },
+    fontFamily: {
+      autobus: ["Autobus", "sans"],
+    },
   },
-  plugins: [],
-}
+  plugins: [require("tw-elements/dist/plugin")],
+};
