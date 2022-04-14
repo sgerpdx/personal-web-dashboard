@@ -30,7 +30,7 @@
   }
 
   .itemHeading {
-    @apply font-bold text-lg;
+    @apply flex font-bold text-lg text-left bg-richorange text-customwhite;
   }
 
   .captionText {
@@ -57,6 +57,10 @@
 
   .newsDiv {
     @apply flex flex-col justify-start w-full bg-richorange text-customwhite;
+  }
+
+  .newsContent {
+    @apply flex flex-wrap align-middle bg-customwhite text-driftwood p-2 overflow-auto h-64;
   }
 
   .bookmarksLabel {
