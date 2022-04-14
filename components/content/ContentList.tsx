@@ -1,6 +1,6 @@
 import React, { useState, useEffect, MouseEventHandler } from "react";
 // Tailwind Elements -- for accordion and modal
-//import "tw-elements";
+import "tw-elements";
 
 // React Icons
 import {
@@ -67,12 +67,12 @@ export default function ContentList({
       setBookmarkData(savedBookmarks);
     }
     //// Fetch news -- keep inactive during dev b/c request limits
-    async function loadNews() {
-      const response = await getNews();
-      setNewsData(response);
-    }
+    // async function loadNews() {
+    //   const response = await getNews();
+    //   setNewsData(response);
+    // }
     loadBookmarks();
-    loadNews();
+    //loadNews();
   }, []);
 
   useEffect(() => {

@@ -3,6 +3,6 @@
 module.exports = {
   reactStrictMode: true,
   images: {
-    domains: ["placekitten.com", "cdn.cnn.com"],
+    domains: ["placekitten.com", "cdn.cnn.com", "cnn.com"],
   },
 };

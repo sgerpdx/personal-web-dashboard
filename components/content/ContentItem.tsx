@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import PlaceholderImg from "../../public/img-placeholder-96.png";
 
 // React Icons
 import { BiRightArrow, BiLeftArrow } from "react-icons/bi";
@@ -58,18 +59,18 @@ export default function ContentItem({
           {newsData.map((article) => {
             return (
               <>
-                {/* <figure>
-                <Image
-                  src={article.image || 'http://placekitten.com/200/300'}
-                  alt="news story thumbnail image"
-                  width="32"
-                  height="32"
-                />
-                <figcaption>
-                  <i>news story thumbnail image</i>
-                </figcaption>
-              </figure> */}
-                <div className="px-4 bg-green-300">
+                <figure>
+                  <Image
+                    src={article.image || PlaceholderImg}
+                    alt="news story thumbnail image"
+                    width="48"
+                    height="48"
+                  />
+                  <figcaption>
+                    <i>news story thumbnail image</i>
+                  </figcaption>
+                </figure>
+                <div className="px-4 bg-green-300" key={article.url}>
                   <h3 className="itemHeading">{article.title}</h3>
                   <h4 className="captionText">
                     ☆ by {article.author} at{" "}
