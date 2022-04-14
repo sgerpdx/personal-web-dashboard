@@ -6,13 +6,11 @@ import PlaceholderImg from "../../public/img-placeholder-96.png";
 import { BiRightArrow, BiLeftArrow } from "react-icons/bi";
 
 // Interface imports
-import { NewsItem, NewsResponse } from "../../data/interfaces";
+import { NewsResponse } from "../../data/interfaces";
 
 export default function ContentItem({
-  currentNewsItem,
   newsData,
 }: {
-  currentNewsItem: NewsItem;
   newsData: Array<NewsResponse>;
 }) {
   const newsArr = [

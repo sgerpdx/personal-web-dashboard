@@ -1,27 +1,10 @@
-import React, { useState, useEffect, MouseEventHandler } from "react";
+import React, { useState, useEffect } from "react";
 // Tailwind Elements -- for accordion and modal
 import "tw-elements";
 
 // React Icons
-import {
-  BiMenu,
-  BiRightArrow,
-  BiLeftArrow,
-  BiUpArrow,
-  BiDownArrow,
-  BiGlobe,
-  BiMoon,
-  BiRefresh,
-} from "react-icons/bi";
-import {
-  RiBookmarkFill,
-  RiBookmarkLine,
-  RiNewspaperFill,
-  RiNewspaperLine,
-  RiMap2Line,
-} from "react-icons/ri";
-import { VscSettingsGear } from "react-icons/vsc";
-import { BsFillSunFill, BsGithub } from "react-icons/bs";
+import { BiRefresh } from "react-icons/bi";
+import { RiBookmarkFill, RiNewspaperFill } from "react-icons/ri";
 import { IoMdCreate } from "react-icons/io";
 
 // Fetching
@@ -29,21 +12,17 @@ import { getFetchBookmarks } from "../../utils/databaseAPI";
 import { getNews } from "../../utils/externalAPI";
 
 // Interfaces
-import { NewsItem, BookmarkItem, NewsResponse } from "../../data/interfaces";
+import { BookmarkItem, NewsResponse } from "../../data/interfaces";
 
 // Components
 import ContentItem from "./ContentItem";
 import DataDisplay from "./DataDisplay";
 import FormItem from "./FormItem";
 
-export default function ContentList({
-  currentNewsItem,
-  onClick,
-}: {
-  currentNewsItem: NewsItem;
-  onClick: MouseEventHandler<HTMLButtonElement>;
-}) {
-  // Object variable for a bookmark to save to db:
+export default function ContentList() {
+  //
+  // ***State Variables***
+  // Object variable for a bookmark to save to db -- currently unused but may need:
   const [currentBookmark, setCurrentBookmark] = useState<BookmarkItem>({
     bookmarkTitle: "",
     bookmarkURL: "",
@@ -51,15 +30,13 @@ export default function ContentList({
   const [bookmarkData, setBookmarkData] = useState<Array<BookmarkItem>>([]);
   const [newsData, setNewsData] = useState<Array<NewsResponse>>([]);
 
-  // Grab the current page URL and title if needed:
-  // const pageURL: string = window.location.href;
-  // const pageTitle: string = document.title;
-
+  // Reload bookmarks list (invoke to update when new bookmark is saved)
   const handleBookmarksRefresh = async () => {
     const savedBookmarks = await getFetchBookmarks();
     setBookmarkData(savedBookmarks);
   };
 
+  // Load bookmarks (db) and news(API) from server on component mount
   useEffect(() => {
     // Fetch bookmarks
     async function loadBookmarks() {
@@ -75,6 +52,7 @@ export default function ContentList({
     //loadNews();
   }, []);
 
+  // Dev logging to keep track of server responses -- delete before production
   useEffect(() => {
     console.log("bookmarkData:", bookmarkData);
     console.log("newsData:", newsData);
@@ -101,7 +79,7 @@ export default function ContentList({
           id="collapseOne"
           className="relative overflow-hidden collapse transition-all duration-700"
         >
-          <ContentItem newsData={newsData} currentNewsItem={currentNewsItem} />
+          <ContentItem newsData={newsData} />
         </div>
       </div>
 
@@ -130,7 +108,7 @@ export default function ContentList({
               <BiRefresh />
             </button>
 
-            {/* pencil-create icon to launch FormItem modal */}
+            {/* pencil icon button to launch FormItem modal */}
             <div>
               <div className="">
                 <button
