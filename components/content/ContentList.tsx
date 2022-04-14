@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 // Tailwind Elements -- for accordion and modal
-//import "tw-elements";
+import "tw-elements";
 
 // React Icons
 import { BiRefresh } from "react-icons/bi";
@@ -59,10 +59,10 @@ export default function ContentList() {
   }, [bookmarkData, newsData]);
 
   return (
-    <section className="flex flex-col w-full">
+    <section className="flex flex-col align-middle md:flex-row md:justify-center w-11/12 md:w-4/5 h-max">
       {/* news section */}
-      <div className="bg-green-400 flex flex-col text-white w-full">
-        <nav className="bg-pink-500 flex flex-row w-full">
+      <div className="flex flex-col justify-start text-white w-full">
+        <nav className="bg-pink-500 flex flex-row w-full h-10">
           <button
             className="w-full text-left"
             type="button"
@@ -84,8 +84,8 @@ export default function ContentList() {
       </div>
 
       {/* bookmarks section */}
-      <div className="bg-blue-500 flex flex-col text-white w-full">
-        <nav className="bg-blue-500 flex flex-row w-full">
+      <div className="flex flex-col text-white w-full">
+        <nav className="bg-blue-500 flex flex-row w-full h-10">
           <button
             className="w-full text-left"
             type="button"
@@ -102,7 +102,7 @@ export default function ContentList() {
           id="collapseTwo"
           className="relative overflow-hidden collapse transition-all duration-700"
         >
-          <nav className="bg-blue-400 flex flex-row justify-end px-6 text-black">
+          <nav className="bg-blue-400 flex flex-row justify-end px-6 text-black h-7">
             {/* refresh icon for eventual re-loading of bookmarks list */}
             <button onClick={handleBookmarksRefresh}>
               <BiRefresh />
@@ -151,13 +151,13 @@ export default function ContentList() {
               </div>
             </div>
           </nav>
-          <h3 className="bg-blue-200 text-black">Saved Bookmarks:</h3>
 
           {/* display of the list of saved bookmarks */}
+          <h3 className="bg-blue-200 text-black">Saved Bookmarks:</h3>
           <DataDisplay
             dataLabel="Saved Bookmarks:"
             dataContents={bookmarkData}
-            divStyle="overflow-auto h-40 bg-blue-100 p-4"
+            divStyle="overflow-auto h-64 bg-blue-100 p-4"
           />
         </div>
       </div>

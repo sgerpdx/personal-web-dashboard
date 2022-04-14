@@ -50,10 +50,10 @@ const Home: NextPage = () => {
       </header> */}
 
       <main className="container mx-auto overflow-hidden md:max-w-7xl">
-        <section className="bg-gray-300">
+        <section className="bg-gray-300 flex justify-center">
           <Clock />
         </section>
-        <section className=" bg-gray-500">
+        <section className=" bg-gray-500 flex justify-center">
           <ContentList />
         </section>
         <section>

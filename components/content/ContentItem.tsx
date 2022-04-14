@@ -48,11 +48,11 @@ export default function ContentItem({
 
   return (
     <section className="text-black">
-      <nav className="bg-pink-400 flex flex-row justify-end px-6">
+      <nav className="bg-pink-400 flex flex-row justify-end px-6 h-7">
         <BiLeftArrow />
         <BiRightArrow />
       </nav>
-      <div className="bg-pink-300 overflow-auto h-40">
+      <div className="bg-pink-300 overflow-auto h-64">
         <div className="bg-orange-300 ">
           {newsData.map((article) => {
             return (
