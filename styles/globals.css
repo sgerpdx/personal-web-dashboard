@@ -12,32 +12,64 @@
   src: url("../public/LiberationSans-Regular.ttf");
 }
 
-.btn {
-  @apply font-bold p-2 mx-4 rounded bg-green-200;
+@layer utilities {
+  .headerLight {
+    @apply text-driftwood flex flex-row justify-between px-20 w-full;
+  }
+
+  .btn {
+    @apply font-bold p-2 mx-4 rounded bg-driftwood;
+  }
+
+  .btn:hover {
+    @apply text-driftwood bg-richorange;
+  }
+
+  .btn:active {
+    @apply border-solid border-2 border-driftwood;
+  }
+
+  .itemHeading {
+    @apply font-bold text-lg;
+  }
+
+  .captionText {
+    @apply italic;
+  }
+
+  .externalLink {
+    @apply text-driftwood cursor-pointer;
+  }
+
+  .formDiv {
+    @apply bg-richorange p-4 h-24;
+  }
 }
 
-.btn:hover {
-  @apply text-white bg-green-700;
-}
+@layer component {
+  .clockDiv {
+    @apply bg-driftwood text-customwhite my-8;
+  }
 
-.btn:active {
-  @apply border-solid border-2 border-white;
-}
+  .newsLabel {
+    @apply flex flex-row w-full h-10 bg-customwhite text-richorange border border-solid border-richorange mb-0.5 py-0.5;
+  }
 
-.itemHeading {
-  @apply font-bold text-lg;
-}
+  .newsDiv {
+    @apply flex flex-col justify-start w-full bg-richorange text-customwhite;
+  }
 
-.captionText {
-  @apply italic;
-}
+  .bookmarksLabel {
+    @apply flex flex-row w-full h-10 bg-customwhite text-darkmaroon border border-solid border-darkmaroon mb-0.5 py-0.5;
+  }
 
-.externalLink {
-  @apply text-blue-700 cursor-pointer;
-}
+  .bookmarksDiv {
+    @apply flex flex-col w-full bg-darkmaroon text-customwhite;
+  }
 
-.formDiv {
-  @apply bg-blue-300 p-4 h-24;
+  .footerDiv {
+    @apply flex flex-row justify-end px-10 bg-driftwood text-customwhite;
+  }
 }
 
 html,

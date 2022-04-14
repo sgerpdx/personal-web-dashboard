@@ -41,7 +41,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <header className="bg-orange-700 text-white flex flex-row justify-between px-20">
+      <header className="headerLight">
         <figure>☆</figure>
         <h1 className="font-autobus text-2xl">App Title or Greeting</h1>
         <figure>
@@ -70,7 +70,7 @@ const Home: NextPage = () => {
         </section>
       </main>
 
-      <footer className="bg-orange-700 text-white flex flex-row justify-end px-10">
+      <footer className="footerDiv">
         <p>github link</p>
         <BsGithub />
       </footer>

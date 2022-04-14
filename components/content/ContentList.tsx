@@ -61,8 +61,8 @@ export default function ContentList() {
   return (
     <section className="flex flex-col align-middle md:flex-row md:justify-center w-11/12 md:w-4/5 h-max">
       {/* news section */}
-      <div className="flex flex-col justify-start text-white w-full">
-        <nav className="bg-pink-500 flex flex-row w-full h-10">
+      <div className="newsDiv">
+        <nav className="newsLabel">
           <button
             className="w-full text-left"
             type="button"
@@ -84,8 +84,8 @@ export default function ContentList() {
       </div>
 
       {/* bookmarks section */}
-      <div className="flex flex-col text-white w-full">
-        <nav className="bg-blue-500 flex flex-row w-full h-10">
+      <div className="bookmarksDiv">
+        <nav className="bookmarksLabel">
           <button
             className="w-full text-left"
             type="button"
@@ -94,7 +94,7 @@ export default function ContentList() {
             aria-expanded="true"
             aria-controls="collapseTwo"
           >
-            <RiBookmarkFill color="White" />
+            <RiBookmarkFill />
             Bookmarks
           </button>
         </nav>

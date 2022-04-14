@@ -39,7 +39,7 @@ export default function Clock() {
   }, []);
 
   return (
-    <section>
+    <section className="clockDiv">
       <div className="flex">
         <figure className="border-2 mx-10 h-60 w-60 rounded-full flex justify-center align-middle">
           <Image src={AndorianImg} alt="andorian" />
