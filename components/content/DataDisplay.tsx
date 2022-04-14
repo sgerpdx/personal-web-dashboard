@@ -27,7 +27,7 @@ export default function DataDisplay({
                 {/* {bookmark.dateCreated}{" "} */}
                 <span className="itemHeading">{bookmark.bookmarkTitle}</span>
               </p>
-              <a href={bookmark.bookmarkURL} target="_blank">
+              <a href={bookmark.bookmarkURL} target="_blank" rel="noreferrer">
                 <p>
                   ☆ <span className="externalLink">{bookmark.bookmarkURL}</span>
                 </p>
