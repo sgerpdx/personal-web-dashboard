@@ -1,17 +1,16 @@
 import React from "react";
 import Image from "next/image";
+import PlaceholderImg from "../../public/img-placeholder-96.png";
 
 // React Icons
 import { BiRightArrow, BiLeftArrow } from "react-icons/bi";
 
 // Interface imports
-import { NewsItem, NewsResponse } from "../../data/interfaces";
+import { NewsResponse } from "../../data/interfaces";
 
 export default function ContentItem({
-  currentNewsItem,
   newsData,
 }: {
-  currentNewsItem: NewsItem;
   newsData: Array<NewsResponse>;
 }) {
   const newsArr = [
@@ -49,27 +48,27 @@ export default function ContentItem({
 
   return (
     <section className="text-black">
-      <nav className="bg-pink-400 flex flex-row justify-end px-6">
+      <nav className="flex flex-row justify-end px-6 h-7">
         <BiLeftArrow />
         <BiRightArrow />
       </nav>
-      <div className="bg-pink-300 overflow-auto h-40">
+      <div className="newsContent">
         <div className="bg-orange-300 ">
           {newsData.map((article) => {
             return (
               <>
-                {/* <figure>
-                <Image
-                  src={article.image || 'http://placekitten.com/200/300'}
-                  alt="news story thumbnail image"
-                  width="32"
-                  height="32"
-                />
-                <figcaption>
-                  <i>news story thumbnail image</i>
-                </figcaption>
-              </figure> */}
-                <div className="px-4 bg-green-300">
+                <figure>
+                  <Image
+                    src={article.image || PlaceholderImg}
+                    alt="news story thumbnail image"
+                    width="48"
+                    height="48"
+                  />
+                  <figcaption>
+                    <i>news story thumbnail image</i>
+                  </figcaption>
+                </figure>
+                <div className="px-4 bg-green-300" key={article.url}>
                   <h3 className="itemHeading">{article.title}</h3>
                   <h4 className="captionText">
                     ☆ by {article.author} at{" "}
@@ -86,20 +85,70 @@ export default function ContentItem({
             );
           })}
         </div>
-        <div className="bg-pink-300">
-          <h3 className="itemHeading">Souther Comfort Comforts Southerner</h3>
-          <h4 className="captionText">
-            by Brian Van Lloyd at REMville Gazette
-          </h4>
-          <p>
-            Twelve years ago seven octopi occupied a diner above a dive shop on
-            the island of Danish Reef. Thirteen bears bore the weight of great
-            thirst for beers that the would have liked to drink from the Danish
-            sink.
-          </p>
+        <div className="flex flex-col">
+          <div className="flex flex-row align-middle">
+            <figure className="w-12 h-12 mx-2">
+              <Image
+                src={PlaceholderImg}
+                alt="news story thumbnail image"
+                width="48"
+                height="48"
+              />
+            </figure>
+            <div className="flex align-text-bottom h-12">
+              {" "}
+              <h3 className="itemHeading">
+                Souther Comfort Comforts Southerner
+              </h3>
+            </div>
+          </div>
+          <div>
+            <h4 className="captionText">
+              by Brian Van Lloyd at REMville Gazette
+            </h4>
+            <p>
+              Twelve years ago seven octopi occupied a diner above a dive shop
+              on the island of Danish Reef. Thirteen bears bore the weight of
+              great thirst for beers that the would have liked to drink from the
+              Danish sink.
+            </p>
+          </div>
+
           <p className="captionText">published: 2004-05-06</p>
         </div>
-        <div className="bg-pink-400">
+
+        <div className="flex flex-col">
+          <div className="flex flex-row align-middle">
+            <figure className="w-12 h-12 mx-2">
+              <Image
+                src={PlaceholderImg}
+                alt="news story thumbnail image"
+                width="48"
+                height="48"
+              />
+            </figure>
+            <div className="flex align-text-bottom h-12">
+              {" "}
+              <h3 className="itemHeading">
+                Souther Comfort Comforts Southerner
+              </h3>
+            </div>
+          </div>
+          <div>
+            <h4 className="captionText">
+              by Brian Van Lloyd at REMville Gazette
+            </h4>
+            <p>
+              Twelve years ago seven octopi occupied a diner above a dive shop
+              on the island of Danish Reef. Thirteen bears bore the weight of
+              great thirst for beers that the would have liked to drink from the
+              Danish sink.
+            </p>
+          </div>
+
+          <p className="captionText">published: 2004-05-06</p>
+        </div>
+        {/* <div className="bg-pink-400">
           <h3 className="itemHeading">{newsArr[1].title}</h3>
           <h4 className="captionText">
             by {newsArr[1].author} at {newsArr[1].source}
@@ -117,7 +166,7 @@ export default function ContentItem({
           </figure>
           <p>{newsArr[1].description}</p>
           <p className="captionText">published: {newsArr[1].published}</p>
-        </div>
+        </div> */}
       </div>
     </section>
   );

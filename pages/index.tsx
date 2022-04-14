@@ -7,73 +7,19 @@ import Image from "next/image";
 // React Icons
 import { BsFillSunFill, BsGithub } from "react-icons/bs";
 import { BiMenu, BiGlobe, BiMoon } from "react-icons/bi";
+import { VscGlobe } from "react-icons/vsc";
 
 // Utils function imports
-import {
-  getFetchBookmarks,
-  getSingleBookmark,
-  addFetchBookmarks,
-  updateBookmark,
-  deleteBookmark,
-} from "../utils/databaseAPI";
+import { addFetchBookmarks } from "../utils/databaseAPI";
 
 // Interfaces
-import { NewsItem, DailyData } from "../data/interfaces";
 
 // Components
 import Clock from "../components/Clock";
 import ContentList from "../components/content/ContentList";
-import NewsTestFormat from "../components/inactive/NewsTestFormat";
 
 const Home: NextPage = () => {
   const [loading, setLoading] = useState(true);
-  const [isWeekend, setIsWeekend] = useState<boolean>(false);
-
-  // Local-native state object for index/home:
-  const [currentDailyData, setCurrentDailyData] = useState<DailyData>({
-    userName: "User",
-    message: "Good day",
-    numberOfTheDay: 7,
-    letterOfTheDay: "A",
-  });
-
-  // Here is the object-type format for the News API data:
-  const [currentNewsItem, setCurrentNewsItem] = useState<NewsItem>({
-    headline: "Super Cat Holds Place",
-    articleText:
-      "This weekend in Cleveland Ohio a cat held place in the parking lot of a local Dairy Queen.",
-    thumbnailURL: "https://placekitten.com/200/300",
-  });
-
-  // Basic change handling demo
-  const handleWeekendToggle = async () => {
-    setIsWeekend(!isWeekend);
-  };
-
-  const handleFetchBookmarks = async () => {
-    const fetchBookmarkData = await getFetchBookmarks();
-    console.log("FETTTTTCH:", fetchBookmarkData);
-  };
-
-  const handleGetSingleBookmark = async () => {
-    const fetchBookmarkData = await getSingleBookmark();
-    console.log("FETTTTTCH:", fetchBookmarkData);
-  };
-
-  const handleAddBookmark = async () => {
-    const fetchBookmarkData = await addFetchBookmarks();
-    console.log("Added Fetch BM:", fetchBookmarkData);
-  };
-
-  const handleUpdateBookmark = async () => {
-    const data = await updateBookmark();
-    console.log("///Updated Fetch BM:", data);
-  };
-
-  const handleDeleteBookmark = async () => {
-    const data = await deleteBookmark();
-    console.log("---Deleted Fetch BM:", data);
-  };
 
   // Basic app-mounting logic:
   useEffect(() => {
@@ -95,7 +41,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <header className="bg-orange-700 text-white flex flex-row justify-between px-20">
+      <header className="headerLight">
         <figure>☆</figure>
         <h1 className="font-autobus text-2xl">App Title or Greeting</h1>
         <figure>
@@ -103,36 +49,30 @@ const Home: NextPage = () => {
         </figure>
       </header>
 
-      <main className="container mx-auto">
-        {/* <section className="container w-640 min-w-360 sm:w-full flex-nowrap justify-center  bg-gray-100">
-          {" "}
-          <h2 className="text-orange-700">
-            {currentDailyData.message} {currentDailyData.userName}
-          </h2>
-          <ul className="bg-blue-500 text-white">
-            <li>The number of the day is: {currentDailyData.numberOfTheDay}</li>
-            <li>The letter of the day is: {currentDailyData.letterOfTheDay}</li>
-          </ul>
-          <button onClick={handleFetchBookmarks}>Fetch All Bookmarks</button>
-          <button onClick={handleGetSingleBookmark}>Fetch One Bookmark</button>
-          <button onClick={handleAddBookmark}>Add Bookmark</button>
-          <button onClick={handleUpdateBookmark}>Update Bookmark</button>
-          <button onClick={handleDeleteBookmark}>Delete Bookmark</button>
-        </section> */}
-        <section className="container w-640 min-w-360 sm:w-full flex justify-center  bg-gray-300">
+      <main className="container mx-auto overflow-hidden md:max-w-7xl">
+        <section className="bg-gray-300 flex justify-center">
           <Clock />
         </section>
-        <section className="container w-640 min-w-360 sm:w-full flex justify-center  bg-gray-500">
-          <ContentList
-            currentNewsItem={currentNewsItem}
-            onClick={handleAddBookmark}
-          />
+        <section className=" bg-gray-500 flex justify-center">
+          <ContentList />
+        </section>
+        <section>
+          <p>
+            The Star Trek canon includes the Original Series, nine spin-off
+            television series, and a film franchise; further adaptations also
+            exist in several media. After the conclusion of the Original Series,
+            the adventures of its characters continued in the 22-episode Star
+            Trek: The Animated Series and six feature films. A television
+            revival beginning in the 1980s saw three sequel series and a
+            prequel: Star Trek: The Next Generation, following the crew of a new
+            starship Enterprise a century after the original series;
+          </p>
         </section>
       </main>
 
-      <footer className="bg-orange-700 text-white flex flex-row justify-end px-10">
+      <footer className="footerDiv">
         <p>github link</p>
-        {/* <BsGithub /> */}
+        <BsGithub />
       </footer>
     </div>
   );

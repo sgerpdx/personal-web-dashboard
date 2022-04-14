@@ -1,27 +1,10 @@
-import React, { useState, useEffect, MouseEventHandler } from "react";
+import React, { useState, useEffect } from "react";
 // Tailwind Elements -- for accordion and modal
-//import "tw-elements";
+import "tw-elements";
 
 // React Icons
-import {
-  BiMenu,
-  BiRightArrow,
-  BiLeftArrow,
-  BiUpArrow,
-  BiDownArrow,
-  BiGlobe,
-  BiMoon,
-  BiRefresh,
-} from "react-icons/bi";
-import {
-  RiBookmarkFill,
-  RiBookmarkLine,
-  RiNewspaperFill,
-  RiNewspaperLine,
-  RiMap2Line,
-} from "react-icons/ri";
-import { VscSettingsGear } from "react-icons/vsc";
-import { BsFillSunFill, BsGithub } from "react-icons/bs";
+import { BiRefresh } from "react-icons/bi";
+import { RiBookmarkFill, RiNewspaperFill } from "react-icons/ri";
 import { IoMdCreate } from "react-icons/io";
 
 // Fetching
@@ -29,21 +12,17 @@ import { getFetchBookmarks } from "../../utils/databaseAPI";
 import { getNews } from "../../utils/externalAPI";
 
 // Interfaces
-import { NewsItem, BookmarkItem, NewsResponse } from "../../data/interfaces";
+import { BookmarkItem, NewsResponse } from "../../data/interfaces";
 
 // Components
 import ContentItem from "./ContentItem";
 import DataDisplay from "./DataDisplay";
 import FormItem from "./FormItem";
 
-export default function ContentList({
-  currentNewsItem,
-  onClick,
-}: {
-  currentNewsItem: NewsItem;
-  onClick: MouseEventHandler<HTMLButtonElement>;
-}) {
-  // Object variable for a bookmark to save to db:
+export default function ContentList() {
+  //
+  // ***State Variables***
+  // Object variable for a bookmark to save to db -- currently unused but may need:
   const [currentBookmark, setCurrentBookmark] = useState<BookmarkItem>({
     bookmarkTitle: "",
     bookmarkURL: "",
@@ -51,15 +30,13 @@ export default function ContentList({
   const [bookmarkData, setBookmarkData] = useState<Array<BookmarkItem>>([]);
   const [newsData, setNewsData] = useState<Array<NewsResponse>>([]);
 
-  // Grab the current page URL and title if needed:
-  // const pageURL: string = window.location.href;
-  // const pageTitle: string = document.title;
-
+  // Reload bookmarks list (invoke to update when new bookmark is saved)
   const handleBookmarksRefresh = async () => {
     const savedBookmarks = await getFetchBookmarks();
     setBookmarkData(savedBookmarks);
   };
 
+  // Load bookmarks (db) and news(API) from server on component mount
   useEffect(() => {
     // Fetch bookmarks
     async function loadBookmarks() {
@@ -67,24 +44,25 @@ export default function ContentList({
       setBookmarkData(savedBookmarks);
     }
     //// Fetch news -- keep inactive during dev b/c request limits
-    async function loadNews() {
-      const response = await getNews();
-      setNewsData(response);
-    }
+    // async function loadNews() {
+    //   const response = await getNews();
+    //   setNewsData(response);
+    // }
     loadBookmarks();
-    loadNews();
+    //loadNews();
   }, []);
 
+  // Dev logging to keep track of server responses -- delete before production
   useEffect(() => {
     console.log("bookmarkData:", bookmarkData);
     console.log("newsData:", newsData);
   }, [bookmarkData, newsData]);
 
   return (
-    <section className="flex flex-col w-full">
+    <section className="flex flex-col align-middle md:flex-row md:justify-center w-11/12 md:w-4/5 h-max">
       {/* news section */}
-      <div className="bg-green-400 flex flex-col text-white w-full">
-        <nav className="bg-pink-500 flex flex-row w-full">
+      <div className="newsDiv">
+        <nav className="newsLabel">
           <button
             className="w-full text-left"
             type="button"
@@ -101,13 +79,13 @@ export default function ContentList({
           id="collapseOne"
           className="relative overflow-hidden collapse transition-all duration-700"
         >
-          <ContentItem newsData={newsData} currentNewsItem={currentNewsItem} />
+          <ContentItem newsData={newsData} />
         </div>
       </div>
 
       {/* bookmarks section */}
-      <div className="bg-blue-500 flex flex-col text-white w-full">
-        <nav className="bg-blue-500 flex flex-row w-full">
+      <div className="bookmarksDiv">
+        <nav className="bookmarksLabel">
           <button
             className="w-full text-left"
             type="button"
@@ -116,7 +94,7 @@ export default function ContentList({
             aria-expanded="true"
             aria-controls="collapseTwo"
           >
-            <RiBookmarkFill color="White" />
+            <RiBookmarkFill />
             Bookmarks
           </button>
         </nav>
@@ -124,13 +102,13 @@ export default function ContentList({
           id="collapseTwo"
           className="relative overflow-hidden collapse transition-all duration-700"
         >
-          <nav className="bg-blue-400 flex flex-row justify-end px-6 text-black">
+          <nav className="bg-blue-400 flex flex-row justify-end px-6 text-black h-7">
             {/* refresh icon for eventual re-loading of bookmarks list */}
             <button onClick={handleBookmarksRefresh}>
               <BiRefresh />
             </button>
 
-            {/* pencil-create icon to launch FormItem modal */}
+            {/* pencil icon button to launch FormItem modal */}
             <div>
               <div className="">
                 <button
@@ -173,13 +151,13 @@ export default function ContentList({
               </div>
             </div>
           </nav>
-          <h3 className="bg-blue-200 text-black">Saved Bookmarks:</h3>
 
           {/* display of the list of saved bookmarks */}
+          <h3 className="bg-blue-200 text-black h-8">Saved Bookmarks:</h3>
           <DataDisplay
             dataLabel="Saved Bookmarks:"
             dataContents={bookmarkData}
-            divStyle="overflow-auto h-40 bg-blue-100 p-4"
+            divStyle="overflow-auto bg-blue-100 p-4 h-56"
           />
         </div>
       </div>
