@@ -41,13 +41,13 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {/* <header className="bg-orange-700 text-white flex flex-row justify-between px-20">
+      <header className="bg-orange-700 text-white flex flex-row justify-between px-20">
         <figure>☆</figure>
         <h1 className="font-autobus text-2xl">App Title or Greeting</h1>
         <figure>
           <BiMenu />
         </figure>
-      </header> */}
+      </header>
 
       <main className="container mx-auto overflow-hidden md:max-w-7xl">
         <section className="bg-gray-300 flex justify-center">
@@ -65,26 +65,15 @@ const Home: NextPage = () => {
             Trek: The Animated Series and six feature films. A television
             revival beginning in the 1980s saw three sequel series and a
             prequel: Star Trek: The Next Generation, following the crew of a new
-            starship Enterprise a century after the original series; Star Trek:
-            Deep Space Nine and Star Trek: Voyager, set in the same era as the
-            Next Generation; and Enterprise, set before the original series in
-            the early days of human interstellar travel. The adventures of the
-            Next Generation crew continued in four additional feature films. In
-            2009, the film franchise underwent a reboot, creating an alternate
-            continuity known as the Kelvin timeline; three films have been set
-            in this continuity. The newest Star Trek television revival,
-            beginning in 2017, includes the series Star Trek: Discovery, Picard,
-            Short Treks, Lower Decks, and Prodigy, streaming exclusively on
-            digital platforms, with an additional series, Star Trek: Strange New
-            Worlds, currently in development.
+            starship Enterprise a century after the original series;
           </p>
         </section>
       </main>
 
-      {/* <footer className="bg-orange-700 text-white flex flex-row justify-end px-10">
+      <footer className="bg-orange-700 text-white flex flex-row justify-end px-10">
         <p>github link</p>
         <BsGithub />
-      </footer> */}
+      </footer>
     </div>
   );
 };

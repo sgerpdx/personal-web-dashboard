@@ -153,11 +153,11 @@ export default function ContentList() {
           </nav>
 
           {/* display of the list of saved bookmarks */}
-          <h3 className="bg-blue-200 text-black">Saved Bookmarks:</h3>
+          <h3 className="bg-blue-200 text-black h-8">Saved Bookmarks:</h3>
           <DataDisplay
             dataLabel="Saved Bookmarks:"
             dataContents={bookmarkData}
-            divStyle="overflow-auto h-64 bg-blue-100 p-4"
+            divStyle="overflow-auto bg-blue-100 p-4 h-56"
           />
         </div>
       </div>
