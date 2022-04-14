@@ -72,7 +72,7 @@ export default function ContentItem({
                   <h3 className="itemHeading">{article.title}</h3>
                   <h4 className="captionText">
                     ☆ by {article.author} at{" "}
-                    <a href={article.url} target="_blank">
+                    <a href={article.url} target="_blank" rel="noreferrer">
                       {article.source}
                     </a>
                   </h4>
