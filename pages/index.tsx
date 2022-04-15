@@ -18,6 +18,7 @@ import { addFetchBookmarks } from "../utils/databaseAPI";
 import Clock from "../components/Clock";
 import ContentList from "../components/content/ContentList";
 import DaisyModal from "../components/daisyUI/DaisyModal";
+import DaisyNavbar from "../components/daisyUI/DaisyNavbar";
 
 const Home: NextPage = () => {
   const [loading, setLoading] = useState(true);
@@ -72,6 +73,7 @@ const Home: NextPage = () => {
           </div>
         </div> */}
       </header>
+      <DaisyNavbar />
 
       <main className="container mx-auto overflow-hidden md:max-w-7xl">
         <section className="bg-gray-300 flex justify-center">

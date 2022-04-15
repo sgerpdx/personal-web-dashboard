@@ -60,9 +60,7 @@ export default function ContentList() {
   useEffect(() => {
     // console.log("bookmarkData:", bookmarkData);
     // console.log("newsData:", newsData);
-    console.log("Collapse--News:", collapseState.news);
-    console.log("Collapse--Bookmarks:", collapseState.bookmarks);
-  }, [bookmarkData, newsData, collapseState]);
+  }, [bookmarkData, newsData]);
 
   return (
     <main className="flex flex-col align-middle md:flex-row md:justify-center w-11/12 md:w-4/5 h-max">
