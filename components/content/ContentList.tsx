@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, SyntheticEvent } from "react";
 // Tailwind Elements -- for accordion and modal
 //import "tw-elements";
 
@@ -12,7 +12,11 @@ import { getFetchBookmarks } from "../../utils/databaseAPI";
 import { getNews } from "../../utils/externalAPI";
 
 // Interfaces
-import { BookmarkItem, NewsResponse } from "../../data/interfaces";
+import {
+  BookmarkItem,
+  NewsResponse,
+  CollapseSettings,
+} from "../../data/interfaces";
 
 // Components
 import ContentItem from "./ContentItem";
@@ -54,25 +58,25 @@ export default function ContentList() {
 
   // Dev logging to keep track of server responses -- delete before production
   useEffect(() => {
-    console.log("bookmarkData:", bookmarkData);
-    console.log("newsData:", newsData);
-  }, [bookmarkData, newsData]);
+    // console.log("bookmarkData:", bookmarkData);
+    // console.log("newsData:", newsData);
+    console.log("Collapse--News:", collapseState.news);
+    console.log("Collapse--Bookmarks:", collapseState.bookmarks);
+  }, [bookmarkData, newsData, collapseState]);
 
   return (
     <main className="flex flex-col align-middle md:flex-row md:justify-center w-11/12 md:w-4/5 h-max">
       <section className="flex flex-col justify-start align-middle w-full md:w-2/4">
         {/* news section */}
         <div className="newsDiv">
-          <div tabIndex={0} className="collapse collapse-arrow collapse-open">
-            <div className="newsLabel">
-              <div className="collapse-title">
-                {" "}
-                <RiNewspaperFill />
-                News
-              </div>
+          <div tabIndex={0} className="collapse collapse-arrow">
+            <input type="checkbox" />
+            <div className="newsLabel cursor-pointer collapse-title">
+              <RiNewspaperFill className="mx-2" />
+              News
             </div>
 
-            <div className="collapse-content relative transition-all duration-700 overflow-hidden">
+            <div className="collapse-content relative transition-all  overflow-hidden">
               <ContentItem newsData={newsData} />
             </div>
           </div>
@@ -82,13 +86,11 @@ export default function ContentList() {
       <section className="flex flex-col justify-start align-middle w-full md:w-2/4">
         {/* bookmarks section */}
         <div className="bookmarksDiv">
-          <div tabIndex={0} className="collapse collapse-arrow collapse-open">
-            <div className="bookmarksLabel">
-              <div className="collapse-title">
-                {" "}
-                <RiBookmarkFill />
-                Bookmarks
-              </div>
+          <div tabIndex={0} className="collapse collapse-arrow">
+            <input type="checkbox" />
+            <div className="bookmarksLabel cursor-pointer collapse-title">
+              <RiBookmarkFill className="mx-2" />
+              Bookmarks
             </div>
 
             <div className="collapse-content relative overflow-hidden transition-all duration-700">

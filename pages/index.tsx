@@ -46,6 +46,9 @@ const Home: NextPage = () => {
         <figure>☆</figure>
         <h1 className="font-autobus text-2xl">App Title or Greeting</h1>
         <div>
+          <BiMenu />
+        </div>
+        {/* <div>
           <label htmlFor="my-modal" className="cursor-pointer relative">
             <BiMenu />
           </label>
@@ -67,7 +70,7 @@ const Home: NextPage = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </header>
 
       <main className="container mx-auto overflow-hidden md:max-w-7xl">
