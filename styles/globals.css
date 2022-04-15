@@ -52,7 +52,7 @@
   }
 
   .newsLabel {
-    @apply flex flex-row w-full h-10 bg-customwhite text-richorange border border-solid border-richorange mb-0.5 py-0.5;
+    @apply flex flex-row w-full h-16 bg-customwhite text-richorange border border-solid border-richorange mb-0.5 py-0.5;
   }
 
   .newsDiv {
@@ -64,7 +64,7 @@
   }
 
   .bookmarksLabel {
-    @apply flex flex-row w-full h-10 bg-customwhite text-darkmaroon border border-solid border-darkmaroon mb-0.5 py-0.5;
+    @apply flex flex-row w-full h-16 bg-customwhite text-darkmaroon border border-solid border-darkmaroon mb-0.5 py-0.5;
   }
 
   .bookmarksDiv {

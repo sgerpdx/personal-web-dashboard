@@ -61,7 +61,7 @@ export default function ContentList() {
   return (
     <section className="flex flex-col align-middle md:flex-row md:justify-center w-11/12 md:w-4/5 h-max">
       {/* news section */}
-      <div className="newsDiv">
+      {/* <div className="newsDiv">
         <nav className="newsLabel">
           <button
             className="w-full text-left"
@@ -81,10 +81,27 @@ export default function ContentList() {
         >
           <ContentItem newsData={newsData} />
         </div>
+      </div> */}
+
+      {/* DaisyUI news */}
+      <div className="newsDiv">
+        <div tabIndex={0} className="collapse collapse-arrow">
+          <div className="newsLabel">
+            <div className="collapse-title">
+              {" "}
+              <RiNewspaperFill />
+              News
+            </div>
+          </div>
+
+          <div className="collapse-content relative transition-all duration-700 overflow-hidden">
+            <ContentItem newsData={newsData} />
+          </div>
+        </div>
       </div>
 
       {/* bookmarks section */}
-      <div className="bookmarksDiv">
+      {/* <div className="bookmarksDiv">
         <nav className="bookmarksLabel">
           <button
             className="w-full text-left"
@@ -102,14 +119,14 @@ export default function ContentList() {
           id="collapseTwo"
           className="relative overflow-hidden collapse transition-all duration-700"
         >
-          <nav className="bg-blue-400 flex flex-row justify-end px-6 text-black h-7">
-            {/* refresh icon for eventual re-loading of bookmarks list */}
-            <button onClick={handleBookmarksRefresh}>
+          <nav className="bg-blue-400 flex flex-row justify-end px-6 text-black h-7"> */}
+      {/* refresh icon for eventual re-loading of bookmarks list */}
+      {/* <button onClick={handleBookmarksRefresh}>
               <BiRefresh />
-            </button>
+            </button> */}
 
-            {/* pencil icon button to launch FormItem modal */}
-            <div>
+      {/* pencil icon button to launch FormItem modal */}
+      {/* <div>
               <div className="">
                 <button
                   type="button"
@@ -119,10 +136,10 @@ export default function ContentList() {
                 >
                   <IoMdCreate />
                 </button>
-              </div>
+              </div> */}
 
-              {/* FormItem modal */}
-              <div
+      {/* FormItem modal */}
+      {/* <div
                 className="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
                 id="formItemModal"
                 tabIndex={-1}
@@ -150,15 +167,91 @@ export default function ContentList() {
                 </div>
               </div>
             </div>
-          </nav>
+          </nav> */}
 
-          {/* display of the list of saved bookmarks */}
-          <h3 className="bg-blue-200 text-black h-8">Saved Bookmarks:</h3>
-          <DataDisplay
-            dataLabel="Saved Bookmarks:"
-            dataContents={bookmarkData}
-            divStyle="overflow-auto bg-blue-100 p-4 h-56"
-          />
+      {/* display of the list of saved bookmarks */}
+      {/* //     <h3 className="bg-blue-200 text-black h-8">Saved Bookmarks:</h3>
+      //     <DataDisplay
+      //       dataLabel="Saved Bookmarks:"
+      //       dataContents={bookmarkData}
+      //       divStyle="overflow-auto bg-blue-100 p-4 h-56"
+      //     />
+      //   </div>
+      // </div> */}
+
+      {/* DaisyUI bookmarks */}
+      <div className="bookmarksDiv">
+        <div tabIndex={0} className="collapse collapse-arrow">
+          <div className="bookmarksLabel">
+            <div className="collapse-title">
+              {" "}
+              <RiBookmarkFill />
+              Bookmarks
+            </div>
+          </div>
+
+          <div className="collapse-content relative overflow-hidden transition-all duration-700">
+            <div>
+              <nav className="bg-blue-400 flex flex-row justify-end px-6 text-black h-7">
+                {/* refresh icon for eventual re-loading of bookmarks list */}
+                <button onClick={handleBookmarksRefresh}>
+                  <BiRefresh />
+                </button>
+
+                {/* pencil icon button to launch FormItem modal */}
+                <div>
+                  <div className="">
+                    <button
+                      type="button"
+                      data-bs-toggle="modal"
+                      data-bs-target="#formItemModal"
+                      title="create new bookmark"
+                    >
+                      <IoMdCreate />
+                    </button>
+                  </div>
+
+                  {/* FormItem modal */}
+                  <div
+                    className="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+                    id="formItemModal"
+                    tabIndex={-1}
+                    aria-labelledby="formItemModalTitle"
+                    aria-modal="true"
+                    role="form"
+                  >
+                    <div className="modal-dialog modal-dialog-centered relative w-auto">
+                      <div className="modal-content shadow-lg relative  w-full pointer-events-auto bg-white  text-current">
+                        <div className="modal-header flex flex-shrink-0">
+                          <h5 id="exampleModalScrollableLabel">
+                            Enter New Bookmark:
+                          </h5>
+                          <button
+                            type="button"
+                            data-bs-dismiss="modal"
+                          ></button>
+                        </div>
+                        <div className="relative">
+                          <FormItem
+                            formLabel="New Bookmark"
+                            setVariable={setCurrentBookmark}
+                            divStyle="formDiv"
+                            dataBsDismiss="modal"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </nav>
+              <h3 className="bg-blue-200 text-black h-8">Saved Bookmarks:</h3>
+              <DataDisplay
+                dataLabel="Saved Bookmarks:"
+                dataContents={bookmarkData}
+                divStyle="overflow-auto bg-blue-100 p-4 h-56"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </section>
