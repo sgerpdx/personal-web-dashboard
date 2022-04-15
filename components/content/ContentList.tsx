@@ -47,13 +47,13 @@ export default function ContentList() {
       const savedBookmarks = await getFetchBookmarks();
       setBookmarkData(savedBookmarks);
     }
-    //// Fetch news -- keep inactive during dev b/c request limits
-    // async function loadNews() {
-    //   const response = await getNews();
-    //   setNewsData(response);
-    // }
+    // Fetch news -- keep inactive during dev b/c request limits
+    async function loadNews() {
+      const response = await getNews();
+      setNewsData(response);
+    }
     loadBookmarks();
-    //loadNews();
+   loadNews();
   }, []);
 
   // Dev logging to keep track of server responses -- delete before production
