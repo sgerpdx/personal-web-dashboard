@@ -17,6 +17,9 @@ import { addFetchBookmarks } from "../utils/databaseAPI";
 // Components
 import Clock from "../components/Clock";
 import ContentList from "../components/content/ContentList";
+import DaisyModal from "../components/inactive/DaisyModal";
+import DaisyJSXCollapse from '../components/inactive/DaisyJSXCollapse'
+import DaisyCollapse from "../components/inactive/DaisyCollapse";
 
 const Home: NextPage = () => {
   const [loading, setLoading] = useState(true);
@@ -57,7 +60,11 @@ const Home: NextPage = () => {
           <ContentList />
         </section>
         <section>
-          <p>
+          <DaisyModal />
+          <DaisyCollapse />
+        </section>
+        <section>
+          {/* <p>
             The Star Trek canon includes the Original Series, nine spin-off
             television series, and a film franchise; further adaptations also
             exist in several media. After the conclusion of the Original Series,
@@ -66,7 +73,7 @@ const Home: NextPage = () => {
             revival beginning in the 1980s saw three sequel series and a
             prequel: Star Trek: The Next Generation, following the crew of a new
             starship Enterprise a century after the original series;
-          </p>
+          </p> */}
         </section>
       </main>
 

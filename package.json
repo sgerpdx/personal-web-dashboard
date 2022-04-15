@@ -12,6 +12,7 @@
   "dependencies": {
     "@supabase/supabase-js": "^1.33.3",
     "@types/jest": "^27.4.1",
+    "daisyui": "^2.13.6",
     "dotenv": "^16.0.0",
     "formik": "^2.2.9",
     "next": "12.1.4",
