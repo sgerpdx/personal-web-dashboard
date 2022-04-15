@@ -50,17 +50,17 @@
   }
 
   .collapseDivOpen {
-    @apply collapse collapse-arrow collapse-open
+    @apply collapse collapse-arrow collapse-open;
   }
 
   .collapseDivClose {
-    @apply collapse collapse-arrow collapse-close
+    @apply collapse collapse-arrow collapse-close;
   }
 }
 
 @layer component {
   .clockDiv {
-    @apply bg-driftwood text-customwhite my-8;
+    @apply flex flex-col align-middle md:flex-row md:justify-center w-11/12 md:w-4/5 h-max bg-driftwood text-customwhite my-8;
   }
 
   .newsLabel {
@@ -84,7 +84,7 @@
   }
 
   .footerDiv {
-    @apply flex flex-row justify-end align-baseline px-10 pt-2 h-8 bg-driftwood text-customwhite;
+    @apply fixed bottom-0 flex flex-row justify-end align-baseline px-10 pt-2 w-full h-10 bg-driftwood text-customwhite text-lg;
   }
 }
 

@@ -48,7 +48,7 @@ export default function ContentItem({
 
   return (
     <section className="text-black">
-      <nav className="flex flex-row justify-end px-6 h-7">
+      <nav className="flex flex-row justify-end px-6 h-7" title="pagination under construction">
         <BiLeftArrow />
         <BiRightArrow />
       </nav>
