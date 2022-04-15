@@ -44,12 +44,12 @@ export default function Clock() {
         <figure className="border-2 mx-10 h-60 w-60 rounded-full flex justify-center align-middle">
           <Image src={AndorianImg} alt="andorian" />
         </figure>
-        <figure className="border-2 mx-10 h-60 w-60 rounded-full flex justify-center align-middle">
+        <div className="border-2 mx-10 h-60 w-60 rounded-full flex justify-center align-middle">
           <p>
             Time: {clockDisplayObj.hour}:{clockDisplayObj.minute}:
             {clockDisplayObj.second}
           </p>
-        </figure>
+        </div>
       </div>
     </section>
   );

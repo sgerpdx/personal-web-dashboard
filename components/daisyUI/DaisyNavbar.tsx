@@ -14,7 +14,7 @@ export default function DaisyNavbar() {
       </div>
       <div className="navbar-center">
         <h1 className="font-autobus text-2xl text-customwhite">
-          App Title or Greeting
+          Web Dashboard
         </h1>
       </div>
       <div className="navbar-end md:mx-20">

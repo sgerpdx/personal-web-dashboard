@@ -5,7 +5,7 @@ import React, { useState, useEffect, SyntheticEvent } from "react";
 // React Icons
 import { BiRefresh } from "react-icons/bi";
 import { RiBookmarkFill, RiNewspaperFill } from "react-icons/ri";
-import { IoMdCreate } from "react-icons/io";
+import { IoMdCreate, IoMdRefresh } from "react-icons/io";
 
 // Fetching
 import { getFetchBookmarks } from "../../utils/databaseAPI";
@@ -95,14 +95,16 @@ export default function ContentList() {
               <div>
                 <nav className="bg-blue-400 flex flex-row justify-end px-6 text-black h-7">
                   {/* refresh icon for eventual re-loading of bookmarks list */}
-                  <button onClick={handleBookmarksRefresh}>
-                    <BiRefresh />
+                  <button onClick={handleBookmarksRefresh} className="mr-4 text-lg" title="refresh bookmarks">
+                    <IoMdRefresh />
                   </button>
 
                   {/* pencil icon button to launch FormItem modal */}
-                  <label htmlFor="my-modal" className="cursor-pointer">
-                    <IoMdCreate />
-                  </label>
+                  <button className="mr-4 text-lg" title="add new bookmark">
+                    <label htmlFor="my-modal" className="cursor-pointer">
+                      <IoMdCreate />
+                    </label>
+                  </button>
 
                   {/* bookmark save modal */}
                   <input

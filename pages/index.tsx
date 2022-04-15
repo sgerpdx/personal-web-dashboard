@@ -19,6 +19,7 @@ import Clock from "../components/Clock";
 import ContentList from "../components/content/ContentList";
 import DaisyModal from "../components/daisyUI/DaisyModal";
 import DaisyNavbar from "../components/daisyUI/DaisyNavbar";
+import GaugeTimer from "../components/dashDisplay/GaugeTimer";
 
 const Home: NextPage = () => {
   const [loading, setLoading] = useState(true);
@@ -100,7 +101,14 @@ const Home: NextPage = () => {
       </main>
 
       <footer className="footerDiv">
-        <BsGithub />
+        <a
+          href="https://github.com/sgerpdx/personal-web-dashboard"
+          target="_blank"
+          rel="noreferrer"
+          title="link to github repository"
+        >
+          <BsGithub />
+        </a>
       </footer>
     </div>
   );
