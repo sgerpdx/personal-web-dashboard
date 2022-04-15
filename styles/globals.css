@@ -68,11 +68,11 @@
   }
 
   .bookmarksDiv {
-    @apply flex flex-col w-full bg-darkmaroon text-customwhite;
+    @apply flex flex-col justify-start align-top w-full bg-darkmaroon text-customwhite;
   }
 
   .footerDiv {
-    @apply flex flex-row justify-end px-10 bg-driftwood text-customwhite;
+    @apply flex flex-row justify-end align-baseline px-10 pt-2 h-8 bg-driftwood text-customwhite;
   }
 }
 
