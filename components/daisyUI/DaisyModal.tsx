@@ -1,4 +1,5 @@
 import React from "react";
+import FormItem from "../content/FormItem";
 
 export default function DaisyModal() {
   return (
@@ -21,7 +22,7 @@ export default function DaisyModal() {
           </p>
           <div className="modal-action">
             <label htmlFor="my-modal" className="btn">
-              Yay!
+              Close
             </label>
           </div>
         </div>

@@ -17,6 +17,7 @@ import { addFetchBookmarks } from "../utils/databaseAPI";
 // Components
 import Clock from "../components/Clock";
 import ContentList from "../components/content/ContentList";
+import DaisyModal from "../components/daisyUI/DaisyModal";
 
 const Home: NextPage = () => {
   const [loading, setLoading] = useState(true);
@@ -56,7 +57,6 @@ const Home: NextPage = () => {
         <section className=" bg-gray-500 flex justify-center">
           <ContentList />
         </section>
-
         <section>
           <p>
             The Star Trek canon includes the Original Series, nine spin-off

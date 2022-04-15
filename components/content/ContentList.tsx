@@ -63,7 +63,7 @@ export default function ContentList() {
       <section className="flex flex-col justify-start align-middle w-full md:w-2/4">
         {/* news section */}
         <div className="newsDiv">
-          <div tabIndex={0} className="collapse collapse-arrow ">
+          <div tabIndex={0} className="collapse collapse-arrow collapse-open">
             <div className="newsLabel">
               <div className="collapse-title">
                 {" "}
@@ -82,7 +82,7 @@ export default function ContentList() {
       <section className="flex flex-col justify-start align-middle w-full md:w-2/4">
         {/* bookmarks section */}
         <div className="bookmarksDiv">
-          <div tabIndex={0} className="collapse collapse-arrow ">
+          <div tabIndex={0} className="collapse collapse-arrow collapse-open">
             <div className="bookmarksLabel">
               <div className="collapse-title">
                 {" "}
@@ -100,47 +100,28 @@ export default function ContentList() {
                   </button>
 
                   {/* pencil icon button to launch FormItem modal */}
-                  <div>
-                    <div className="">
-                      <button
-                        type="button"
-                        data-bs-toggle="modal"
-                        data-bs-target="#formItemModal"
-                        title="create new bookmark"
-                      >
-                        <IoMdCreate />
-                      </button>
-                    </div>
+                  <label htmlFor="my-modal" className="cursor-pointer">
+                    <IoMdCreate />
+                  </label>
 
-                    {/* FormItem modal */}
-                    <div
-                      className="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
-                      id="formItemModal"
-                      tabIndex={-1}
-                      aria-labelledby="formItemModalTitle"
-                      aria-modal="true"
-                      role="form"
-                    >
-                      <div className="modal-dialog modal-dialog-centered relative w-auto">
-                        <div className="modal-content shadow-lg relative  w-full pointer-events-auto bg-white  text-current">
-                          <div className="modal-header flex flex-shrink-0">
-                            <h5 id="exampleModalScrollableLabel">
-                              Enter New Bookmark:
-                            </h5>
-                            <button
-                              type="button"
-                              data-bs-dismiss="modal"
-                            ></button>
-                          </div>
-                          <div className="relative">
-                            <FormItem
-                              formLabel="New Bookmark"
-                              setVariable={setCurrentBookmark}
-                              divStyle="formDiv"
-                              dataBsDismiss="modal"
-                            />
-                          </div>
-                        </div>
+                  {/* bookmark save modal */}
+                  <input
+                    type="checkbox"
+                    id="my-modal"
+                    className="modal-toggle"
+                  />
+                  <div className="modal">
+                    <div className="modal-box">
+                      <FormItem
+                        formLabel="New Bookmark"
+                        setVariable={setCurrentBookmark}
+                        divStyle="formDiv"
+                        dataBsDismiss="modal"
+                      />
+                      <div className="modal-action">
+                        <label htmlFor="my-modal" className="btn">
+                          Close
+                        </label>
                       </div>
                     </div>
                   </div>
