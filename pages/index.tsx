@@ -45,9 +45,29 @@ const Home: NextPage = () => {
       <header className="headerLight">
         <figure>☆</figure>
         <h1 className="font-autobus text-2xl">App Title or Greeting</h1>
-        <figure>
-          <BiMenu />
-        </figure>
+        <div>
+          <label htmlFor="my-modal" className="cursor-pointer relative">
+            <BiMenu />
+          </label>
+          <input type="checkbox" id="my-modal" className="modal-toggle" />
+          <div className="modal">
+            <div className="modal-box w-32">
+              <div className="modal-action">
+                <ul className="menu bg-base-100 w-32">
+                  <li>
+                    <label htmlFor="my-modal">guide</label>
+                  </li>
+                  <li>
+                    <label htmlFor="my-modal">dev log</label>
+                  </li>
+                  <li>
+                    <label htmlFor="my-modal">about</label>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
       </header>
 
       <main className="container mx-auto overflow-hidden md:max-w-7xl">
