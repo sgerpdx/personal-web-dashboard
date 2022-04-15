@@ -76,7 +76,7 @@ const Home: NextPage = () => {
       {/* </header> */}
       <header className="sticky top-0 z-50">
         {" "}
-        <DaisyNavbar />
+        {/* <DaisyNavbar /> */}
       </header>
 
       <main className="relative mx-auto overflow-auto md:max-w-7xl">
@@ -87,7 +87,7 @@ const Home: NextPage = () => {
           <ContentList />
         </section>
         <section>
-          <p>
+          {/* <p>
             The Star Trek canon includes the Original Series, nine spin-off
             television series, and a film franchise; further adaptations also
             exist in several media. After the conclusion of the Original Series,
@@ -96,7 +96,7 @@ const Home: NextPage = () => {
             revival beginning in the 1980s saw three sequel series and a
             prequel: Star Trek: The Next Generation, following the crew of a new
             starship Enterprise a century after the original series;
-          </p>
+          </p> */}
         </section>
       </main>
 

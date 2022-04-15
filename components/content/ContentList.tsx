@@ -95,7 +95,11 @@ export default function ContentList() {
               <div>
                 <nav className="bg-blue-400 flex flex-row justify-end px-6 text-black h-7">
                   {/* refresh icon for eventual re-loading of bookmarks list */}
-                  <button onClick={handleBookmarksRefresh} className="mr-4 text-lg" title="refresh bookmarks">
+                  <button
+                    onClick={handleBookmarksRefresh}
+                    className="mr-4 text-lg"
+                    title="refresh bookmarks"
+                  >
                     <IoMdRefresh />
                   </button>
 
