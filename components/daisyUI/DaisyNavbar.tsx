@@ -6,9 +6,9 @@ export default function DaisyNavbar() {
   return (
     <>
       <div className="navbar bg-richorange">
-        <div className="navbar-start">
+        <div className="navbar-start md:mx-20">
           <div className="dropdown">
-            <label tabIndex={0} className="btn btn-ghost btn-circle">
+            <label tabIndex={0} className="">
               <BsFillSunFill size="32" color="white" />
             </label>
           </div>
@@ -18,10 +18,10 @@ export default function DaisyNavbar() {
             App Title or Greeting
           </h1>
         </div>
-        <div className="navbar-end">
+        <div className="navbar-end md:mx-20">
           <div className="dropdown">
-            <label tabIndex={0} className="btn btn-ghost btn-circle">
-              <BiMenu size="32" color="white" />
+            <label tabIndex={0} className="btn btn-ghost">
+              <BiMenu size="32"/>
             </label>
             <ul
               tabIndex={0}

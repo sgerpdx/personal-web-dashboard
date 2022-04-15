@@ -18,15 +18,19 @@
   }
 
   .btn {
-    @apply font-bold p-2 mx-4 rounded bg-driftwood;
+    @apply font-bold p-2 mx-4 rounded text-customwhite;
   }
 
   .btn:hover {
-    @apply text-driftwood bg-richorange;
+    @apply border-solid border bg-richorange border-customwhite;
   }
 
   .btn:active {
-    @apply border-solid border-2 border-driftwood;
+    @apply bg-customwhite text-richorange;
+  }
+
+  .btnClear {
+    @apply font-bold p-2 mx-4 rounded;
   }
 
   .itemHeading {

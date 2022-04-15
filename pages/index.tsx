@@ -43,12 +43,12 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <header className="headerLight">
+      {/* <header className="headerLight">
         <figure>☆</figure>
         <h1 className="font-autobus text-2xl">App Title or Greeting</h1>
         <div>
           <BiMenu />
-        </div>
+        </div> */}
         {/* <div>
           <label htmlFor="my-modal" className="cursor-pointer relative">
             <BiMenu />
@@ -72,7 +72,7 @@ const Home: NextPage = () => {
             </div>
           </div>
         </div> */}
-      </header>
+      {/* </header> */}
       <DaisyNavbar />
 
       <main className="container mx-auto overflow-hidden md:max-w-7xl">
