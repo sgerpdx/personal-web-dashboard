@@ -5,7 +5,7 @@ import { BsFillSunFill } from "react-icons/bs";
 export default function DaisyNavbar() {
   return (
     <section className="navbar bg-richorange">
-      <div className="navbar-start md:mx-20">
+      <div className="navbar-start mx-10 md:mx-20">
         <div className="dropdown">
           <label tabIndex={0} className="">
             <BsFillSunFill size="32" color="white" />
@@ -14,10 +14,10 @@ export default function DaisyNavbar() {
       </div>
       <div className="navbar-center">
         <h1 className="font-autobus text-2xl text-customwhite">
-          Web Dashboard
+          Dashboard
         </h1>
       </div>
-      <div className="navbar-end md:mx-20">
+      <div className="navbar-end mx-10 md:mx-20">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost">
             <BiMenu size="32" />

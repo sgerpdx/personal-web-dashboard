@@ -74,9 +74,8 @@ const Home: NextPage = () => {
           </div>
         </div> */}
       {/* </header> */}
-      <header className="sticky top-0 z-50">
-        {" "}
-        {/* <DaisyNavbar /> */}
+      <header className="sticky top-0 z-50 w-full">
+        <DaisyNavbar />
       </header>
 
       <main className="relative mx-auto overflow-auto md:max-w-7xl">
