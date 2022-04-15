@@ -40,3 +40,8 @@ export interface TimeItem {
   minute: string;
   second: string;
 }
+
+export interface CollapseSettings {
+  news: string;
+  bookmarks: string;
+}

@@ -18,15 +18,19 @@
   }
 
   .btn {
-    @apply font-bold p-2 mx-4 rounded bg-driftwood;
+    @apply font-bold p-2 mx-4 rounded text-customwhite;
   }
 
   .btn:hover {
-    @apply text-driftwood bg-richorange;
+    @apply border-solid border bg-richorange border-customwhite;
   }
 
   .btn:active {
-    @apply border-solid border-2 border-driftwood;
+    @apply bg-customwhite text-richorange;
+  }
+
+  .btnClear {
+    @apply font-bold p-2 mx-4 rounded;
   }
 
   .itemHeading {
@@ -44,6 +48,14 @@
   .formDiv {
     @apply bg-richorange p-4 h-24;
   }
+
+  .collapseDivOpen {
+    @apply collapse collapse-arrow collapse-open
+  }
+
+  .collapseDivClose {
+    @apply collapse collapse-arrow collapse-close
+  }
 }
 
 @layer component {
@@ -52,7 +64,7 @@
   }
 
   .newsLabel {
-    @apply flex flex-row w-full h-10 bg-customwhite text-richorange border border-solid border-richorange mb-0.5 py-0.5;
+    @apply flex flex-row w-full h-8 bg-customwhite text-richorange text-lg border border-solid border-richorange mb-0.5 py-0.5;
   }
 
   .newsDiv {
@@ -64,15 +76,15 @@
   }
 
   .bookmarksLabel {
-    @apply flex flex-row w-full h-10 bg-customwhite text-darkmaroon border border-solid border-darkmaroon mb-0.5 py-0.5;
+    @apply flex flex-row w-full h-8 bg-customwhite text-darkmaroon text-lg border border-solid border-darkmaroon mb-0.5 py-0.5;
   }
 
   .bookmarksDiv {
-    @apply flex flex-col w-full bg-darkmaroon text-customwhite;
+    @apply flex flex-col justify-start align-top w-full bg-darkmaroon text-customwhite;
   }
 
   .footerDiv {
-    @apply flex flex-row justify-end px-10 bg-driftwood text-customwhite;
+    @apply flex flex-row justify-end align-baseline px-10 pt-2 h-8 bg-driftwood text-customwhite;
   }
 }
 

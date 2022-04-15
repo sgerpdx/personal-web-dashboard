@@ -17,6 +17,8 @@ import { addFetchBookmarks } from "../utils/databaseAPI";
 // Components
 import Clock from "../components/Clock";
 import ContentList from "../components/content/ContentList";
+import DaisyModal from "../components/daisyUI/DaisyModal";
+import DaisyNavbar from "../components/daisyUI/DaisyNavbar";
 
 const Home: NextPage = () => {
   const [loading, setLoading] = useState(true);
@@ -41,13 +43,37 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <header className="headerLight">
+      {/* <header className="headerLight">
         <figure>☆</figure>
         <h1 className="font-autobus text-2xl">App Title or Greeting</h1>
-        <figure>
+        <div>
           <BiMenu />
-        </figure>
-      </header>
+        </div> */}
+        {/* <div>
+          <label htmlFor="my-modal" className="cursor-pointer relative">
+            <BiMenu />
+          </label>
+          <input type="checkbox" id="my-modal" className="modal-toggle" />
+          <div className="modal">
+            <div className="modal-box w-32">
+              <div className="modal-action">
+                <ul className="menu bg-base-100 w-32">
+                  <li>
+                    <label htmlFor="my-modal">guide</label>
+                  </li>
+                  <li>
+                    <label htmlFor="my-modal">dev log</label>
+                  </li>
+                  <li>
+                    <label htmlFor="my-modal">about</label>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div> */}
+      {/* </header> */}
+      <DaisyNavbar />
 
       <main className="container mx-auto overflow-hidden md:max-w-7xl">
         <section className="bg-gray-300 flex justify-center">
@@ -71,7 +97,6 @@ const Home: NextPage = () => {
       </main>
 
       <footer className="footerDiv">
-        <p>github link</p>
         <BsGithub />
       </footer>
     </div>
