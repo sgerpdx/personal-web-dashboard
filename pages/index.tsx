@@ -19,7 +19,6 @@ import Clock from "../components/Clock";
 import ContentList from "../components/content/ContentList";
 import DaisyModal from "../components/daisyUI/DaisyModal";
 import DaisyNavbar from "../components/daisyUI/DaisyNavbar";
-import GaugeTimer from "../components/dashDisplay/GaugeTimer";
 
 const Home: NextPage = () => {
   const [loading, setLoading] = useState(true);
