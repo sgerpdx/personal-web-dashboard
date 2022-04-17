@@ -46,7 +46,7 @@
   }
 
   .formDiv {
-    @apply bg-richorange p-4 h-24;
+    @apply flex flex-col justify-center align-middle p-4 h-32;
   }
 
   .collapseDivOpen {

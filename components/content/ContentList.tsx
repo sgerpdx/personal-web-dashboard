@@ -36,6 +36,10 @@ export default function ContentList() {
   const handleBookmarksRefresh = async () => {
     const savedBookmarks = await getFetchBookmarks();
     setBookmarkData(savedBookmarks);
+    setCurrentBookmark({
+      bookmarkTitle: "",
+      bookmarkURL: "",
+    });
   };
 
   // Load bookmarks (db) and news(API) from server on component mount
@@ -46,12 +50,12 @@ export default function ContentList() {
       setBookmarkData(savedBookmarks);
     }
     // Fetch news -- keep inactive during dev b/c request limits
-    async function loadNews() {
-      const response = await getNews();
-      setNewsData(response);
-    }
+    // async function loadNews() {
+    //   const response = await getNews();
+    //   setNewsData(response);
+    // }
     loadBookmarks();
-   loadNews();
+    //loadNews();
   }, []);
 
   // Dev logging to keep track of server responses -- delete before production
@@ -108,24 +112,38 @@ export default function ContentList() {
                     </label>
                   </button>
 
-                  {/* bookmark save modal */}
+                  {/* container for FormItem bookmark save modal */}
                   <input
                     type="checkbox"
                     id="my-modal"
                     className="modal-toggle"
                   />
                   <div className="modal">
-                    <div className="modal-box">
+                    <input
+                      type="checkbox"
+                      id="my-modal"
+                      className="modal-toggle"
+                    />
+                    <div className="flex flex-col modal-box border-4 border-solid border-frappetan text-darkmaroon">
+                      <label
+                        htmlFor="my-modal"
+                        className="btn btn-sm btn-circle absolute right-2 top-2 bg-darkmaroon text-customwhite"
+                      >
+                        ✕
+                      </label>
                       <FormItem
-                        formLabel="New Bookmark"
+                        formLabel="New Bookmark:"
                         setVariable={setCurrentBookmark}
                         divStyle="formDiv"
                         dataBsDismiss="modal"
                       />
                       <div className="modal-action">
-                        <label htmlFor="my-modal" className="btn">
+                        {/* <label
+                          htmlFor="my-modal"
+                          className="btn bg-darkmaroon text-customwhite"
+                        >
                           Close
-                        </label>
+                        </label> */}
                       </div>
                     </div>
                   </div>
