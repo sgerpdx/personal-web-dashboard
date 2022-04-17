@@ -43,7 +43,7 @@ export default function Clock() {
       <div className="flex justify-between align-middle">
         <div className="flex justify-center align-middle w-2/4">
           {" "}
-          <figure className="flex border-2 border-frappetan my-2 mx-4 md:mx-10 w-32 h-32 sm:w-48 sm:h-48 md:w-60 md:h-60 rounded-full justify-center align-middle text-center">
+          <figure className="flex flex-col border-2 border-frappetan my-2 mx-4 md:mx-10 w-32 h-32 sm:w-48 sm:h-48 md:w-60 md:h-60 rounded-full justify-center align-middle text-center">
             <p>
               Time: {clockDisplayObj.hour}:{clockDisplayObj.minute}:
               {clockDisplayObj.second}
@@ -52,7 +52,7 @@ export default function Clock() {
         </div>
         <div className="flex justify-center align-middle w-2/4">
           {" "}
-          <figure className="flex border-2 border-frappetan my-2 mx-4 md:mx-10 w-32 h-32 sm:w-48 sm:h-48 md:w-60 md:h-60 rounded-full justify-center align-middle text-center">
+          <figure className="flex flex-col border-2 border-frappetan my-2 mx-4 md:mx-10 w-32 h-32 sm:w-48 sm:h-48 md:w-60 md:h-60 rounded-full justify-center align-middle text-center">
             <p>Date: {currentDateTime}</p>
           </figure>
         </div>
