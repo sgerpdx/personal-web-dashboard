@@ -1,6 +1,4 @@
 import React, { useState, useEffect, SyntheticEvent } from "react";
-// Tailwind Elements -- for accordion and modal
-//import "tw-elements";
 
 // React Icons
 import { BiRefresh } from "react-icons/bi";
