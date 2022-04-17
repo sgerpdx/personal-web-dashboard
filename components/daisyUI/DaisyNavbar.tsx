@@ -13,9 +13,7 @@ export default function DaisyNavbar() {
         </div>
       </div>
       <div className="navbar-center">
-        <h1 className="font-autobus text-2xl text-customwhite">
-          Dashboard
-        </h1>
+        <h1 className="font-autobus text-2xl text-customwhite">Dashboard</h1>
       </div>
       <div className="navbar-end mx-10 md:mx-20">
         <div className="dropdown">
@@ -27,13 +25,19 @@ export default function DaisyNavbar() {
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-32"
           >
             <li>
-              <a>guide</a>
+              <a title="under construction">guide</a>
             </li>
             <li>
-              <a>log</a>
+              <a title="under construction">about</a>
             </li>
             <li>
-              <a>about</a>
+              <a
+                href="https://github.com/sgerpdx/personal-web-dashboard"
+                target="_blank"
+                rel="noreferrer"
+              >
+                github
+              </a>
             </li>
           </ul>
         </div>
