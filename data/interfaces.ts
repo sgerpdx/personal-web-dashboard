@@ -39,9 +39,19 @@ export interface TimeItem {
   hour: string;
   minute: string;
   second: string;
+  amPM: string;
 }
 
 export interface CollapseSettings {
   news: string;
   bookmarks: string;
+}
+
+export interface DateDisplayItem {
+  dayName: string;
+  dayNumber: number;
+  monthName: string;
+  year: number;
+  timeZoneName?: string;
+  offsetUTC: number;
 }

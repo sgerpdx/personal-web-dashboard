@@ -18,6 +18,7 @@ module.exports = {
     },
     fontFamily: {
       autobus: ["Autobus", "sans"],
+      futurama: ["FuturamaBold", "sans"],
     },
   },
   plugins: [require("daisyui")],
