@@ -49,8 +49,8 @@ export interface CollapseSettings {
 
 export interface DateDisplayItem {
   dayName: string;
+  dayNumber: number;
   monthName: string;
-  monthDay: number;
   year: number;
   timeZoneName?: string;
   offsetUTC: number;

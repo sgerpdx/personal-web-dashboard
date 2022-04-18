@@ -39,6 +39,7 @@ export const extractDateInfo = (date: Date) => {
   // Grab day by number and name:
   const day = date.getDay();
   const nameOfDay = findById(day, weekdayNamesArr);
+  const dayOfMonth = date.getUTCDate();
   // Grab month by number and name:
   const month = date.getMonth();
   const nameOfMonth = findById(month, monthNamesArr);
@@ -49,8 +50,8 @@ export const extractDateInfo = (date: Date) => {
   // Create and return instance of DateDisplayItem interface:
   const dateInfo: DateDisplayItem = {
     dayName: nameOfDay,
+    dayNumber: dayOfMonth,
     monthName: nameOfMonth,
-    monthDay: month,
     year: year,
     offsetUTC: offsetUTC,
   };
