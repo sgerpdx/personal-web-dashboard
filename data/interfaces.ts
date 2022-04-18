@@ -45,3 +45,12 @@ export interface CollapseSettings {
   news: string;
   bookmarks: string;
 }
+
+export interface DateDisplayItem {
+  dayName: string;
+  monthName: string;
+  monthDay: number;
+  year: number;
+  timeZoneName?: string;
+  offsetUTC: number;
+}

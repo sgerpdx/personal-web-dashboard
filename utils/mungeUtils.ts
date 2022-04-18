@@ -38,10 +38,14 @@ export const formatTimeDisplay = (date: Date) => {
   // Add zero to single digit sec:
   const newSec = date.getSeconds();
   const padZeroSec = padWithZero(newSec);
+  // Calculate whether to display 'AM' or 'PM':
+  let morningEvening = "AM";
+  if (newHour > 11) morningEvening = "PM";
   // Return an object with string values:
   return {
     hour: padZeroHour,
     minute: padZeroMin,
     second: padZeroSec,
+    amPM: morningEvening,
   };
 };
