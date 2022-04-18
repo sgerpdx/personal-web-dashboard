@@ -12,6 +12,11 @@
   src: url("../public/LiberationSans-Regular.ttf");
 }
 
+@font-face {
+  font-family: "FuturamaBold";
+  src: url("../public/fr-bold.ttf");
+}
+
 @layer utilities {
   .headerLight {
     @apply text-driftwood flex flex-row justify-between px-20 w-full;

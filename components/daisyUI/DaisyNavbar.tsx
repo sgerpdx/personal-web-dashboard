@@ -13,7 +13,7 @@ export default function DaisyNavbar() {
         </div>
       </div>
       <div className="navbar-center">
-        <h1 className="font-autobus text-2xl text-customwhite">Dashboard</h1>
+        <h1 className="font-futurama text-3xl text-customwhite">dashboard</h1>
       </div>
       <div className="navbar-end mx-10 md:mx-20">
         <div className="dropdown">
