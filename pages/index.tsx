@@ -2,27 +2,37 @@ import React, { useState, useEffect, SyntheticEvent } from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-//import styles from "../styles/Home.module.css";
 
 // React Icons
-import { BsFillSunFill, BsGithub } from "react-icons/bs";
-import { BiMenu, BiGlobe, BiMoon } from "react-icons/bi";
-import { VscGlobe } from "react-icons/vsc";
+import { BsGithub } from "react-icons/bs";
 
-// Utils function imports
-import { addFetchBookmarks } from "../utils/databaseAPI";
-
-// Interfaces
+// Supabase Auth Functions
+import {
+  signUpWithEmail,
+  signInWithEmail,
+  signOut,
+} from "../utils/supabase/supabase";
 
 // Components
 import Clock from "../components/Clock";
 import ContentList from "../components/content/ContentList";
-import DaisyModal from "../components/daisyUI/DaisyModal";
 import DaisyNavbar from "../components/daisyUI/DaisyNavbar";
-import DisplayTest from "../components/inactive/DisplayTest";
 
 const Home: NextPage = () => {
   const [loading, setLoading] = useState(true);
+
+  //
+  const handleSignUp = () => {
+    signUpWithEmail();
+  }
+
+  const handleSignIn = () => {
+    signInWithEmail();
+  }
+
+  const handleSignOut = () => {
+    signOut();
+  }
 
   // Basic app-mounting logic:
   useEffect(() => {
@@ -45,36 +55,6 @@ const Home: NextPage = () => {
         <link rel="icon" href="/cube_360-gs-24.png" />
       </Head>
 
-      {/* <header className="headerLight">
-        <figure>☆</figure>
-        <h1 className="font-autobus text-2xl">App Title or Greeting</h1>
-        <div>
-          <BiMenu />
-        </div> */}
-      {/* <div>
-          <label htmlFor="my-modal" className="cursor-pointer relative">
-            <BiMenu />
-          </label>
-          <input type="checkbox" id="my-modal" className="modal-toggle" />
-          <div className="modal">
-            <div className="modal-box w-32">
-              <div className="modal-action">
-                <ul className="menu bg-base-100 w-32">
-                  <li>
-                    <label htmlFor="my-modal">guide</label>
-                  </li>
-                  <li>
-                    <label htmlFor="my-modal">dev log</label>
-                  </li>
-                  <li>
-                    <label htmlFor="my-modal">about</label>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div> */}
-      {/* </header> */}
       <header className="sticky top-0 z-50 w-full">
         <DaisyNavbar />
       </header>
@@ -87,6 +67,11 @@ const Home: NextPage = () => {
           <ContentList />
         </section>
         <section>
+          <div>
+            <button onClick={handleSignUp}>signup</button>
+            <button onClick={handleSignIn}>login</button>
+            <button onClick={handleSignOut}>logout</button>
+          </div>
           {/* <p>
             The Star Trek canon includes the Original Series, nine spin-off
             television series, and a film franchise; further adaptations also
