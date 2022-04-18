@@ -39,6 +39,7 @@ export interface TimeItem {
   hour: string;
   minute: string;
   second: string;
+  amPM: string;
 }
 
 export interface CollapseSettings {

@@ -11,6 +11,7 @@ export default function Clock() {
     hour: "",
     minute: "",
     second: "",
+    amPM: "",
   });
 
   // Function to retrieve and format JS date object
@@ -27,6 +28,7 @@ export default function Clock() {
       hour: formattedTime.hour,
       minute: formattedTime.minute,
       second: formattedTime.second,
+      amPM: formattedTime.amPM,
     });
   }
 
@@ -46,7 +48,7 @@ export default function Clock() {
           <figure className="flex flex-col border-2 border-frappetan my-2 mx-4 md:mx-10 w-32 h-32 sm:w-48 sm:h-48 md:w-60 md:h-60 rounded-full justify-center align-middle text-center">
             <p>
               Time: {clockDisplayObj.hour}:{clockDisplayObj.minute}:
-              {clockDisplayObj.second}
+              {clockDisplayObj.second} {clockDisplayObj.amPM}
             </p>
           </figure>
         </div>
