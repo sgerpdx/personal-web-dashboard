@@ -1,6 +1,8 @@
 import React, { useState, useEffect, SyntheticEvent } from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
+import supabase from "../utils/supabase/supabaseClient";
+
 import Image from "next/image";
 
 // React Icons
@@ -17,22 +19,25 @@ import {
 import Clock from "../components/Clock";
 import ContentList from "../components/content/ContentList";
 import DaisyNavbar from "../components/daisyUI/DaisyNavbar";
+import AccountAccess from "../components/userAccess/AccountAccess";
 
 const Home: NextPage = () => {
   const [loading, setLoading] = useState(true);
+  const [data, setData] = useState({});
+  const user = supabase.auth.user();
 
   //
   const handleSignUp = () => {
     signUpWithEmail();
-  }
+  };
 
   const handleSignIn = () => {
     signInWithEmail();
-  }
+  };
 
   const handleSignOut = () => {
     signOut();
-  }
+  };
 
   // Basic app-mounting logic:
   useEffect(() => {
@@ -59,7 +64,7 @@ const Home: NextPage = () => {
         <DaisyNavbar />
       </header>
 
-      <main className="relative mx-auto overflow-auto md:max-w-7xl">
+      <main className="relative mx-auto overflow-auto md:max-w-7xl pb-32">
         <section className="bg-gray-300 flex justify-center">
           <Clock />
         </section>
@@ -82,6 +87,9 @@ const Home: NextPage = () => {
             prequel: Star Trek: The Next Generation, following the crew of a new
             starship Enterprise a century after the original series;
           </p> */}
+        </section>
+        <section >
+          <AccountAccess />
         </section>
       </main>
 

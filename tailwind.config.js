@@ -15,6 +15,8 @@ module.exports = {
       frappetan: "#d4c3ba",
       customblack: "#000000",
       customwhite: "#FFFFFF",
+      hornetgrape: "#1d1160",
+      charlotteteal: "#008da8",
     },
     fontFamily: {
       autobus: ["Autobus", "sans"],
