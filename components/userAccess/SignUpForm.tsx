@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import supabase from "../../utils/supabase/supabaseClient";
 import { useFormik } from "formik";
-import { signUpWithEmail } from "../../utils/supabase/supabase";
+import { signUpWithEmail, signOut } from "../../utils/supabase/supabase";
 import { SignUpItem, UserProfile } from "../../data/interfaces";
 
 export default function SignUpForm({
@@ -18,6 +18,14 @@ export default function SignUpForm({
     const { user, session, error } = await supabase.auth.signUp({
       email: newEmail,
       password: newPassword,
+    });
+  };
+
+  // Function to Sign In if already has account:
+  const signInWithEmail = async () => {
+    const { user, error } = await supabase.auth.signIn({
+      email: "example@email.com",
+      password: "example-password",
     });
   };
 

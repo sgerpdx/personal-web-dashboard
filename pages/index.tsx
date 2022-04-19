@@ -2,7 +2,7 @@ import React, { useState, useEffect, SyntheticEvent } from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
 import supabase from "../utils/supabase/supabaseClient";
-
+import { DateDisplayItem } from "../data/interfaces";
 import Image from "next/image";
 
 // React Icons
@@ -21,10 +21,14 @@ import ContentList from "../components/content/ContentList";
 import DaisyNavbar from "../components/daisyUI/DaisyNavbar";
 import AccountAccess from "../components/userAccess/AccountAccess";
 
+//
+const user = supabase.auth.user();
+const session = supabase.auth.session();
+const date: Date = new Date();
+
 const Home: NextPage = () => {
   const [loading, setLoading] = useState(true);
-  const [data, setData] = useState({});
-  const user = supabase.auth.user();
+  const [userId, setUserId] = useState("");
 
   //
   const handleSignUp = () => {
@@ -43,6 +47,15 @@ const Home: NextPage = () => {
   useEffect(() => {
     setLoading(false);
   }, []);
+
+  //monitor the user
+  useEffect(() => {
+    if (session) setUserId(session.user.id);
+    setLoading(false);
+    console.log(user);
+    console.log("///UID:", userId);
+    console.log("***session:", session);
+  }, [user, session]);
 
   if (loading)
     return (
@@ -88,8 +101,8 @@ const Home: NextPage = () => {
             starship Enterprise a century after the original series;
           </p> */}
         </section>
-        <section >
-          <AccountAccess />
+        <section>
+          <AccountAccess userId={userId} date={date} />
         </section>
       </main>
 
