@@ -21,6 +21,7 @@ import Clock from "../components/Clock";
 import ContentList from "../components/content/ContentList";
 import DaisyNavbar from "../components/daisyUI/DaisyNavbar";
 import AccountAccess from "../components/userAccess/AccountAccess";
+import AccessUI from "../components/userAccess/AccessForm";
 
 //
 // const user = supabase.auth.user();
@@ -56,7 +57,7 @@ const Home: NextPage = () => {
 
   // Basic app-mounting logic:
   useEffect(() => {
-    // Jitsu Model:
+    // Jitsu Model for Setting User:
     supabase.auth.onAuthStateChange(async (event, session) => {
       let newUser = supabase.auth.user();
       if (newUser) {
@@ -81,10 +82,11 @@ const Home: NextPage = () => {
 
     //   )
     console.log(user);
-    console.log("ID:", userId);
+
     // console.log("///UID:", userId);
     // console.log("***session:", session);
     if (user) setUserId(user.id || "789JKL");
+    console.log("ID:", userId);
   }, [user]);
 
   if (loading)

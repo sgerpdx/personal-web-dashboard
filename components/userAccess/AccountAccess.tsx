@@ -7,6 +7,7 @@ import { addUser } from "../../utils/databaseAPI";
 //
 // Supabase Auth Functions
 import { signOut } from "../../utils/supabase/supabase";
+import AccessForm from "./AccessForm";
 
 export default function AccountAccess({
   userId,
@@ -18,7 +19,7 @@ export default function AccountAccess({
   //
   const [authUser, setAuthUser] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [loginStatus, setLoginStatus] = useState<string>("");
+  const [isExistingUser, setIsExistingUser] = useState(false);
   const [signUpInfo, setSignUpInfo] = useState<SignUpItem>({
     email: "",
     password: "",
@@ -38,19 +39,20 @@ export default function AccountAccess({
 
   const handleInfoUpdate = () => {};
 
-//   useEffect(() => {
-//     addUser({
-//       id: userProfile.id,
-//       moniker: userProfile.moniker,
-//       timezone: userProfile.timezone,
-//       lang: userProfile.lang,
-//     });
-//   }, [userId]);
+  //   useEffect(() => {
+  //     addUser({
+  //       id: userProfile.id,
+  //       moniker: userProfile.moniker,
+  //       timezone: userProfile.timezone,
+  //       lang: userProfile.lang,
+  //     });
+  //   }, [userId]);
 
   return (
     <div className="bg-frappetan text-darkmaroon">
       <h1>Login for Human</h1>
-      <SignUpForm info={signUpInfo} setVariable={setSignUpInfo} />
+      {/* <SignUpForm info={signUpInfo} setVariable={setSignUpInfo} /> */}
+      <AccessForm info={signUpInfo} setVariable={setSignUpInfo} />
       <UserProfileForm
         userId={userId}
         timezone={currentTimezone}
