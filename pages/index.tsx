@@ -1,33 +1,69 @@
 import React, { useState, useEffect, SyntheticEvent } from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
-//import styles from "../styles/Home.module.css";
+import supabase from "../utils/supabase/supabaseClient";
+
+import { User } from "@supabase/gotrue-js";
 
 // React Icons
-import { BsFillSunFill, BsGithub } from "react-icons/bs";
-import { BiMenu, BiGlobe, BiMoon } from "react-icons/bi";
-import { VscGlobe } from "react-icons/vsc";
+import { BsGithub } from "react-icons/bs";
 
-// Utils function imports
-import { addFetchBookmarks } from "../utils/databaseAPI";
-
-// Interfaces
+// Supabase Auth Functions
+import { signOut } from "../utils/supabase/supabase";
 
 // Components
 import Clock from "../components/Clock";
 import ContentList from "../components/content/ContentList";
-import DaisyModal from "../components/daisyUI/DaisyModal";
 import DaisyNavbar from "../components/daisyUI/DaisyNavbar";
-import DisplayTest from "../components/inactive/DisplayTest";
+import AccountAccess from "../components/userAccess/AccountAccess";
+
+const date: Date = new Date();
 
 const Home: NextPage = () => {
   const [loading, setLoading] = useState(true);
+  const [userId, setUserId] = useState("");
+
+  // Per Jitsu Next/Supabase Middleware Model:
+  const [user, setUser] = useState<User | undefined>(
+    supabase.auth.user() || undefined
+  );
+
+  //
+  const handleSignOut = () => {
+    signOut();
+  };
+
+  //
+  supabase.auth.onAuthStateChange((event, session) => {
+    console.log(event, session);
+  });
 
   // Basic app-mounting logic:
   useEffect(() => {
+    // Jitsu Model for Setting User:
+    supabase.auth.onAuthStateChange(async (event, session) => {
+      let newUser = supabase.auth.user();
+      if (newUser) {
+        await fetch("/api/auth/set", {
+          method: "POST",
+          headers: new Headers({ "Content-Type": "application/json" }),
+          credentials: "same-origin",
+          body: JSON.stringify({ event, session }),
+        });
+      }
+      setUser(supabase.auth.user() || undefined);
+    });
+
+    //
     setLoading(false);
   }, []);
+
+  //monitor the user
+  useEffect(() => {
+    console.log(user);
+    if (user) setUserId(user.id || "789JKL");
+    console.log("ID:", userId);
+  }, [user, userId]);
 
   if (loading)
     return (
@@ -45,41 +81,11 @@ const Home: NextPage = () => {
         <link rel="icon" href="/cube_360-gs-24.png" />
       </Head>
 
-      {/* <header className="headerLight">
-        <figure>☆</figure>
-        <h1 className="font-autobus text-2xl">App Title or Greeting</h1>
-        <div>
-          <BiMenu />
-        </div> */}
-      {/* <div>
-          <label htmlFor="my-modal" className="cursor-pointer relative">
-            <BiMenu />
-          </label>
-          <input type="checkbox" id="my-modal" className="modal-toggle" />
-          <div className="modal">
-            <div className="modal-box w-32">
-              <div className="modal-action">
-                <ul className="menu bg-base-100 w-32">
-                  <li>
-                    <label htmlFor="my-modal">guide</label>
-                  </li>
-                  <li>
-                    <label htmlFor="my-modal">dev log</label>
-                  </li>
-                  <li>
-                    <label htmlFor="my-modal">about</label>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div> */}
-      {/* </header> */}
       <header className="sticky top-0 z-50 w-full">
         <DaisyNavbar />
       </header>
 
-      <main className="relative mx-auto overflow-auto md:max-w-7xl">
+      <main className="relative mx-auto overflow-auto md:max-w-7xl pb-32">
         <section className="bg-gray-300 flex justify-center">
           <Clock />
         </section>
@@ -87,16 +93,12 @@ const Home: NextPage = () => {
           <ContentList />
         </section>
         <section>
-          {/* <p>
-            The Star Trek canon includes the Original Series, nine spin-off
-            television series, and a film franchise; further adaptations also
-            exist in several media. After the conclusion of the Original Series,
-            the adventures of its characters continued in the 22-episode Star
-            Trek: The Animated Series and six feature films. A television
-            revival beginning in the 1980s saw three sequel series and a
-            prequel: Star Trek: The Next Generation, following the crew of a new
-            starship Enterprise a century after the original series;
-          </p> */}
+          <div>
+            <button onClick={handleSignOut}>logout</button>
+          </div>
+        </section>
+        <section>
+          <AccountAccess userId={userId} date={date} />
         </section>
       </main>
 

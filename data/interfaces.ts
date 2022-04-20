@@ -55,3 +55,15 @@ export interface DateDisplayItem {
   timeZoneName?: string;
   offsetUTC: number;
 }
+
+export interface SignUpItem {
+  email: string;
+  password: string;
+}
+
+export interface UserProfile {
+  id: string;
+  moniker: string;
+  timezone: number;
+  lang: string;
+}
