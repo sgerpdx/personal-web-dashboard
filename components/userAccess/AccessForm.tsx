@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import { BsGithub } from "react-icons/bs";
 import supabase from "../../utils/supabase/supabaseClient";
 import { useFormik } from "formik";
-import { signUpWithEmail, signOut } from "../../utils/supabase/supabase";
 import { SignUpItem, UserProfile } from "../../data/interfaces";
 
 export default function AccessForm({
@@ -64,9 +62,6 @@ export default function AccessForm({
   //
   return (
     <>
-      <div className="bg-hornetgrape text-charlotteteal">
-        {isExistingUser ? <h1>Sign In</h1> : <h1>Sign Up</h1>}
-      </div>
       <div className="formDivAccess">
         {isExistingUser ? (
           <h1 className="text-lg font-bold">User Sign-In:</h1>

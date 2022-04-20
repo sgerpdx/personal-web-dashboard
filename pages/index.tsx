@@ -2,30 +2,21 @@ import React, { useState, useEffect, SyntheticEvent } from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
 import supabase from "../utils/supabase/supabaseClient";
-import { DateDisplayItem } from "../data/interfaces";
-import Image from "next/image";
+
 import { User } from "@supabase/gotrue-js";
 
 // React Icons
 import { BsGithub } from "react-icons/bs";
 
 // Supabase Auth Functions
-import {
-  signUpWithEmail,
-  signInWithEmail,
-  signOut,
-} from "../utils/supabase/supabase";
+import { signOut } from "../utils/supabase/supabase";
 
 // Components
 import Clock from "../components/Clock";
 import ContentList from "../components/content/ContentList";
 import DaisyNavbar from "../components/daisyUI/DaisyNavbar";
 import AccountAccess from "../components/userAccess/AccountAccess";
-import AccessUI from "../components/userAccess/AccessForm";
 
-//
-// const user = supabase.auth.user();
-// const session = supabase.auth.session();
 const date: Date = new Date();
 
 const Home: NextPage = () => {
@@ -38,14 +29,6 @@ const Home: NextPage = () => {
   );
 
   //
-  const handleSignUp = () => {
-    signUpWithEmail();
-  };
-
-  const handleSignIn = () => {
-    signInWithEmail();
-  };
-
   const handleSignOut = () => {
     signOut();
   };
@@ -77,14 +60,7 @@ const Home: NextPage = () => {
 
   //monitor the user
   useEffect(() => {
-    //
-    // supabase.auth.onAuthStateChange(
-
-    //   )
     console.log(user);
-
-    // console.log("///UID:", userId);
-    // console.log("***session:", session);
     if (user) setUserId(user.id || "789JKL");
     console.log("ID:", userId);
   }, [user]);
@@ -118,20 +94,8 @@ const Home: NextPage = () => {
         </section>
         <section>
           <div>
-            <button onClick={handleSignUp}>signup</button>
-            <button onClick={handleSignIn}>login</button>
             <button onClick={handleSignOut}>logout</button>
           </div>
-          {/* <p>
-            The Star Trek canon includes the Original Series, nine spin-off
-            television series, and a film franchise; further adaptations also
-            exist in several media. After the conclusion of the Original Series,
-            the adventures of its characters continued in the 22-episode Star
-            Trek: The Animated Series and six feature films. A television
-            revival beginning in the 1980s saw three sequel series and a
-            prequel: Star Trek: The Next Generation, following the crew of a new
-            starship Enterprise a century after the original series;
-          </p> */}
         </section>
         <section>
           <AccountAccess userId={userId} date={date} />

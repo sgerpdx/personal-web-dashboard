@@ -25,15 +25,6 @@ export default function UserProfileForm({
 }) {
   const [currentUID, setCurrentUID] = useState<string>("abc123");
 
-  //
-  // supabase.auth.onAuthStateChange((event, session) => {
-  //   const currentSession = session ?? null;
-  //   if (currentSession) {
-  //     setCurrentUID(session.user.id);
-  //   }
-  //   setCurrentUID(user.id);
-  // });
-
   // Formik handler and submission framework:
   // This should only be active if the user has not yet created an account, i.e. they have just signed up for the first time:
   const formik = useFormik({
@@ -67,18 +58,9 @@ export default function UserProfileForm({
     },
   });
 
-  //   useEffect(() => {
-  //     addUser({
-  //       id: userProfile.id,
-  //       moniker: userProfile.moniker,
-  //       timezone: userProfile.timezone,
-  //       lang: userProfile.lang,
-  //     });
-  //   }, [userId]);
-
   return (
     <>
-      <div className="formDiv">
+      <div className="formDivAccess">
         <h2 className="text-lg font-bold">User Profile:</h2>
         <form
           onSubmit={formik.handleSubmit}
@@ -93,7 +75,7 @@ export default function UserProfileForm({
               type="text"
               id="moniker"
               name="moniker"
-              placeholder="enter username here"
+              placeholder="enter here"
               className="input border border-solid border-darkmaroon text-customblack rounded-none w-64 h-8 m-2"
               onChange={formik.handleChange}
               value={formik.values.moniker}

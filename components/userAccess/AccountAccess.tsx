@@ -1,12 +1,6 @@
 import React, { useState, useEffect } from "react";
-import SignUpForm from "./SignUpForm";
 import UserProfileForm from "./UserProfileForm";
 import { SignUpItem, UserProfile } from "../../data/interfaces";
-import { addUser } from "../../utils/databaseAPI";
-
-//
-// Supabase Auth Functions
-import { signOut } from "../../utils/supabase/supabase";
 import AccessForm from "./AccessForm";
 
 export default function AccountAccess({
@@ -16,14 +10,13 @@ export default function AccountAccess({
   userId: string;
   date: Date;
 }) {
-  //
-  const [authUser, setAuthUser] = useState({});
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isExistingUser, setIsExistingUser] = useState(false);
+  // State Variables -----
+  // For Supabase Auth:
   const [signUpInfo, setSignUpInfo] = useState<SignUpItem>({
     email: "",
     password: "",
   });
+  // For Database Profile:
   const [userProfile, setUserProfile] = useState<UserProfile>({
     id: "",
     moniker: "",
@@ -31,27 +24,10 @@ export default function AccountAccess({
     lang: "",
   });
   const currentTimezone: number = date.getTimezoneOffset() / 60;
-
-  //
-  const handleSignOut = () => {
-    signOut();
-  };
-
-  const handleInfoUpdate = () => {};
-
-  //   useEffect(() => {
-  //     addUser({
-  //       id: userProfile.id,
-  //       moniker: userProfile.moniker,
-  //       timezone: userProfile.timezone,
-  //       lang: userProfile.lang,
-  //     });
-  //   }, [userId]);
+  //const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
     <div className="bg-frappetan text-darkmaroon">
-      <h1>Login for Human</h1>
-      {/* <SignUpForm info={signUpInfo} setVariable={setSignUpInfo} /> */}
       <AccessForm info={signUpInfo} setVariable={setSignUpInfo} />
       <UserProfileForm
         userId={userId}
