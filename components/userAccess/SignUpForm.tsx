@@ -4,6 +4,8 @@ import { useFormik } from "formik";
 import { signUpWithEmail, signOut } from "../../utils/supabase/supabase";
 import { SignUpItem, UserProfile } from "../../data/interfaces";
 
+
+
 export default function SignUpForm({
   info,
   setVariable,

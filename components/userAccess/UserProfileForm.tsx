@@ -1,7 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import supabase from "../../utils/supabase/supabaseClient";
 import { useFormik } from "formik";
 import { addUser } from "../../utils/databaseAPI";
+
+//
+const user = supabase.auth.user();
+const session = supabase.auth.session();
 
 export default function UserProfileForm({
   userId,
@@ -19,11 +23,22 @@ export default function UserProfileForm({
     }>
   >;
 }) {
+  const [currentUID, setCurrentUID] = useState<string>("abc123");
+
+  //
+  // supabase.auth.onAuthStateChange((event, session) => {
+  //   const currentSession = session ?? null;
+  //   if (currentSession) {
+  //     setCurrentUID(session.user.id);
+  //   }
+  //   setCurrentUID(user.id);
+  // });
+
   // Formik handler and submission framework:
   // This should only be active if the user has not yet created an account, i.e. they have just signed up for the first time:
   const formik = useFormik({
     initialValues: {
-      id: userId,
+      id: "",
       moniker: "",
       timezone: timezone,
       lang: "en",
@@ -33,7 +48,7 @@ export default function UserProfileForm({
 
       // Update state:
       setVariable({
-        id: userId,
+        id: userId || currentUID,
         moniker: formik.values.moniker,
         timezone: timezone,
         lang: "en",
@@ -41,7 +56,7 @@ export default function UserProfileForm({
 
       // Add the user's info to the database:
       addUser({
-        id: userId,
+        id: userId || currentUID,
         moniker: formik.values.moniker,
         timezone: timezone,
         lang: "en",
@@ -53,13 +68,13 @@ export default function UserProfileForm({
   });
 
   //   useEffect(() => {
-//     addUser({
-//       id: userProfile.id,
-//       moniker: userProfile.moniker,
-//       timezone: userProfile.timezone,
-//       lang: userProfile.lang,
-//     });
-//   }, [userId]);
+  //     addUser({
+  //       id: userProfile.id,
+  //       moniker: userProfile.moniker,
+  //       timezone: userProfile.timezone,
+  //       lang: userProfile.lang,
+  //     });
+  //   }, [userId]);
 
   return (
     <>

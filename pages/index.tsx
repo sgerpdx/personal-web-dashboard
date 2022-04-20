@@ -4,6 +4,7 @@ import Head from "next/head";
 import supabase from "../utils/supabase/supabaseClient";
 import { DateDisplayItem } from "../data/interfaces";
 import Image from "next/image";
+import { User } from "@supabase/gotrue-js";
 
 // React Icons
 import { BsGithub } from "react-icons/bs";
@@ -22,13 +23,18 @@ import DaisyNavbar from "../components/daisyUI/DaisyNavbar";
 import AccountAccess from "../components/userAccess/AccountAccess";
 
 //
-const user = supabase.auth.user();
-const session = supabase.auth.session();
+// const user = supabase.auth.user();
+// const session = supabase.auth.session();
 const date: Date = new Date();
 
 const Home: NextPage = () => {
   const [loading, setLoading] = useState(true);
   const [userId, setUserId] = useState("");
+
+  // Per Jitsu Next/Supabase Middleware Model:
+  const [user, setUser] = useState<User | undefined>(
+    supabase.auth.user() || undefined
+  );
 
   //
   const handleSignUp = () => {
@@ -43,19 +49,43 @@ const Home: NextPage = () => {
     signOut();
   };
 
+  //
+  supabase.auth.onAuthStateChange((event, session) => {
+    console.log(event, session);
+  });
+
   // Basic app-mounting logic:
   useEffect(() => {
+    // Jitsu Model:
+    supabase.auth.onAuthStateChange(async (event, session) => {
+      let newUser = supabase.auth.user();
+      if (newUser) {
+        await fetch("/api/auth/set", {
+          method: "POST",
+          headers: new Headers({ "Content-Type": "application/json" }),
+          credentials: "same-origin",
+          body: JSON.stringify({ event, session }),
+        });
+      }
+      setUser(supabase.auth.user() || undefined);
+    });
+
+    //
     setLoading(false);
   }, []);
 
   //monitor the user
   useEffect(() => {
-    if (session) setUserId(session.user.id);
-    setLoading(false);
+    //
+    // supabase.auth.onAuthStateChange(
+
+    //   )
     console.log(user);
-    console.log("///UID:", userId);
-    console.log("***session:", session);
-  }, [user, session]);
+    console.log("ID:", userId);
+    // console.log("///UID:", userId);
+    // console.log("***session:", session);
+    if (user) setUserId(user.id || "789JKL");
+  }, [user]);
 
   if (loading)
     return (
