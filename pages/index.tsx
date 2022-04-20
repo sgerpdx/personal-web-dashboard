@@ -63,7 +63,7 @@ const Home: NextPage = () => {
     console.log(user);
     if (user) setUserId(user.id || "789JKL");
     console.log("ID:", userId);
-  }, [user]);
+  }, [user, userId]);
 
   if (loading)
     return (
