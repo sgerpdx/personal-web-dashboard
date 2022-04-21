@@ -17,10 +17,10 @@ export async function getFetchBookmarks(url = `${databaseURL}/bookmarks`) {
 }
 
 export async function getBookmarksByUser(
-  url = `${databaseURL}/bookmarks`,
+  url,
   userId
 ) {
-  const response = await fetch(`${url}/${userId}`, {
+  const response = await fetch(`${url}/bookmarks/${userId}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

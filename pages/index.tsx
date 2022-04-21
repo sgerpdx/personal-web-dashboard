@@ -31,6 +31,8 @@ const Home: NextPage = () => {
   //
   const handleSignOut = () => {
     signOut();
+    // Arbitrary userId so that data fetch does not pull all users' data in:
+    setUserId("abc-135792468");
   };
 
   //

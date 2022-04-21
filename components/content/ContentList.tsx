@@ -6,7 +6,7 @@ import { RiBookmarkFill, RiNewspaperFill } from "react-icons/ri";
 import { IoMdCreate, IoMdRefresh } from "react-icons/io";
 
 // Fetching
-import { getFetchBookmarks } from "../../utils/databaseAPI";
+import { getBookmarksByUser } from "../../utils/databaseAPI";
 import { getNews } from "../../utils/externalAPI";
 
 // Interfaces
@@ -37,10 +37,11 @@ export default function ContentList({
   });
   const [bookmarkData, setBookmarkData] = useState<Array<BookmarkItem>>([]);
   const [newsData, setNewsData] = useState<Array<NewsResponse>>([]);
+  const databaseURL: string = "https://agile-refuge-37723.herokuapp.com/api/v1";
 
   // Reload bookmarks list (invoke to update when new bookmark is saved)
   const handleBookmarksRefresh = async () => {
-    const savedBookmarks = await getFetchBookmarks();
+    const savedBookmarks = await getBookmarksByUser(databaseURL, userId);
     setBookmarkData(savedBookmarks);
     setCurrentBookmark({
       bookmarkTitle: "",
@@ -48,11 +49,17 @@ export default function ContentList({
     });
   };
 
+  const clearBookmarksData = () => {
+    setBookmarkData([]);
+  };
+
   // Load bookmarks (db) and news(API) from server on component mount
   useEffect(() => {
+    // Clear stored bookmarks
+    clearBookmarksData();
     // Fetch bookmarks
     async function loadBookmarks() {
-      const savedBookmarks = await getFetchBookmarks();
+      const savedBookmarks = await getBookmarksByUser(databaseURL, userId);
       setBookmarkData(savedBookmarks);
     }
     // Fetch news -- keep inactive during dev b/c request limits
@@ -66,9 +73,8 @@ export default function ContentList({
 
   // Dev logging to keep track of server responses -- delete before production
   useEffect(() => {
-    // console.log("bookmarkData:", bookmarkData);
-    // console.log("newsData:", newsData);
-  }, [bookmarkData, newsData]);
+    handleBookmarksRefresh();
+  }, [userId]);
 
   return (
     <main className="flex flex-col align-middle md:flex-row md:justify-center w-11/12 md:w-4/5 h-max">
