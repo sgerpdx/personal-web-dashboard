@@ -31,6 +31,7 @@ Acceptance tests: Ensure that the UI design retains a visual coherence in geomet
 
 ### UI Wireframe:  
 
+![UI Wireframe](https://qzwigavpavbkysyiccyk.supabase.co/storage/v1/object/sign/dashboard-assets/UI-wireframe_web-dashboard.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJkYXNoYm9hcmQtYXNzZXRzL1VJLXdpcmVmcmFtZV93ZWItZGFzaGJvYXJkLnBuZyIsImlhdCI6MTY1MDU3OTk1NCwiZXhwIjoxOTY1OTM5OTU0fQ.-g15BrE9jWFJbBgIgeYoja8wLA19gmHQ9C6c9aFFsrY)
 
 # Software Requirements  
 
