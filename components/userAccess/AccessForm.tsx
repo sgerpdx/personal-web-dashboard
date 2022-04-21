@@ -116,15 +116,27 @@ export default function AccessForm({
           </div>
         </form>
         <nav>
-          <p>
-            already signed-up?{" "}
-            <span
-              onClick={handleAccessToggle}
-              className="cursor-pointer font-bold"
-            >
-              login
-            </span>
-          </p>
+          {isExistingUser ? (
+            <p>
+              already logged in?{" "}
+              <span
+                onClick={handleAccessToggle}
+                className="cursor-pointer font-bold"
+              >
+                sign up
+              </span>
+            </p>
+          ) : (
+            <p>
+              already signed up?{" "}
+              <span
+                onClick={handleAccessToggle}
+                className="cursor-pointer font-bold"
+              >
+                login
+              </span>
+            </p>
+          )}
         </nav>
       </div>
     </>

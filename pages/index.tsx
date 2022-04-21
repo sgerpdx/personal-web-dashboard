@@ -21,7 +21,7 @@ const date: Date = new Date();
 
 const Home: NextPage = () => {
   const [loading, setLoading] = useState(true);
-  const [userId, setUserId] = useState("");
+  const [userId, setUserId] = useState("abc-135792468");
 
   // Per Jitsu Next/Supabase Middleware Model:
   const [user, setUser] = useState<User | undefined>(
