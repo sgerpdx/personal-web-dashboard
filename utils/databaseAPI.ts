@@ -16,8 +16,8 @@ export async function getFetchBookmarks(url = `${databaseURL}/bookmarks`) {
   return response.json();
 }
 
-export async function getSingleBookmark(url = `${databaseURL}/bookmarks/6`) {
-  const response = await fetch(`${url}`, {
+export async function getBookmarksByUser(url, userId) {
+  const response = await fetch(`${url}/bookmarks/${userId}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -28,31 +28,49 @@ export async function getSingleBookmark(url = `${databaseURL}/bookmarks/6`) {
   return response.json();
 }
 
-export async function addFetchBookmarks(
-  url = `${databaseURL}/bookmarks`,
-  data = {
-    bookmarkTitle: "The Bowling Club",
-    bookmarkURL: "https://www.redbeardbowling.io/",
-    dateCreated: "2022-04-08",
-  }
-) {
-  const response = await fetch(url, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      //'Content-Type': 'application/x-www-form-urlencoded'
-    },
-    body: JSON.stringify(data),
-  });
-  console.log("Fetch Test Res:", response.json);
-  return response.json();
-}
+// This one needs to be made dynamic but is not being used yet:
+// export async function getSingleBookmark(url = `${databaseURL}/bookmarks/6`) {
+//   const response = await fetch(`${url}`, {
+//     method: "GET",
+//     headers: {
+//       "Content-Type": "application/json",
+//       //'Content-Type': 'application/x-www-form-urlencoded'
+//     },
+//   });
+//   console.log("Fetch Test Res:", response.json);
+//   return response.json();
+// }
 
-export async function saveBookmark(bookmark: BookmarkItem, date: string) {
+// export async function addFetchBookmarks(
+//   url = `${databaseURL}/bookmarks`,
+//   data = {
+//     bookmarkTitle: "The Bowling Club",
+//     bookmarkURL: "https://www.redbeardbowling.io/",
+//     dateCreated: "2022-04-08",
+//   }
+// ) {
+//   const response = await fetch(url, {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//       //'Content-Type': 'application/x-www-form-urlencoded'
+//     },
+//     body: JSON.stringify(data),
+//   });
+//   console.log("Fetch Test Res:", response.json);
+//   return response.json();
+// }
+
+export async function saveBookmark(
+  bookmark: BookmarkItem,
+  date: string,
+  userId: string
+) {
   const data = {
     bookmarkTitle: bookmark.bookmarkTitle,
     bookmarkURL: bookmark.bookmarkURL,
     dateCreated: date,
+    userId: userId,
   };
   const response = await fetch(`${databaseURL}/bookmarks`, {
     method: "POST",
@@ -114,6 +132,18 @@ export async function addUser(user: UserProfile) {
       //'Content-Type': 'application/x-www-form-urlencoded'
     },
     body: JSON.stringify(data),
+  });
+  console.log("Fetch Test Res:", response.json);
+  return response.json();
+}
+
+export async function getUserById(url, userId) {
+  const response = await fetch(`${url}/users/${userId}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      //'Content-Type': 'application/x-www-form-urlencoded'
+    },
   });
   console.log("Fetch Test Res:", response.json);
   return response.json();

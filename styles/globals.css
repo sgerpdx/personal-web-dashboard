@@ -55,7 +55,7 @@
   }
 
   .formDivAccess {
-    @apply flex flex-col justify-center align-middle p-4 h-64;
+    @apply flex flex-col justify-center align-middle p-4 w-96 h-64;
   }
 
   .collapseDivOpen {

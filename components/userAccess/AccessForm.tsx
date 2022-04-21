@@ -64,9 +64,9 @@ export default function AccessForm({
     <>
       <div className="formDivAccess">
         {isExistingUser ? (
-          <h1 className="text-lg font-bold">User Sign-In:</h1>
+          <h1 className="text-lg font-bold">User Login:</h1>
         ) : (
-          <h1 className="text-lg font-bold">User Sign-Up:</h1>
+          <h1 className="text-lg font-bold">User Sign Up:</h1>
         )}
         <form
           onSubmit={formik.handleSubmit}
@@ -111,20 +111,32 @@ export default function AccessForm({
               className="btn bg-darkmaroon text-customwhite w-24 h-12"
               data-bs-dismiss=""
             >
-              {isExistingUser ? <p>Sign In</p> : <p>Sign Up</p>}
+              {isExistingUser ? <p>Login</p> : <p>Sign Up</p>}
             </button>
           </div>
         </form>
         <nav>
-          <p>
-            already signed-up?{" "}
-            <span
-              onClick={handleAccessToggle}
-              className="cursor-pointer font-bold"
-            >
-              login
-            </span>
-          </p>
+          {isExistingUser ? (
+            <p>
+              already logged in?{" "}
+              <span
+                onClick={handleAccessToggle}
+                className="cursor-pointer font-bold"
+              >
+                sign up
+              </span>
+            </p>
+          ) : (
+            <p>
+              already signed up?{" "}
+              <span
+                onClick={handleAccessToggle}
+                className="cursor-pointer font-bold"
+              >
+                login
+              </span>
+            </p>
+          )}
         </nav>
       </div>
     </>
