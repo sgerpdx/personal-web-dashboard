@@ -85,7 +85,7 @@ export default function ContentItem({
             );
           })}
         </div>
-        <div className="flex flex-col">
+        {/* <div className="flex flex-col">
           <div className="flex flex-row align-middle">
             <figure className="w-12 h-12 mx-2">
               <Image
@@ -115,7 +115,7 @@ export default function ContentItem({
           </div>
 
           <p className="captionText">published: 2004-05-06</p>
-        </div>
+        </div> */}
 
         <div className="flex flex-col">
           <div className="flex flex-row align-middle">

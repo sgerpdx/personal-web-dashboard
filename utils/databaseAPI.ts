@@ -16,10 +16,7 @@ export async function getFetchBookmarks(url = `${databaseURL}/bookmarks`) {
   return response.json();
 }
 
-export async function getBookmarksByUser(
-  url,
-  userId
-) {
+export async function getBookmarksByUser(url, userId) {
   const response = await fetch(`${url}/bookmarks/${userId}`, {
     method: "GET",
     headers: {
@@ -135,6 +132,18 @@ export async function addUser(user: UserProfile) {
       //'Content-Type': 'application/x-www-form-urlencoded'
     },
     body: JSON.stringify(data),
+  });
+  console.log("Fetch Test Res:", response.json);
+  return response.json();
+}
+
+export async function getUserById(url, userId) {
+  const response = await fetch(`${url}/users/${userId}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      //'Content-Type': 'application/x-www-form-urlencoded'
+    },
   });
   console.log("Fetch Test Res:", response.json);
   return response.json();

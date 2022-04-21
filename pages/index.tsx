@@ -2,6 +2,8 @@ import React, { useState, useEffect, SyntheticEvent } from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
 import supabase from "../utils/supabase/supabaseClient";
+import { getUserById } from "../utils/databaseAPI";
+import { UserProfile } from "../data/interfaces";
 
 import { User } from "@supabase/gotrue-js";
 
@@ -22,6 +24,12 @@ const date: Date = new Date();
 const Home: NextPage = () => {
   const [loading, setLoading] = useState(true);
   const [userId, setUserId] = useState("abc-135792468");
+  // const [userProfile, setUserProfile] = useState<UserProfile>({
+  //   id: "",
+  //   moniker: "",
+  //   timezone: 0,
+  //   lang: "",
+  // });
 
   // Per Jitsu Next/Supabase Middleware Model:
   const [user, setUser] = useState<User | undefined>(
@@ -63,8 +71,9 @@ const Home: NextPage = () => {
   //monitor the user
   useEffect(() => {
     console.log(user);
-    if (user) setUserId(user.id || "789JKL");
-    console.log("ID:", userId);
+    if (user) {
+      setUserId(user.id || "abc-135792468");
+    }
   }, [user, userId]);
 
   if (loading)
@@ -87,19 +96,21 @@ const Home: NextPage = () => {
         <DaisyNavbar />
       </header>
 
-      <main className="relative mx-auto overflow-auto md:max-w-7xl pb-32">
+      <main className="relative mx-auto overflow-auto md:max-w-7xl pb-32 flex flex-col justify-center align-middle">
         <section className="bg-gray-300 flex justify-center">
           <Clock />
         </section>
         <section className=" bg-gray-500 flex justify-center">
           <ContentList userId={userId} date={date} />
         </section>
-        <section>
+        <section className="py-4">
           <div>
-            <button onClick={handleSignOut}>logout</button>
+            <button className="btn bg-richorange w-24" onClick={handleSignOut}>
+              logout
+            </button>
           </div>
         </section>
-        <section>
+        <section className="flex flex-col justify-center align-middle">
           <AccountAccess userId={userId} date={date} />
         </section>
       </main>

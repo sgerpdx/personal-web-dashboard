@@ -27,7 +27,7 @@ export default function AccountAccess({
   //const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
-    <div className="bg-frappetan text-darkmaroon">
+    <div className="bg-frappetan text-darkmaroon w-96 flex flex-col justify-center align-middle">
       <AccessForm info={signUpInfo} setVariable={setSignUpInfo} />
       <UserProfileForm
         userId={userId}
