@@ -21,7 +21,13 @@ import ContentItem from "./ContentItem";
 import DataDisplay from "./DataDisplay";
 import FormItem from "./FormItem";
 
-export default function ContentList() {
+export default function ContentList({
+  userId,
+  date,
+}: {
+  userId: string;
+  date: Date;
+}) {
   //
   // ***State Variables***
   // Object variable for a bookmark to save to db -- currently unused but may need:
@@ -136,6 +142,7 @@ export default function ContentList() {
                         setVariable={setCurrentBookmark}
                         divStyle="formDiv"
                         dataBsDismiss="modal"
+                        userId={userId}
                       />
                       <div className="modal-action">
                         {/* <label

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useFormik } from "formik";
-import { saveBookmark } from "../../utils/databaseAPI";
+import { saveBookmark, getBookmarksByUser } from "../../utils/databaseAPI";
 import { BookmarkItem } from "../../data/interfaces";
 
 export default function FormItem({
@@ -8,6 +8,7 @@ export default function FormItem({
   setVariable,
   divStyle,
   dataBsDismiss,
+  userId,
 }: {
   formLabel: string;
   setVariable: React.Dispatch<
@@ -15,11 +16,12 @@ export default function FormItem({
   >;
   divStyle: string;
   dataBsDismiss: string;
+  userId: string;
 }) {
   const date: string = "2022-04-09";
   const stringValueReset = (str: string) => {
-    return str = '';
-  }
+    return (str = "");
+  };
   // Define formik with specific values per the props from ContentList
   const formik = useFormik({
     initialValues: {
@@ -34,7 +36,8 @@ export default function FormItem({
       });
       saveBookmark(
         { bookmarkTitle: formik.values.title, bookmarkURL: formik.values.text },
-        date
+        date,
+        userId
       );
       formik.values.title = "";
       formik.values.text = "";

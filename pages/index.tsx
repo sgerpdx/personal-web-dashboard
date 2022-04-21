@@ -90,7 +90,7 @@ const Home: NextPage = () => {
           <Clock />
         </section>
         <section className=" bg-gray-500 flex justify-center">
-          <ContentList />
+          <ContentList userId={userId} date={date} />
         </section>
         <section>
           <div>
