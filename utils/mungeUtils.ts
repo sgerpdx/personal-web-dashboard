@@ -1,7 +1,6 @@
-// function getNumStringLength(num: number) {
-//   return num.toString().length;
-// }
+//// Functions to format date and time (TODO: move to dateTimeUtils.js)
 
+// Returns a date in the format 'YYYY-MM-DD'
 export const formatDate = (date: Date) => {
   // Isolate the date constituents:
   let dateDay = date.getDay().toString();
@@ -16,16 +15,19 @@ export const formatDate = (date: Date) => {
   return `${dateYear}-${dateMonth}-${dateDay}`;
 };
 
+// Converts the hours 13...24 (24 hour clock) to 1...12 (PM)
 export const formatTwelveHour = (hour: number) => {
   if (hour > 12) hour -= 12;
   return hour;
 };
 
+// Returns a string with a zero at the start for numbers < 10
 export const padWithZero = (num: number) => {
   if (num < 10) return num.toString().padStart(2, "0");
   return num.toString();
 };
 
+// Returns the current time in the format 'HH:MM:SS [AM/PM]'
 // All of this could have been solved alternatively with regex and string splitting on the Date object -- look into later:
 export const formatTimeDisplay = (date: Date) => {
   // Format hour to twelve-hour clock and add zero to single digit:
@@ -49,3 +51,8 @@ export const formatTimeDisplay = (date: Date) => {
     amPM: morningEvening,
   };
 };
+
+// Returns the number of characters in a number
+function getNumStringLength(num: number) {
+  return num.toString().length;
+}

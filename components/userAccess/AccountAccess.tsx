@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import UserProfileForm from "./UserProfileForm";
 import { SignUpItem, UserProfile } from "../../data/interfaces";
 import AccessForm from "./AccessForm";

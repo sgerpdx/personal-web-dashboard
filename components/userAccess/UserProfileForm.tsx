@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import supabase from "../../utils/supabase/supabaseClient";
 import { useFormik } from "formik";
 import { addUser } from "../../utils/databaseAPI";

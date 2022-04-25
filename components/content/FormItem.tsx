@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useFormik } from "formik";
 import { saveBookmark, getBookmarksByUser } from "../../utils/databaseAPI";
-import { BookmarkItem } from "../../data/interfaces";
 
 export default function FormItem({
   formLabel,
@@ -18,10 +17,9 @@ export default function FormItem({
   dataBsDismiss: string;
   userId: string;
 }) {
+  // Locally-defined state variables
   const date: string = "2022-04-09";
-  const stringValueReset = (str: string) => {
-    return (str = "");
-  };
+
   // Define formik with specific values per the props from ContentList
   const formik = useFormik({
     initialValues: {

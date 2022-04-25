@@ -1,7 +1,6 @@
 import React, { useState, useEffect, SyntheticEvent } from "react";
 
 // React Icons
-import { BiRefresh } from "react-icons/bi";
 import { RiBookmarkFill, RiNewspaperFill } from "react-icons/ri";
 import { IoMdCreate, IoMdRefresh } from "react-icons/io";
 
@@ -10,11 +9,7 @@ import { getBookmarksByUser } from "../../utils/databaseAPI";
 import { getNews } from "../../utils/externalAPI";
 
 // Interfaces
-import {
-  BookmarkItem,
-  NewsResponse,
-  CollapseSettings,
-} from "../../data/interfaces";
+import { BookmarkItem, NewsResponse } from "../../data/interfaces";
 
 // Components
 import ContentItem from "./ContentItem";

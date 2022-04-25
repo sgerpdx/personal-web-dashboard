@@ -1,10 +1,5 @@
 import React from "react";
-import Link from "next/link";
 import { BookmarkItem } from "../../data/interfaces";
-
-// React Icons
-import { BiRefresh } from "react-icons/bi";
-import { IoMdCreate } from "react-icons/io";
 
 export default function DataDisplay({
   dataLabel,

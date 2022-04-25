@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from "react";
-import Image from "next/image";
 import { formatTimeDisplay } from "../utils/mungeUtils";
 import { extractDateInfo } from "../utils/dateTimeUtils";
 import { TimeItem, DateDisplayItem } from "../data/interfaces";
-import AndorianImg from "../public/shran.png";
 
 export default function Clock() {
-  // Variable stores a string containing date and time
-  const [currentDateTime, setCurrentDateTime] = useState<string>();
   const [clockDisplayObj, setClockDisplayObj] = useState<TimeItem>({
     hour: "",
     minute: "",
@@ -25,10 +21,6 @@ export default function Clock() {
   // Function to retrieve and format JS date object
   function setClock() {
     const newDateTime: Date = new Date();
-
-    // General date and time info (remove before production)
-    const dateTimeString: string = newDateTime.toString();
-    setCurrentDateTime(dateTimeString);
 
     // This handles hours > 12 and single-digit numbers returning formatted strings for hour/min/sec:
     const formattedTime: TimeItem = formatTimeDisplay(newDateTime);

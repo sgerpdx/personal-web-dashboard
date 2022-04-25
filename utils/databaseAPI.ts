@@ -1,9 +1,10 @@
-// This file contains CRUD-route access to the Dashboard Server for the purpose of interfacing with the app-native postgresSQL database
+//// This file contains CRUD-route access to the Dashboard Server for the purpose of interfacing with the app-native postgresSQL database
 import { BookmarkItem, UserProfile } from "../data/interfaces";
 
 const databaseURL: string = "https://agile-refuge-37723.herokuapp.com/api/v1";
 //const databaseURL: string = "http://localhost:3100/api/v1/";
 
+// Bookmark management
 export async function getFetchBookmarks(url = `${databaseURL}/bookmarks`) {
   const response = await fetch(url, {
     method: "GET",
@@ -117,7 +118,9 @@ export async function deleteBookmark(url = `${databaseURL}/bookmarks/7`) {
   return response.json();
 }
 
-// User Profile creation:
+// User management
+
+// Create user profile
 export async function addUser(user: UserProfile) {
   const data = {
     id: user.id,

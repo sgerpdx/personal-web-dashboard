@@ -1,4 +1,4 @@
-// Currently functions formatting time are located in: mungeUtils.ts
+//// Currently functions formatting time are located in: mungeUtils.ts
 
 import { DateDisplayItem } from "../data/interfaces";
 
@@ -35,6 +35,7 @@ const findById = (id: number, arr: Array<string>) => {
   return name;
 };
 
+// Returns an object including weekday and month names
 export const extractDateInfo = (date: Date) => {
   // Grab day by number and name:
   const day = date.getDay();
