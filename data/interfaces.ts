@@ -67,3 +67,7 @@ export interface UserProfile {
   timezone: number;
   lang: string;
 }
+
+// export interface FormikInput {
+//   //
+// }
