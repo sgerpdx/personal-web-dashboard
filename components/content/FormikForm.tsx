@@ -40,6 +40,8 @@ export default function FormikForm() {
 
   // Local state variables:
   let counter = 0;
+  //// NOTE: 'counter' exists specifically to help fill the value attribute of the input in the rendered form -- because this attribute is looking at formik's initialValues the syntax must take the form of 'formik.values.[value]' and the only way to grab that unique value while mapping is to identify it by its index in the target object (not its exact name, e.g. 'email' or 'textOne');
+  //// IMPLEMENTATION: in the setup for the mapped input div, the variable 'inputValue' is derived using Object.keys on formik's values with the index specified by the current value of 'counter' (0 to begin; incremented each time);
 
   // Formik for mapping -- wait this may not be possible with Formik
   const formik = useFormik({
@@ -72,6 +74,7 @@ export default function FormikForm() {
         <div>
           {formInputs.map((input) => {
             if (input.active) {
+              const inputValue = Object.keys(formik.values)[counter];
               const newInput = (
                 <div>
                   {" "}
@@ -85,7 +88,7 @@ export default function FormikForm() {
                     placeholder={placeholderText}
                     className={inputStyle}
                     onChange={formik.handleChange}
-                    value={formik.values[counter]}
+                    value={inputValue}
                   />
                 </div>
               );
