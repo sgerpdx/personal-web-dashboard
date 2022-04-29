@@ -39,11 +39,19 @@
   }
 
   .itemHeading {
-    @apply flex font-bold text-lg text-left bg-richorange text-customwhite;
+    @apply flex font-bold text-lg text-left;
+  }
+
+  .itemHeadingBookmarks {
+    @apply flex font-bold text-lg text-left  text-driftwood;
+  }
+
+  .bylineText {
+    @apply italic bg-frappetan text-right;
   }
 
   .captionText {
-    @apply italic;
+    @apply italic bg-driftwood text-customwhite text-right;
   }
 
   .externalLink {
