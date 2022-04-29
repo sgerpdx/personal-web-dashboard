@@ -1,42 +1,65 @@
-import React from "react";
+//// This component is intended as a reusable/universal form that can be used for either bookmarks or login -- HOWEVER due to formik's 'formik.values.[___]' syntax it seems that the form setup needs to be hardcoded specifically for each use case;
+//// Therefore -- this file is currently not being used (see FormItem or AccessForm instead).
+import React, { useState } from "react";
+import supabase from "../../utils/supabase/supabaseClient";
 import { useFormik } from "formik";
+import { SignUpItem } from "../../data/interfaces";
 
-export default function FormikForm() {
-  // Mock props:
-  const formLabel = "Demographic Information";
-  const inputQuantity = 3;
-  const formStyle = "formStyle";
-  const inputStyle = "inputStyle";
-  const placeholderText = "enter here";
+export default function FormikForm({
+  formLabel,
+  formStyle,
+  inputStyle,
+  placeholderText,
+  formInputs,
+  userInfo,
+  setVariable,
+  version,
+}: {
+  formLabel: string;
+  formStyle: string;
+  inputStyle: string;
+  placeholderText: string;
+  formInputs: {
+    label: string;
+    keyword: string;
+    type: string;
+    active: boolean;
+  }[];
+  userInfo: SignUpItem;
+  setVariable: React.Dispatch<
+    React.SetStateAction<{ email: string; password: string }>
+  >;
+  version: string;
+}) {
+  // Local state variables:
+  const [isExistingUser, setIsExistingUser] = useState(false);
+  //
+  const handleAccessToggle = () => {
+    setIsExistingUser(!isExistingUser);
+  };
 
-  // Input-specific props as single data array to map through
-  // Schema is that indices 0 and 1 are email and password, 2-3 are text
-  const formInputs = [
-    {
-      label: "Email Address",
-      keyword: "email",
-      type: "email",
-      active: true,
-    },
-    {
-      label: "Password",
-      keyword: "password",
-      type: "password",
-      active: true,
-    },
-    {
-      label: "Page Title",
-      keyword: "title",
-      type: "text",
-      active: false,
-    },
-    {
-      label: "Page URL",
-      keyword: "url",
-      type: "text",
-      active: false,
-    },
-  ];
+  // Supabase Auth Function to Sign Up:
+  const signUpWithEmail = async (newEmail: string, newPassword: string) => {
+    const { user, session, error } = await supabase.auth.signUp({
+      email: newEmail,
+      password: newPassword,
+    });
+  };
+
+  // Function to Sign In if already has account:
+  const signInWithEmail = async (newEmail: string, newPassword: string) => {
+    const { user, error } = await supabase.auth.signIn({
+      email: newEmail,
+      password: newPassword,
+    });
+  };
+
+  //
+  const submitSupabaseAuth = (email: string, password: string) => {
+    isExistingUser
+      ? signInWithEmail(email, password)
+      : signUpWithEmail(email, password);
+  };
 
   // Local state variables:
   let counter = 0;
@@ -56,6 +79,16 @@ export default function FormikForm() {
 
       // Call whatever database or useState setter functions need to be invoved with the Formik values, e.g. saveBookmark, setVariable (various) etc.
 
+      // setVariable
+      if (version === "user") {
+        setVariable({
+          email: formik.values.email,
+          password: formik.values.password,
+        });
+        // Supabase signup/signin
+        submitSupabaseAuth(formik.values.email, formik.values.password);
+      }
+
       // Reset form values on submit (can call initialValues?)
       formik.values.email = "";
       formik.values.password = "";
@@ -66,7 +99,11 @@ export default function FormikForm() {
 
   return (
     <div className={formStyle}>
-      <h2 className="text-lg font-bold">{formLabel}</h2>
+      {isExistingUser ? (
+        <h1 className="text-lg font-bold">User Login:</h1>
+      ) : (
+        <h1 className="text-lg font-bold">{formLabel}:</h1>
+      )}
       <form
         onSubmit={formik.handleSubmit}
         className="flex flex-col justify-center align-middle"
@@ -74,9 +111,12 @@ export default function FormikForm() {
         <div>
           {formInputs.map((input) => {
             if (input.active) {
-              const inputValue = Object.keys(formik.values)[counter];
+              const inputValue = Object.values(formik.values)[counter];
+              //const inputKey = Object.keys(formik.values)[counter];
+              console.log("FV:", formik.values);
+              //const inputValue = formik.values.;
               const newInput = (
-                <div>
+                <div key={Math.random()}>
                   {" "}
                   <label className="px-4" htmlFor="title">
                     {input.label}:
@@ -104,10 +144,33 @@ export default function FormikForm() {
             className="btn bg-darkmaroon text-customwhite w-24 h-12"
             data-bs-dismiss="modal"
           >
-            Save
+            {isExistingUser ? <p>Login</p> : <p>Sign Up</p>}
           </button>
         </div>
       </form>
+      <nav>
+        {isExistingUser ? (
+          <p>
+            already logged in?{" "}
+            <span
+              onClick={handleAccessToggle}
+              className="cursor-pointer font-bold"
+            >
+              sign up
+            </span>
+          </p>
+        ) : (
+          <p>
+            already signed up?{" "}
+            <span
+              onClick={handleAccessToggle}
+              className="cursor-pointer font-bold"
+            >
+              login
+            </span>
+          </p>
+        )}
+      </nav>
     </div>
   );
 }
