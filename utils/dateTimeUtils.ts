@@ -38,7 +38,7 @@ const findById = (id: number, arr: Array<string>) => {
 // Returns an object including weekday and month names
 export const extractDateInfo = (date: Date) => {
   // Grab day by number and name:
-  const day = date.getDay();
+  const day = date.getDay() - 1;
   const nameOfDay = findById(day, weekdayNamesArr);
   const dayOfMonth = date.getUTCDate();
   // Grab month by number and name:
