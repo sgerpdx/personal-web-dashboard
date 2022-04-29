@@ -1,5 +1,6 @@
 import React from "react";
 import { BookmarkItem } from "../../data/interfaces";
+import { RiBookmarkLine } from "react-icons/ri";
 
 export default function DataDisplay({
   dataLabel,
@@ -17,12 +18,16 @@ export default function DataDisplay({
       <div className={divStyle}>
         {dataContents.map((bookmark) => {
           return (
-            <div key={Math.random()}>
-              <p>
-                {/* {bookmark.dateCreated}{" "} */}
-                <span className="itemHeading">{bookmark.bookmarkTitle}</span>
-              </p>
+            <div className="bg-customwhite" key={Math.random()}>
               <a href={bookmark.bookmarkURL} target="_blank" rel="noreferrer">
+                <p>
+                  {/* {bookmark.dateCreated}{" "} */}
+                  <span className="itemHeadingBookmarks">
+                    <RiBookmarkLine />
+                    {bookmark.bookmarkTitle}
+                  </span>
+                </p>
+
                 <p>
                   ☆ <span className="externalLink">{bookmark.bookmarkURL}</span>
                 </p>

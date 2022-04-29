@@ -42,6 +42,10 @@
     @apply flex font-bold text-lg text-left bg-richorange text-customwhite;
   }
 
+  .itemHeadingBookmarks {
+    @apply flex font-bold text-lg text-left  text-driftwood;
+  }
+
   .captionText {
     @apply italic;
   }
