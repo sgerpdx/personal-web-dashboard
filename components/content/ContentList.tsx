@@ -15,6 +15,7 @@ import { BookmarkItem, NewsResponse } from "../../data/interfaces";
 import ContentItem from "./ContentItem";
 import DataDisplay from "./DataDisplay";
 import FormItem from "./FormItem";
+import NewsDetail from "./news/NewsDetail";
 
 export default function ContentList({
   userId,
@@ -84,7 +85,8 @@ export default function ContentList({
             </div>
 
             <div className="collapse-content relative transition-all  overflow-hidden">
-              <ContentItem newsData={newsData} />
+              <NewsDetail newsData={newsData} />
+              {/* <ContentItem newsData={newsData} /> */}
             </div>
           </div>
         </div>
