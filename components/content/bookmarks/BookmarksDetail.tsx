@@ -1,8 +1,8 @@
 import React from "react";
-import { BookmarkItem } from "../../data/interfaces";
+import { BookmarkItem } from "../../../data/interfaces";
 import { RiBookmarkLine } from "react-icons/ri";
 
-export default function DataDisplay({
+export default function BookmarksDetail({
   dataLabel,
   dataContents,
   divStyle,

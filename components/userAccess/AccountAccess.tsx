@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import UserProfileForm from "./UserProfileForm";
 import { SignUpItem, UserProfile } from "../../data/interfaces";
 import AccessForm from "./AccessForm";
-import FormikForm from "../content/FormikForm";
+import FormikForm from "../inactive/FormikForm";
 
 export default function AccountAccess({
   userId,
@@ -63,16 +63,6 @@ export default function AccountAccess({
   return (
     <div className="bg-frappetan text-darkmaroon w-96 flex flex-col justify-center align-middle">
       <AccessForm info={signUpInfo} setVariable={setSignUpInfo} />
-      {/* <FormikForm
-        userInfo={signUpInfo}
-        setVariable={setSignUpInfo}
-        version="user"
-        formLabel={formLabel}
-        formStyle={formStyle}
-        inputStyle={inputStyle}
-        placeholderText={placeholderText}
-        formInputs={formInputs}
-      /> */}
       <UserProfileForm
         userId={userId}
         timezone={currentTimezone}

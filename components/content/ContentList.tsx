@@ -12,10 +12,9 @@ import { getNews } from "../../utils/externalAPI";
 import { BookmarkItem, NewsResponse } from "../../data/interfaces";
 
 // Components
-import ContentItem from "./ContentItem";
-import DataDisplay from "./DataDisplay";
-import FormItem from "./FormItem";
 import NewsDetail from "./news/NewsDetail";
+import BookmarksDetail from "./bookmarks/BookmarksDetail";
+import BookmarksForm from "./bookmarks/BookmarksForm";
 
 export default function ContentList({
   userId,
@@ -86,7 +85,6 @@ export default function ContentList({
 
             <div className="collapse-content relative transition-all  overflow-hidden">
               <NewsDetail newsData={newsData} />
-              {/* <ContentItem newsData={newsData} /> */}
             </div>
           </div>
         </div>
@@ -140,7 +138,7 @@ export default function ContentList({
                       >
                         ✕
                       </label>
-                      <FormItem
+                      <BookmarksForm
                         formLabel="New Bookmark:"
                         setVariable={setCurrentBookmark}
                         divStyle="formDiv"
@@ -161,7 +159,7 @@ export default function ContentList({
 
                 {/* display for saved bookmarks */}
                 <h3 className="bg-blue-200 text-black h-8">Saved Bookmarks:</h3>
-                <DataDisplay
+                <BookmarksDetail
                   dataLabel="Saved Bookmarks:"
                   dataContents={bookmarkData}
                   divStyle="overflow-auto bg-blue-100 p-4 h-56"
