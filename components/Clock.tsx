@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { formatTimeDisplay } from "../utils/mungeUtils";
-import { extractDateInfo } from "../utils/dateTimeUtils";
+import { extractDateInfo, formatTimeDisplay } from "../utils/dateTimeUtils";
 import { TimeItem, DateDisplayItem } from "../data/interfaces";
 
 export default function Clock() {

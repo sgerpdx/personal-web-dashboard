@@ -1,8 +1,8 @@
 import React from "react";
 import { useFormik } from "formik";
-import { saveBookmark, getBookmarksByUser } from "../../utils/databaseAPI";
+import { saveBookmark, getBookmarksByUser } from "../../../utils/databaseAPI";
 
-export default function FormItem({
+export default function BookmarksForm({
   formLabel,
   setVariable,
   divStyle,

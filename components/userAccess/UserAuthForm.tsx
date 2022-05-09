@@ -3,7 +3,7 @@ import supabase from "../../utils/supabase/supabaseClient";
 import { useFormik } from "formik";
 import { SignUpItem, UserProfile } from "../../data/interfaces";
 
-export default function AccessForm({
+export default function UserAuthForm({
   info,
   setVariable,
 }: {

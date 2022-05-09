@@ -1,15 +1,15 @@
 import React from "react";
 import Image from "next/image";
-import PlaceholderImg from "../../public/img-placeholder-96.png";
+import PlaceholderImg from "../../../public/img-placeholder-96.png";
 
 // React Icons
 import { BiRightArrow, BiLeftArrow } from "react-icons/bi";
 import { RiNewspaperLine } from "react-icons/ri";
 
 // Interface imports
-import { NewsResponse } from "../../data/interfaces";
+import { NewsResponse } from "../../../data/interfaces";
 
-export default function ContentItem({
+export default function NewsDetail({
   newsData,
 }: {
   newsData: Array<NewsResponse>;
