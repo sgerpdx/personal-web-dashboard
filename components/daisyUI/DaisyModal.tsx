@@ -1,5 +1,4 @@
 import React from "react";
-import FormItem from "../content/FormItem";
 
 export default function DaisyModal() {
   return (
